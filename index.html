@@ -390,6 +390,25 @@ background:radial-gradient(70% 90px at 18% 100%,color-mix(in srgb,var(--c) 26%,l
 .lpart .cnt{min-width:34px;height:26px;border-radius:13px;background:var(--c);color:var(--on);display:grid;place-items:center;font:700 13px var(--fun);padding:0 8px}
 .lbody{padding:6px 14px 14px}
 
+
+/* ---------- casual search ---------- */
+.sbtn{display:flex;align-items:center;gap:10px;width:100%;min-height:52px;margin:0 0 14px;padding:0 16px;border-radius:16px;border:2px solid var(--line);background:var(--card);color:var(--mute);font:500 16px Inter,sans-serif;text-align:start;cursor:pointer;box-shadow:0 3px 0 var(--line)}
+.sbtn svg,.sbox svg{width:22px;height:22px;flex:none;color:var(--act)}.sbtn span{flex:1;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.sbtn:focus-visible,.sr:focus-visible,.chip2:focus-visible{outline:3px solid var(--act);outline-offset:2px}
+.shead h2{margin:0 0 10px}
+.sbox{display:flex;align-items:center;gap:8px;min-height:52px;padding:0 12px;border-radius:14px;border:2px solid var(--act);background:var(--card)}
+.sbox input{flex:1;min-width:0;border:0;background:none;color:var(--ink);font:500 17px Inter,sans-serif;outline:0;min-height:48px}
+.snote{margin:8px 2px 0;font-size:13px;color:var(--mute)}.snote b{color:var(--ink)}
+.chips2{display:flex;flex-wrap:wrap;gap:8px;margin:10px 0 0}
+.chip2{min-height:40px;padding:6px 12px;border-radius:999px;border:2px solid var(--line);background:var(--card);color:var(--ink);font:600 14px var(--fun);cursor:pointer}
+.sr{display:flex;gap:12px;align-items:flex-start;width:100%;margin:0 0 10px;padding:12px 14px;border-radius:16px;border:2px solid var(--line);background:var(--card);color:var(--ink);text-align:start;cursor:pointer;box-shadow:0 3px 0 var(--line);font:inherit}
+.sr .pi{width:40px;height:40px;flex:none}.sr .srt{flex:1;min-width:0;line-height:1.35}
+.sr small{display:block;font-size:12px;font-weight:700;color:var(--d)}.sr b{display:block;font-size:15px;margin:2px 0}.sr em{display:block;font-style:normal;font-size:14px;color:var(--mute)}
+.sr .kd{display:inline-block;margin-inline-start:6px;padding:0 6px;border-radius:6px;background:light-dark(#fff3c4,#3a2f08);color:light-dark(#7a4b00,#ffd76a);font-size:11px}
+mark{background:light-dark(#fff1a8,#5a4a00);color:inherit;border-radius:3px;padding:0 1px}
+.sempty{text-align:center;padding:24px 8px;color:var(--mute)}
+.flash{animation:flash 2.4s ease-out}@keyframes flash{0%,30%{background:light-dark(#fff1a8,#4a3d00);box-shadow:0 0 0 6px light-dark(#fff1a8,#4a3d00)}100%{background:transparent;box-shadow:0 0 0 6px transparent}}
+.backres{position:fixed;left:50%;transform:translateX(-50%);bottom:calc(84px + env(safe-area-inset-bottom));z-index:30;min-height:44px;padding:0 18px;border-radius:999px;border:0;background:var(--act);color:#fff;font:700 15px var(--fun);box-shadow:0 4px 0 var(--actDk),0 8px 20px #0003;cursor:pointer}
 /* ---------- opening animation: the mascot climbs the ladder and pulls out the book ---------- */
 #splash{position:fixed;inset:0;z-index:9999;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:4px;background:radial-gradient(120% 80% at 50% 30%,#ffe45c,#ffd400 55%,#f5c400);color:#15171a;cursor:pointer;transition:opacity .45s ease,transform .45s ease;-webkit-tap-highlight-color:transparent}
 #splash.out{opacity:0;transform:scale(1.04);pointer-events:none}
@@ -569,8 +588,8 @@ function statsBar(){const s=streak();return`<div class="stat fl${s?'':' off'}" t
 function shell(inner){return`<header class="bar"><div class="in"><h1>Building Regs</h1>${statsBar()}</div></header><main class="wrap">${inner}</main>
 <nav class="tabs"><div class="in">${[['learn','Learn',I.home],['library','Library',LIBIC],['quests','Quests',I.target],['profile','Profile',I.user]].map(([v,n,ic])=>`<button class="tab${view===v?' on':''}" data-v="${v}" aria-current="${view===v?'page':'false'}">${ic}${n}</button>`).join('')}</div></nav>`}
 function enter(){const m=app.querySelector('main');if(m){m.classList.remove('enter');void m.offsetWidth;m.classList.add('enter')}}
-function bindTabs(){app.querySelectorAll('.tab').forEach(b=>b.onclick=()=>{SFX.tap();view=b.dataset.v;openPop=-1;DK=null;render();scrollTo(0,0);enter()})}
-function render(){roll();if(view==='library')return library();if(view==='quests')return quests();if(view==='profile')return profile();return learn()}
+function bindTabs(){app.querySelectorAll('.tab').forEach(b=>b.onclick=()=>{SFX.tap();fromSearch=false;view=b.dataset.v;openPop=-1;DK=null;render();scrollTo(0,0);enter()})}
+function render(){roll();if(view==='search')return searchView();if(view==='library')return library();if(view==='quests')return quests();if(view==='profile')return profile();return learn()}
 
 /* ---------- learn (path) ---------- */
 const OFFS=[16,50,64,42,10];
@@ -610,7 +629,7 @@ const cd=unitDone(ui),co=!!S.chests[ui];
 path+=`<div class="nwrap" style="transform:translateX(${o()}px)"><button class="node chest${cd&&!co?' ready':''}" data-c="${ui}" aria-label="Reward chest${co?' (opened)':cd?' (ready)':' (locked)'}">${co?I.chestOpen:cd?I.chest:I.chestLock}</button></div></div></section>`});
 const pct=Math.min(100,Math.round(S.todayXp/GOAL*100));
 const say=n<0?'You’ve finished every lesson. Keep practising to stay sharp!':S.todayXp>=GOAL?'Daily goal smashed! Come back tomorrow for your streak.':S.hearts<=0?'Out of hearts. Practise mistakes to earn one back.':n===0&&nr===0?'Hi, I’m Purl! Let’s start by learning the Parts.':nr>=0?'Next up: learn '+UNITS[nr].name+', then try the lesson.':'Next up: '+UNITS[LES[n].ui].name+'. You’ve got this.';
-app.innerHTML=shell(`<div class="card hello-card"><div class="hello">${mascot(S.todayXp>=GOAL||n<0?'cheer':'idle')}<div class="say">${esc(say)}</div></div><div class="goalrow"><div class="ring" style="--p:${pct}"><span>${S.todayXp}</span></div><div class="gtx"><b>${S.todayXp>=GOAL?'Daily goal done!':'Daily goal'}</b><span>${S.todayXp} of ${GOAL} XP today</span></div></div>
+app.innerHTML=shell(`<button class="sbtn" data-search>${SEARCHIC}<span>Search the regs, e.g. “banister height”</span></button><div class="card hello-card"><div class="hello">${mascot(S.todayXp>=GOAL||n<0?'cheer':'idle')}<div class="say">${esc(say)}</div></div><div class="goalrow"><div class="ring" style="--p:${pct}"><span>${S.todayXp}</span></div><div class="gtx"><b>${S.todayXp>=GOAL?'Daily goal done!':'Daily goal'}</b><span>${S.todayXp} of ${GOAL} XP today</span></div></div>
 <div class="row2"><button class="btn" id="go">${n<0?'Practise':Object.keys(S.done).length?'Continue':'Start'}</button><button class="btn ghost" id="pr" ${mc?'':'disabled'}>Mistakes · ${mc}</button></div></div>
 <div class="card jumpc"><div class="jh"><b>Jump to any Part</b><span>Every lesson is open. Start wherever you like.</span></div><div class="jump">${UNITS.map((u,ui)=>{const ls=LES.filter(l=>l.ui===ui),d=ls.filter(l=>S.done[l.key]).length;return`<button class="jp${d===ls.length?' done':''}" data-j="${ui}" style="${tv(ui)}" aria-label="Jump to ${esc(u.name)}"><span class="pi">${partIc(u.k)}</span><b>${esc(u.k==='?'?'Start':u.k==='7'?'Reg 7':u.k)}</b><i><em style="width:${Math.round(d/ls.length*100)}%"></em></i></button>`}).join('')}</div></div>
 <div class="hero" id="hero"></div>${path}
@@ -677,13 +696,13 @@ S.chests[ui]=1;S.gems+=15;save();SFX.gem();confetti();sheet(`<div style="text-al
 
 /* ---------- library: browse every Part like a reference book ---------- */
 let libOpen={},libQ='';
-function factLine(q){const a=answerOf(q);return`<div class="lfact" data-s="${esc((q.q+' '+a+' '+(q.x||'')).toLowerCase())}"><b>${esc(a)}</b><p>${esc(q.x||'')} <span class="lref">${esc(q.r||'')}</span></p></div>`}
+function factLine(q){const a=answerOf(q);return`<div class="lfact" id="${fid(q)}" data-s="${esc((q.q+' '+a+' '+(q.x||'')).toLowerCase())}"><b>${esc(a)}</b><p>${esc(q.x||'')} <span class="lref">${esc(q.r||'')}</span></p></div>`}
 function library(){view='library';
 const parts=UNITS.map((u,ui)=>{const ls=LES.filter(l=>l.ui===ui),src=docsOf(ui);
- const inner=ls.some(l=>l.meta)?ls.map(l=>{const li=LES.indexOf(l),b=qbestOf('s'+l.key);return`<div class="lsec"><div class="lsh"><h3>${esc(l.meta.sec)}</h3><button class="qzb sm" data-sq="${li}" aria-label="Quiz on ${esc(l.meta.name)}">${S.done[l.key]?I.check:I.quiz}${b!==null?b+'%':'Quiz'}</button></div><div class="lname">${esc(l.meta.name)} · from printed page ${l.meta.page}${l.meta.doc?` · <a href="${esc(l.meta.doc)}" target="_blank" rel="noopener">open the PDF</a>`:''}</div><p class="lintro">${esc(l.meta.intro)}</p>${l.meta.watch.map(w=>`<div class="lwatch" data-s="${esc(w.toLowerCase())}">${WARN}<span>${esc(w)}</span></div>`).join('')}${l.qs.filter(q=>q.t!=='match').map(factLine).join('')}</div>`}).join('')
+ const inner=ls.some(l=>l.meta)?ls.map(l=>{const li=LES.indexOf(l),b=qbestOf('s'+l.key);return`<div class="lsec" id="s${li}"><div class="lsh"><h3>${esc(l.meta.sec)}</h3><button class="qzb sm" data-sq="${li}" aria-label="Quiz on ${esc(l.meta.name)}">${S.done[l.key]?I.check:I.quiz}${b!==null?b+'%':'Quiz'}</button></div><div class="lname">${esc(l.meta.name)} · from printed page ${l.meta.page}${l.meta.doc?` · <a href="${esc(l.meta.doc)}" target="_blank" rel="noopener">open the PDF</a>`:''}</div><p class="lintro">${esc(l.meta.intro)}</p>${l.meta.watch.map((w,wi)=>`<div class="lwatch" id="w${li}_${wi}" data-s="${esc(w.toLowerCase())}">${WARN}<span>${esc(w)}</span></div>`).join('')}${l.qs.filter(q=>q.t!=='match').map(factLine).join('')}</div>`}).join('')
   :`<p class="lintro">${esc(u.intro||'')}</p>${unitQs(ui).filter(q=>q.t!=='match').map(factLine).join('')}`;
  return`<details class="lpart" data-ui="${ui}" style="${tv(ui)}" ${libOpen[ui]?'open':''}><summary><span class="pi">${partIc(u.k)}</span><span class="lt"><small>${esc(unitLabel(u,ui))}</small><b>${esc(u.name)}</b><em>${unitQs(ui).length} questions${qbestOf('u'+ui)!==null?' · quiz best '+qbestOf('u'+ui)+'%':''}</em></span><button class="qzb" data-uq="${ui}" aria-label="Quiz on ${esc(u.name)}">${I.quiz}Quiz</button></summary><div class="lbody">${govCheck(ui,1)}<div class="govs">${src.map(d=>govLink(d)).join('')}</div>${inner}</div></details>`}).join('');
-app.innerHTML=shell(`<div class="card libhead"><h2>Library</h2><p class="small" style="margin:2px 0 10px">Every fact in the app, organised like the Approved Documents. Search for a figure or topic, e.g. "escape window" or "1100".</p><input id="lq" type="search" placeholder="Search the regulations" value="${esc(libQ)}" aria-label="Search the regulations"></div><div id="lres" class="small" style="margin:0 4px 8px"></div>${parts}`);
+app.innerHTML=shell(`<div class="card libhead"><h2>Library</h2><p class="small" style="margin:2px 0 10px">Every fact in the app, organised like the Approved Documents. Search for a figure or topic, e.g. "escape window" or "1100".</p><button class="sbtn" data-search style="margin:0">${SEARCHIC}<span>Search the regs, e.g. “escape window”</span></button>${fromSearch?'<button class="backres" data-search>← Back to results</button>':''}</div><div id="lres" class="small" style="margin:0 4px 8px"></div>${parts}`);
 bindTabs();
 app.querySelectorAll('.lpart').forEach(d=>d.addEventListener('toggle',()=>{libOpen[d.dataset.ui]=d.open}));
 app.querySelectorAll('[data-uq]').forEach(b=>b.onclick=e=>{e.preventDefault();e.stopPropagation();unitQuiz(+b.dataset.uq,'library')});
@@ -693,7 +712,7 @@ const run=()=>{libQ=$('#lq').value.trim().toLowerCase();let hits=0;
   d.querySelectorAll('.lsec').forEach(sec=>{sec.style.display=!libQ||[...sec.querySelectorAll('.lfact,.lwatch')].some(f=>f.style.display!=='none')?'':'none'});
   d.style.display=!libQ||any?'':'none';if(libQ)d.open=any});
  $('#lres').textContent=libQ?(hits?hits+' matching facts':'No matches — try another word or figure'):''};
-$('#lq').addEventListener('input',run);if(libQ)run()}
+void run}
 
 /* ---------- quests ---------- */
 function quests(){const mc=Object.keys(S.mistakes).filter(id=>QBY[id]).length;
@@ -858,7 +877,85 @@ if(/^[1-4]$/.test(e.key)&&L.opts&&!L.locked&&(L.cur.t==='mc'||L.cur.t==='tf')){c
 /* Android back button (used by the phone app): close sheets, leave lessons, return to the path */
 window.__back=()=>{const v=document.querySelector('.veil');if(v){v.remove();return true}
 if(view==='lesson'){if(DK){DK=null;view='learn';render();return true}if(document.querySelector('.end')||!L){L=null;view='learn';render();return true}quit();return true}
+if(view==='library'&&fromSearch){searchView();scrollTo(0,0);return true}
 if(view!=='learn'){view='learn';render();scrollTo(0,0);return true}return false};
+
+/* ---------- casual search ----------
+   Type roughly what you're after ("how high does a banister need to be", "fire dor").
+   Everyday words map to regs terms, typos are forgiven, metres and millimetres are treated
+   as the same figure, and "part m" narrows to one Part. Results jump to the fact in the Library. */
+const SEARCHIC='<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round"><circle cx="10.5" cy="10.5" r="6.5"/><path d="m15.5 15.5 5 5"/></svg>';
+const STOP=new Set('a an the is are was be been being do does did i im my me we our you your it its of to in on at for by with and or what whats which who how when where why can could should would need needs needed have has must there this that these those any some about into than then if so just please tell find show look looking up rule rules reg regs regulation regulations requirement requirements require required approved document documents doc guidance say says said allowed allow give get got know want wanted thing things much'.split(' '));
+const stemW=w=>{if(/^\d/.test(w)||w.length<4)return w;if(w.endsWith('ies')&&w.length>4)return w.slice(0,-3)+'y';if(w.endsWith('sses'))return w.slice(0,-2);if(/(ches|shes|xes|zes)$/.test(w))return w.slice(0,-2);if(/(ss|us|is)$/.test(w))return w;if(w.endsWith('s'))return w.slice(0,-1);if(w.endsWith('ing')&&w.length>5)return w.slice(0,-3);if(w.endsWith('ed')&&w.length>4)return w.slice(0,-2);return w};
+function toks(str,sur){let s=String(str||'').toLowerCase().replace(/[’']/g,'').replace(/m²|\bsq\.? ?m\b|\bsquare met(?:re|er)s?\b/g,' m2 ');const out=[];
+ s=s.replace(/(\d+(?:\.\d+)?)\s*(mm|millimet(?:re|er)s?|m|met(?:re|er)s?)(?![a-z0-9])/g,(x,n,u)=>{const v=/^m(?:et|$)/.test(u)&&u!=='mm'?Math.round(parseFloat(n)*1000):parseFloat(n);out.push(n,String(v));return' '});
+ s=s.replace(/\d+\.\d+/g,x=>{out.push(x);return' '});
+ for(const w of s.split(/[^a-z0-9]+/)){if(!w)continue;const t=stemW(w);out.push(t);if(sur){if(!sur[t])sur[t]=w;if(sur._all)sur._all[w]=t}}return out}
+const SYN0={firedoor:'fire door',fireexit:'fire escape exit',smokealarm:'smoke alarm',stairwell:'stair stairway',stairlift:'stair lift',banister:'guarding handrail',bannister:'guarding handrail',balustrade:'guarding handrail',railing:'guarding handrail',rail:'handrail guarding',parapet:'guarding',balcony:'guarding balcony',fall:'guarding',drop:'guarding',
+ step:'stair rise going',staircase:'stair',stairway:'stair',steps:'stair',riser:'rise riser',tread:'going tread',steep:'pitch gradient',angle:'pitch',slope:'gradient ramp pitch',gradient:'gradient ramp',head:'headroom',ceiling:'headroom',
+ spiral:'spiral helical',helical:'spiral helical',loft:'loft roof',attic:'loft roof',exit:'escape exit',fireescape:'escape',alarm:'alarm smoke detection',detector:'alarm detection',detection:'alarm detection',sprinkler:'sprinkler',
+ disabled:'wheelchair accessible',disability:'wheelchair accessible',accessible:'wheelchair accessible access',wheelchair:'wheelchair',toilet:'wc sanitary toilet',loo:'wc toilet',lavatory:'wc',washroom:'wc sanitary',bathroom:'bathroom wc',
+ elevator:'lift',hallway:'corridor',hall:'corridor',passage:'corridor passageway',doorway:'door clear opening',high:'height',tall:'height storey',height:'height',wide:'width clear',narrow:'width',far:'distance travel',long:'length distance',
+ car:'parking vehicle',parking:'parking',ev:'charging vehicle',charger:'charging',broadband:'broadband',wifi:'broadband',internet:'broadband',fibre:'broadband',burglar:'security lock',intruder:'security',lock:'lock security',
+ noise:'sound',soundproof:'sound',acoustic:'sound',damp:'damp moisture',wet:'moisture',condensation:'condensation',mould:'condensation ventilation',fan:'extract ventilation',extractor:'extract ventilation',vent:'ventilation',
+ insulation:'insulation energy',thermal:'insulation energy',uvalue:'u-value insulation',hot:'overheating',solar:'overheating',boiler:'combustion boiler',chimney:'flue combustion',fireplace:'hearth combustion',stove:'combustion appliance',woodburner:'combustion appliance',
+ drain:'drainage drain',sewer:'drainage',gutter:'rainwater drainage',septic:'septic drainage',electric:'electrical',electrics:'electrical',wiring:'electrical',plug:'socket',socket:'socket outlet',glass:'glazing',kerb:'kerb',curb:'kerb',
+ house:'dwelling dwellinghouse',home:'dwelling',apartment:'flat',office:'building',shop:'building',commercial:'building',cladding:'external wall cladding',facade:'external wall',cellar:'basement',floor:'storey floor',level:'level storey',
+ highrise:'higher-risk storey',tower:'higher-risk storey',rating:'resistance minutes',rated:'resistance minutes',firefighter:'firefighting fire service',brigade:'fire service firefighting',engine:'fire service vehicle access',
+ child:'child climb',kid:'child climb',toddler:'child climb',climb:'climb',gap:'gap opening',hole:'opening gap',turn:'turning',space:'space area',size:'size dimension',big:'size',small:'size'};
+let SIX=null,SYN={};const VAGUE=new Set(['high','tall','wide','narrow','far','long','big','small','size','space','level']);
+function buildIndex(){const docs=[],df={},sur={_all:{}};for(const k in SYN0){const t=toks(k)[0];SYN[t]=SYN0[k]}
+ const add=(o,fields)=>{const tf={};for(const [txt,w] of fields)for(const t of toks(txt,sur)){if(STOP.has(t))continue;if(!tf[t]||tf[t]<w)tf[t]=w}o.tf=tf;docs.push(o);for(const t in tf)df[t]=(df[t]||0)+1};
+ LES.forEach((l,li)=>{const u=UNITS[l.ui],uf=[u.name,.6],m=l.meta,sn=m?m.sec+' '+m.name:'';
+  if(m){add({k:'s',li,ui:l.ui,id:'s'+li},[[sn,3],[m.intro,1],uf]);m.watch.forEach((w,wi)=>add({k:'w',li,ui:l.ui,id:'w'+li+'_'+wi,w},[[w,2],[sn,.8],uf]))}
+  l.qs.forEach(q=>{if(q.t==='match'){q.p.forEach(pp=>add({k:'p',li,ui:l.ui,id:m?'s'+li:'',p:pp},[[pp.join(' '),2.2],uf]));return}
+   add({k:'f',li,ui:l.ui,id:fid(q),q},[[answerOf(q),2.2],[q.t==='mc'?q.q:'',1.4],[q.x||'',1],[q.r||'',1.2],[sn,.8],uf])})});
+ const all=sur._all;delete sur._all;return{docs,df,sur,vocab:Object.keys(df),surf:Object.entries(all).filter(([w,t])=>df[t]&&!/^\d/.test(w))}}
+const fid=q=>'f'+q.id.replace(/[^a-zA-Z0-9]/g,'_');
+function edit1(a,b,max){if(Math.abs(a.length-b.length)>max)return max+1;let pp=null,prev=Array.from({length:b.length+1},(_,i)=>i);for(let i=1;i<=a.length;i++){const cur=[i];let mn=i;for(let j=1;j<=b.length;j++){cur[j]=Math.min(prev[j]+1,cur[j-1]+1,prev[j-1]+(a[i-1]===b[j-1]?0:1));if(pp&&j>1&&a[i-1]===b[j-2]&&a[i-2]===b[j-1])cur[j]=Math.min(cur[j],pp[j-2]+1);if(cur[j]<mn)mn=cur[j]}if(mn>max)return max+1;pp=prev;prev=cur}return prev[b.length]}
+function runSearch(raw){const ix=SIX||(SIX=buildIndex());raw=String(raw||'').toLowerCase().trim();const out={res:[],syn:[],fix:[],part:null,miss:[]};if(!raw)return out;
+ const pm=raw.match(/\b(?:part|ad|approved document)\s+(hr|[a-z7])\b/);if(pm){const k=pm[1].toUpperCase();if(UNITS.some(u=>u.k===k)){out.part=k;raw=raw.replace(pm[0],' ')}}
+ const qt=[...new Set(toks(raw).filter(t=>!STOP.has(t)))],endsTyping=/[a-z0-9]$/.test(raw),groups=[],syn=new Set(),fix=new Set();
+ qt.forEach((t,i)=>{const g=new Map(),put=(k,w)=>{if(ix.df[k]&&(g.get(k)||0)<w)g.set(k,w)};put(t,VAGUE.has(t)?.45:1);
+  (SYN[t]||'').split(' ').forEach(x=>toks(x).forEach(y=>{if(y===t||!ix.df[y])return;put(y,.85);syn.add(ix.sur[y]||y)}));
+  if(!g.size&&!/^\d/.test(t)&&t.length>=3){const mx=t.length>=8?2:1;let best=mx+1,cands=[];for(const [w,v] of ix.surf){if(w.length<4||STOP.has(w)||STOP.has(v))continue;const d=Math.min(edit1(t,w,mx),edit1(t,v,mx));if(d<best){best=d;cands=[v]}else if(d===best&&!cands.includes(v))cands.push(v)}
+   cands.sort((x,y)=>((ix.sur[x]||x).slice(0,2)===t.slice(0,2)?0:1)-((ix.sur[y]||y).slice(0,2)===t.slice(0,2)?0:1)||ix.df[y]-ix.df[x]);
+   if(best<=mx)cands.slice(0,t.length<=4?1:2).forEach(v=>{put(v,.75);fix.add(ix.sur[v]||v);(SYN[v]||'').split(' ').forEach(x=>toks(x).forEach(y=>put(y,.65)))})}
+  if(i===qt.length-1&&endsTyping&&t.length>=3&&!/^\d/.test(t)){let n=0;for(const v of ix.vocab)if(v!==t&&v.startsWith(t)&&n<12){put(v,.7);n++}}
+  if(g.size)groups.push(g);else out.miss.push(t)});
+ out.syn=[...syn].slice(0,5);out.fix=[...fix].slice(0,3);
+ const N=ix.docs.length,idf=t=>Math.log(1+N/ix.df[t]),KB={s:1.15,f:1,w:.95,p:.8},res=[];
+ if(!groups.length&&!out.part)return out;
+ for(const d of ix.docs){const uk=UNITS[d.ui].k;if(out.part&&uk!==out.part)continue;let sc=0,hit=0,hits=new Set();
+  for(const g of groups){let b=0;for(const [t,w] of g){const f=d.tf[t];if(f){const v=f*w*idf(t);if(v>b)b=v;hits.add(t)}}if(b){sc+=b;hit++}}
+  if(groups.length&&!hit)continue;sc=groups.length?sc*Math.pow(hit/groups.length,2)*KB[d.k]:(d.k==='s'?2:1);res.push({d,sc,hits})}
+ res.sort((a,b)=>b.sc-a.sc);const seen=new Set();out.res=res.filter(r=>{const key=r.d.k+(r.d.id||'')+(r.d.p?r.d.p.join():'');if(seen.has(key))return false;seen.add(key);return true}).slice(0,40);return out}
+function hl(text,hits){return String(text).split(/([A-Za-z0-9².]+)/).map((w,i)=>{if(i%2===0)return esc(w);const t=toks(w);return t.some(x=>hits.has(x))?`<mark>${esc(w)}</mark>`:esc(w)}).join('')}
+const clip=(t,n=170)=>{t=String(t||'');return t.length>n?t.slice(0,t.lastIndexOf(' ',n)>60?t.lastIndexOf(' ',n):n)+'…':t};
+let sQ='',fromSearch=false,lastRes=[];
+const RKEY='regs-trainer-recent';let RECENT=[];try{RECENT=JSON.parse(localStorage.getItem(RKEY))||[]}catch(e){RECENT=[]}
+const TRY=['banister height','fire door','wheelchair turning space','escape window size','stair pitch','travel distance in flats','lift size','toilet door width'];
+function srCard(r,i){const d=r.d,u=UNITS[d.ui],l=LES[d.li],m=l.meta,where=esc(unitLabel(u,d.ui))+(m?' · '+esc(m.sec.split(' · ')[0])+' · p.'+m.page:'');let main,sub,kd='';
+ if(d.k==='s'){main=m.sec+' · '+m.name;sub=clip(m.intro);kd='Section'}else if(d.k==='w'){main=d.w;sub=m?m.name:'';kd='Watch out'}else if(d.k==='p'){main=d.p[0]+' — '+d.p[1];sub=m?m.name:u.name}
+ else{const q=d.q;main=answerOf(q);sub=(q.t==='mc'?q.q+' ':'')+clip(q.x||'',140)+(q.r?' ('+q.r+')':'')}
+ return`<button class="sr" data-go="${i}" style="${tv(d.ui)}"><span class="pi">${partIc(u.k)}</span><span class="srt"><small>${where}${kd?`<span class="kd">${kd}</span>`:''}</small><b>${hl(main,r.hits)}</b><em>${hl(sub,r.hits)}</em></span></button>`}
+function drawResults(){const box=$('#sres'),note=$('#snote');if(!box)return;const r=runSearch(sQ);lastRes=r.res;
+ const bits=[];if(r.part)bits.push(`Only Part <b>${esc(r.part)}</b>`);if(r.fix.length)bits.push(`Did you mean <b>${r.fix.map(esc).join(', ')}</b>?`);if(r.syn.length)bits.push(`Also matching ${r.syn.map(esc).join(', ')}`);
+ note.innerHTML=sQ.trim()?(r.res.length?`${r.res.length===40?'Top 40':r.res.length} result${r.res.length===1?'':'s'}`:'')+(bits.length?(r.res.length?' · ':'')+bits.join(' · '):''):'';
+ if(!sQ.trim()){box.innerHTML=`${RECENT.length?`<p class="small" style="margin:4px 4px 0">Recent</p><div class="chips2">${RECENT.map(t=>`<button class="chip2" data-try="${esc(t)}">${esc(t)}</button>`).join('')}</div>`:''}<p class="small" style="margin:16px 4px 0">Try something like</p><div class="chips2">${TRY.map(t=>`<button class="chip2" data-try="${esc(t)}">${esc(t)}</button>`).join('')}</div><p class="small" style="margin:16px 4px 0">Type it however you'd say it. Add "part B" to search one Part. Figures work in mm or m.</p>`;return}
+ box.innerHTML=r.res.length?r.res.map(srCard).join(''):`<div class="sempty"><div style="width:90px;margin:0 auto">${mascot('sad')}</div><p>Nothing in the app matches that yet${r.miss.length?` (no match for “${esc(r.miss.join(' '))}”)`:''}. Try a different word, or open the Approved Document on GOV.UK from the Library.</p></div>`}
+function searchView(){view='search';fromSearch=false;
+ app.innerHTML=shell(`<div class="card shead"><h2>Search the regs</h2><div class="sbox">${SEARCHIC}<input id="sq" type="search" placeholder="e.g. how high should a banister be" value="${esc(sQ)}" aria-label="Search the regulations" autocomplete="off" autocapitalize="off" spellcheck="false" enterkeyhint="search"></div><p class="snote" id="snote" aria-live="polite"></p></div><div id="sres"></div>`);
+ bindTabs();const inp=$('#sq');let tm;inp.addEventListener('input',()=>{clearTimeout(tm);tm=setTimeout(()=>{sQ=inp.value;drawResults()},120)});
+ inp.addEventListener('keydown',e=>{if(e.key==='Enter'){e.preventDefault();inp.blur()}});
+ $('#sres').addEventListener('click',e=>{const c=e.target.closest('[data-try]');if(c){sQ=c.dataset.try;inp.value=sQ;drawResults();return}const g=e.target.closest('[data-go]');if(g)goResult(lastRes[+g.dataset.go])});
+ drawResults();if(!sQ)setTimeout(()=>{try{inp.focus()}catch(e){}},60)}
+function goResult(r){if(!r)return;SFX.tap();const q=sQ.trim();if(q){RECENT=[q,...RECENT.filter(x=>x!==q)].slice(0,6);try{localStorage.setItem(RKEY,JSON.stringify(RECENT))}catch(e){}}
+ const d=r.d;libOpen={};libOpen[d.ui]=true;libQ='';view='library';render();fromSearch=true;library();
+ const el=(d.id&&document.getElementById(d.id))||document.getElementById('s'+d.li)||app.querySelector(`.lpart[data-ui="${d.ui}"]`);
+ if(el){el.scrollIntoView({block:'center'});el.classList.remove('flash');void el.offsetWidth;el.classList.add('flash')}}
+function openSearch(){SFX.tap();openPop=-1;DK=null;searchView();scrollTo(0,0);enter()}
+document.addEventListener('click',e=>{const b=e.target.closest&&e.target.closest('[data-search]');if(b){e.preventDefault();openSearch()}});
 /* ---------- opening animation ---------- */
 function splash(){if(!A)return;
  const books=[[0,[['#ff4b4b',16,62],['#2b45ff',20,70],['#58cc02',14,56],['#ff9600',18,66],['#ce82ff',16,60]]],[1,[['#1cb0f6',18,68],['#ffc800',14,58],['#ff4b4b',20,72],['#58cc02',16,62],['#2b45ff',14,54]]],[2,[['#ff9600',20,64],['#ce82ff',16,70],['#1cb0f6',18,60],['#ff4b4b',14,56],['#58cc02',18,66]]],[3,[['#2b45ff',16,58],['#ff9600',18,70],['#ffc800',14,62],['#1cb0f6',20,66],['#ce82ff',16,60]]]];
