@@ -406,6 +406,8 @@ background:radial-gradient(70% 90px at 18% 100%,color-mix(in srgb,var(--c) 26%,l
 .sr small{display:block;font-size:12px;font-weight:700;color:var(--d)}.sr b{display:block;font-size:15px;margin:2px 0}.sr em{display:block;font-style:normal;font-size:14px;color:var(--mute)}
 .sr .kd{display:inline-block;margin-inline-start:6px;padding:0 6px;border-radius:6px;background:light-dark(#fff3c4,#3a2f08);color:light-dark(#7a4b00,#ffd76a);font-size:11px}
 mark{background:light-dark(#fff1a8,#5a4a00);color:inherit;border-radius:3px;padding:0 1px}
+.kd.rel{background:var(--actBg);color:var(--act)}
+.linkb{border:0;background:none;padding:0;color:var(--act);font:inherit;font-weight:700;text-decoration:underline;cursor:pointer;min-height:32px}
 .sempty{text-align:center;padding:24px 8px;color:var(--mute)}
 .flash{animation:flash 2.4s ease-out}@keyframes flash{0%,30%{background:light-dark(#fff1a8,#4a3d00);box-shadow:0 0 0 6px light-dark(#fff1a8,#4a3d00)}100%{background:transparent;box-shadow:0 0 0 6px transparent}}
 .backres{position:fixed;left:50%;transform:translateX(-50%);bottom:calc(84px + env(safe-area-inset-bottom));z-index:30;min-height:44px;padding:0 18px;border-radius:999px;border:0;background:var(--act);color:#fff;font:700 15px var(--fun);box-shadow:0 4px 0 var(--actDk),0 8px 20px #0003;cursor:pointer}
@@ -885,7 +887,7 @@ if(view!=='learn'){view='learn';render();scrollTo(0,0);return true}return false}
    Everyday words map to regs terms, typos are forgiven, metres and millimetres are treated
    as the same figure, and "part m" narrows to one Part. Results jump to the fact in the Library. */
 const SEARCHIC='<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round"><circle cx="10.5" cy="10.5" r="6.5"/><path d="m15.5 15.5 5 5"/></svg>';
-const STOP=new Set('a an the is are was be been being do does did i im my me we our you your it its of to in on at for by with and or what whats which who how when where why can could should would need needs needed have has must there this that these those any some about into than then if so just please tell find show look looking up rule rules reg regs regulation regulations requirement requirements require required approved document documents doc guidance say says said allowed allow give get got know want wanted thing things much'.split(' '));
+const STOP=new Set('a an the is are was be been being do does did i im my me we our you your it its of to in on at for by with and or what whats which who how when where why can could should would need needs needed have has must there this that these those any some about into than then if so just please tell find show look looking up rule rules reg regs regulation regulations requirement requirements require required approved document documents doc guidance say says said allowed allow give get got know want wanted thing things much too very really quite feel feels felt seem seems like make makes made put use used using way still also enough okay ok any anything something someone somebody people person bit lot lots should shall will one ones thats theres mine ours'.split(' '));
 const stemW=w=>{if(/^\d/.test(w)||w.length<4)return w;if(w.endsWith('ies')&&w.length>4)return w.slice(0,-3)+'y';if(w.endsWith('sses'))return w.slice(0,-2);if(/(ches|shes|xes|zes)$/.test(w))return w.slice(0,-2);if(/(ss|us|is)$/.test(w))return w;if(w.endsWith('s'))return w.slice(0,-1);if(w.endsWith('ing')&&w.length>5)return w.slice(0,-3);if(w.endsWith('ed')&&w.length>4)return w.slice(0,-2);return w};
 function toks(str,sur){let s=String(str||'').toLowerCase().replace(/[’']/g,'').replace(/m²|\bsq\.? ?m\b|\bsquare met(?:re|er)s?\b/g,' m2 ');const out=[];
  s=s.replace(/(\d+(?:\.\d+)?)\s*(mm|millimet(?:re|er)s?|m|met(?:re|er)s?)(?![a-z0-9])/g,(x,n,u)=>{const v=/^m(?:et|$)/.test(u)&&u!=='mm'?Math.round(parseFloat(n)*1000):parseFloat(n);out.push(n,String(v));return' '});
@@ -903,9 +905,9 @@ const SYN0={firedoor:'fire door',fireexit:'fire escape exit',smokealarm:'smoke a
  house:'dwelling dwellinghouse',home:'dwelling',apartment:'flat',office:'building',shop:'building',commercial:'building',cladding:'external wall cladding',facade:'external wall',cellar:'basement',floor:'storey floor',level:'level storey',
  highrise:'higher-risk storey',tower:'higher-risk storey',rating:'resistance minutes',rated:'resistance minutes',firefighter:'firefighting fire service',brigade:'fire service firefighting',engine:'fire service vehicle access',
  child:'child climb',kid:'child climb',toddler:'child climb',climb:'climb',gap:'gap opening',hole:'opening gap',turn:'turning',space:'space area',size:'size dimension',big:'size',small:'size'};
-let SIX=null,SYN={};const VAGUE=new Set(['high','tall','wide','narrow','far','long','big','small','size','space','level']);
+let SIX=null,SYN={};const KB={s:1.15,f:1,w:.95,p:.8};const VAGUE=new Set(['high','tall','wide','narrow','far','long','big','small','size','space','level']);
 function buildIndex(){const docs=[],df={},sur={_all:{}};for(const k in SYN0){const t=toks(k)[0];SYN[t]=SYN0[k]}
- const add=(o,fields)=>{const tf={};for(const [txt,w] of fields)for(const t of toks(txt,sur)){if(STOP.has(t))continue;if(!tf[t]||tf[t]<w)tf[t]=w}o.tf=tf;docs.push(o);for(const t in tf)df[t]=(df[t]||0)+1};
+ const add=(o,fields)=>{o.i=docs.length;const tf={};for(const [txt,w] of fields)for(const t of toks(txt,sur)){if(STOP.has(t))continue;if(!tf[t]||tf[t]<w)tf[t]=w}o.tf=tf;docs.push(o);for(const t in tf)df[t]=(df[t]||0)+1};
  LES.forEach((l,li)=>{const u=UNITS[l.ui],uf=[u.name,.6],m=l.meta,sn=m?m.sec+' '+m.name:'';
   if(m){add({k:'s',li,ui:l.ui,id:'s'+li},[[sn,3],[m.intro,1],uf]);m.watch.forEach((w,wi)=>add({k:'w',li,ui:l.ui,id:'w'+li+'_'+wi,w},[[w,2],[sn,.8],uf]))}
   l.qs.forEach(q=>{if(q.t==='match'){q.p.forEach(pp=>add({k:'p',li,ui:l.ui,id:m?'s'+li:'',p:pp},[[pp.join(' '),2.2],uf]));return}
@@ -924,32 +926,77 @@ function runSearch(raw){const ix=SIX||(SIX=buildIndex());raw=String(raw||'').toL
   if(i===qt.length-1&&endsTyping&&t.length>=3&&!/^\d/.test(t)){let n=0;for(const v of ix.vocab)if(v!==t&&v.startsWith(t)&&n<12){put(v,.7);n++}}
   if(g.size)groups.push(g);else out.miss.push(t)});
  out.syn=[...syn].slice(0,5);out.fix=[...fix].slice(0,3);
- const N=ix.docs.length,idf=t=>Math.log(1+N/ix.df[t]),KB={s:1.15,f:1,w:.95,p:.8},res=[];
+ const N=ix.docs.length,idf=t=>Math.log(1+N/ix.df[t]),res=[];out.groups=groups.length;
  if(!groups.length&&!out.part)return out;
  for(const d of ix.docs){const uk=UNITS[d.ui].k;if(out.part&&uk!==out.part)continue;let sc=0,hit=0,hits=new Set();
   for(const g of groups){let b=0;for(const [t,w] of g){const f=d.tf[t];if(f){const v=f*w*idf(t);if(v>b)b=v;hits.add(t)}}if(b){sc+=b;hit++}}
   if(groups.length&&!hit)continue;sc=groups.length?sc*Math.pow(hit/groups.length,2)*KB[d.k]:(d.k==='s'?2:1);res.push({d,sc,hits})}
- res.sort((a,b)=>b.sc-a.sc);const seen=new Set();out.res=res.filter(r=>{const key=r.d.k+(r.d.id||'')+(r.d.p?r.d.p.join():'');if(seen.has(key))return false;seen.add(key);return true}).slice(0,40);return out}
+ out.all=finish(res);out.res=out.all.slice(0,40);return out}
+function finish(res){res.sort((a,b)=>b.sc-a.sc);const seen=new Set();return res.filter(r=>{const key=r.d.k+(r.d.id||'')+(r.d.p?r.d.p.join():'');if(seen.has(key))return false;seen.add(key);return true})}
 function hl(text,hits){return String(text).split(/([A-Za-z0-9².]+)/).map((w,i)=>{if(i%2===0)return esc(w);const t=toks(w);return t.some(x=>hits.has(x))?`<mark>${esc(w)}</mark>`:esc(w)}).join('')}
 const clip=(t,n=170)=>{t=String(t||'');return t.length>n?t.slice(0,t.lastIndexOf(' ',n)>60?t.lastIndexOf(' ',n):n)+'…':t};
+
+/* ---------- meaning search ----------
+   A small sentence model (all-MiniLM-L6-v2, run on the phone by transformers.js) turns every fact
+   into a "meaning fingerprint" once, in a background worker, and saves them on the device.
+   Searches then match on meaning as well as words. It downloads about 45MB once, on Wi-Fi by default.
+   If anything fails it switches itself off and word search carries on as normal. */
+const SEM_LIB='https://cdn.jsdelivr.net/npm/@huggingface/transformers@3.8.1/dist/transformers.min.js',SEM_MODEL='Xenova/all-MiniLM-L6-v2',DIM=384;
+const SEM={state:'off',pct:0,vecs:null,w:null,seq:0,wait:{}};
+function semStatus(){const el=$('#semst');if(!el)return;const st=SEM.state;
+ el.innerHTML=st==='on'?'✓ Understands meaning, not just exact words':st==='loading'?`Meaning search is setting up in the background${SEM.pct?` (${SEM.pct}%)`:''}. Word search works now.`:st==='wait'?`Meaning search sets itself up on Wi-Fi (about 45MB, once). <button class="linkb" id="semgo">Set up now</button>`:'';
+ const b=$('#semgo');if(b)b.onclick=()=>startSemantic(true)}
+const idbKV=(mode,fn)=>new Promise((res,rej)=>{const r=indexedDB.open('regs-trainer',1);r.onupgradeneeded=()=>r.result.createObjectStore('kv');r.onerror=()=>rej(r.error);r.onsuccess=()=>{const db=r.result,tx=db.transaction('kv',mode),q=fn(tx.objectStore('kv'));tx.oncomplete=()=>{db.close();res(q&&q.result)};tx.onerror=()=>{db.close();rej(tx.error)}}});
+function semText(d){const u=UNITS[d.ui],m=LES[d.li].meta,nm=u.name+': ';
+ if(d.k==='s')return nm+m.sec+'. '+m.name+'. '+m.intro;if(d.k==='w')return nm+d.w+(m?' ('+m.name+')':'');if(d.k==='p')return nm+d.p.join(' — ');
+ const q=d.q;return(nm+(q.t==='mc'?q.q+' ':'')+answerOf(q)+'. '+(q.x||'')).slice(0,600)}
+function semCall(msg,transfer){return new Promise((res,rej)=>{const id=++SEM.seq;SEM.wait[id]={res,rej};SEM.w.postMessage({...msg,id},transfer||[])})}
+function semFail(){SEM.state='failed';try{SEM.w&&SEM.w.terminate()}catch(e){}SEM.w=null;for(const k in SEM.wait){SEM.wait[k].rej(new Error('off'))}SEM.wait={};semStatus()}
+async function startSemantic(force){if(SEM.state==='loading'||SEM.state==='on')return;
+ if(!window.Worker||!window.indexedDB||!/^https:|^http:\/\/localhost/.test(location.href)){SEM.state='failed';return}
+ const c=navigator.connection;if(!force&&c&&(c.saveData||c.type==='cellular'||/2g/.test(c.effectiveType||''))){SEM.state='wait';semStatus();return}
+ SEM.state='loading';SEM.pct=0;semStatus();
+ try{const ix=SIX||(SIX=buildIndex()),texts=ix.docs.map(semText),key='v1|'+SEM_MODEL+'|'+h(texts.join('\n'));
+  const src=`import{pipeline,env}from'${SEM_LIB}';env.allowLocalModels=false;let ex;
+self.onmessage=async e=>{const m=e.data;try{if(m.t==='init'){ex=await pipeline('feature-extraction','${SEM_MODEL}',{dtype:'q8',progress_callback:p=>{if(p.status==='progress'&&/onnx$/.test(p.file||''))self.postMessage({t:'dl',p:p.progress})}});self.postMessage({t:'ok',id:m.id})}
+else if(m.t==='embed'){const o=await ex(m.texts,{pooling:'mean',normalize:true});const d=new Float32Array(o.data);self.postMessage({t:'ok',id:m.id,data:d},[d.buffer])}}catch(err){self.postMessage({t:'err',id:m.id,msg:String(err&&err.message||err)})}};`;
+  SEM.w=new Worker(URL.createObjectURL(new Blob([src],{type:'text/javascript'})),{type:'module'});
+  SEM.w.onerror=()=>semFail();
+  SEM.w.onmessage=e=>{const m=e.data;if(m.t==='dl'){SEM.pct=Math.min(60,Math.round(m.p*.6));semStatus();return}const w=SEM.wait[m.id];if(!w)return;delete SEM.wait[m.id];m.t==='ok'?w.res(m.data):w.rej(new Error(m.msg))};
+  await semCall({t:'init'});SEM.pct=Math.max(SEM.pct,60);semStatus();
+  let saved=null;try{saved=await idbKV('readonly',st=>st.get('sem'))}catch(e){}
+  if(saved&&saved.key===key&&saved.vecs&&saved.vecs.length===texts.length*DIM)SEM.vecs=saved.vecs;
+  else{const V=new Float32Array(texts.length*DIM);for(let i=0;i<texts.length;i+=16){const d=await semCall({t:'embed',texts:texts.slice(i,i+16)});V.set(d,i*DIM);SEM.pct=60+Math.round(40*Math.min(1,(i+16)/texts.length));semStatus()}
+   SEM.vecs=V;try{await idbKV('readwrite',st=>st.put({key,vecs:V},'sem'))}catch(e){}}
+  SEM.state='on';semStatus();if(view==='search'&&sQ.trim())drawResults()}catch(e){semFail()}}
+async function semQuery(q){const d=await semCall({t:'embed',texts:[q]});return d}
+function hybrid(r,qv){const ix=SIX,V=SEM.vecs,N=ix.docs.length,sims=new Float32Array(N);let mx=0;
+ for(let i=0;i<N;i++){let s=0;const o=i*DIM;for(let j=0;j<DIM;j++)s+=V[o+j]*qv[j];sims[i]=s;if(s>mx)mx=s}
+ const all=r.all||[],lexMax=all.length?all[0].sc:0,lex=new Map(all.map(x=>[x.d.i,x])),floor=Math.max(.3,mx-.2),out=[];
+ for(let i=0;i<N;i++){const d=ix.docs[i];if(r.part&&UNITS[d.ui].k!==r.part)continue;const L=lex.get(i);if(!L&&sims[i]<floor)continue;
+  const ln=L&&lexMax?L.sc/lexMax:0,sn=Math.max(0,(sims[i]-.2)/Math.max(.05,mx-.2));out.push({d,sc:(.5*ln+.5*sn)*(L?1:KB[d.k]),hits:L?L.hits:new Set(),sem:!L})}
+ return finish(out).slice(0,40)}
 let sQ='',fromSearch=false,lastRes=[];
 const RKEY='regs-trainer-recent';let RECENT=[];try{RECENT=JSON.parse(localStorage.getItem(RKEY))||[]}catch(e){RECENT=[]}
 const TRY=['banister height','fire door','wheelchair turning space','escape window size','stair pitch','travel distance in flats','lift size','toilet door width'];
 function srCard(r,i){const d=r.d,u=UNITS[d.ui],l=LES[d.li],m=l.meta,where=esc(unitLabel(u,d.ui))+(m?' · '+esc(m.sec.split(' · ')[0])+' · p.'+m.page:'');let main,sub,kd='';
  if(d.k==='s'){main=m.sec+' · '+m.name;sub=clip(m.intro);kd='Section'}else if(d.k==='w'){main=d.w;sub=m?m.name:'';kd='Watch out'}else if(d.k==='p'){main=d.p[0]+' — '+d.p[1];sub=m?m.name:u.name}
  else{const q=d.q;main=answerOf(q);sub=(q.t==='mc'?q.q+' ':'')+clip(q.x||'',140)+(q.r?' ('+q.r+')':'')}
- return`<button class="sr" data-go="${i}" style="${tv(d.ui)}"><span class="pi">${partIc(u.k)}</span><span class="srt"><small>${where}${kd?`<span class="kd">${kd}</span>`:''}</small><b>${hl(main,r.hits)}</b><em>${hl(sub,r.hits)}</em></span></button>`}
+ return`<button class="sr" data-go="${i}" style="${tv(d.ui)}"><span class="pi">${partIc(u.k)}</span><span class="srt"><small>${where}${kd?`<span class="kd">${kd}</span>`:''}${r.sem?'<span class="kd rel">Related</span>':''}</small><b>${hl(main,r.hits)}</b><em>${hl(sub,r.hits)}</em></span></button>`}
 function drawResults(){const box=$('#sres'),note=$('#snote');if(!box)return;const r=runSearch(sQ);lastRes=r.res;
+ const q=sQ.trim();if(SEM.state==='on'&&/[a-z]{3}/i.test(q)){semQuery(q).then(qv=>{if(sQ.trim()!==q||!$('#sres'))return;lastRes=hybrid(r,qv);paint(r,lastRes)}).catch(()=>{})}
+ paint(r,lastRes)}
+function paint(r,list){const box=$('#sres'),note=$('#snote');if(!box)return;
  const bits=[];if(r.part)bits.push(`Only Part <b>${esc(r.part)}</b>`);if(r.fix.length)bits.push(`Did you mean <b>${r.fix.map(esc).join(', ')}</b>?`);if(r.syn.length)bits.push(`Also matching ${r.syn.map(esc).join(', ')}`);
- note.innerHTML=sQ.trim()?(r.res.length?`${r.res.length===40?'Top 40':r.res.length} result${r.res.length===1?'':'s'}`:'')+(bits.length?(r.res.length?' · ':'')+bits.join(' · '):''):'';
+ note.innerHTML=sQ.trim()?(list.length?`${list.length===40?'Top 40':list.length} result${list.length===1?'':'s'}`:'')+(bits.length?(list.length?' · ':'')+bits.join(' · '):''):'';
  if(!sQ.trim()){box.innerHTML=`${RECENT.length?`<p class="small" style="margin:4px 4px 0">Recent</p><div class="chips2">${RECENT.map(t=>`<button class="chip2" data-try="${esc(t)}">${esc(t)}</button>`).join('')}</div>`:''}<p class="small" style="margin:16px 4px 0">Try something like</p><div class="chips2">${TRY.map(t=>`<button class="chip2" data-try="${esc(t)}">${esc(t)}</button>`).join('')}</div><p class="small" style="margin:16px 4px 0">Type it however you'd say it. Add "part B" to search one Part. Figures work in mm or m.</p>`;return}
- box.innerHTML=r.res.length?r.res.map(srCard).join(''):`<div class="sempty"><div style="width:90px;margin:0 auto">${mascot('sad')}</div><p>Nothing in the app matches that yet${r.miss.length?` (no match for “${esc(r.miss.join(' '))}”)`:''}. Try a different word, or open the Approved Document on GOV.UK from the Library.</p></div>`}
+ box.innerHTML=list.length?list.map(srCard).join(''):`<div class="sempty"><div style="width:90px;margin:0 auto">${mascot('sad')}</div><p>Nothing in the app matches that yet${r.miss.length?` (no match for “${esc(r.miss.join(' '))}”)`:''}. Try a different word, or open the Approved Document on GOV.UK from the Library.</p></div>`}
 function searchView(){view='search';fromSearch=false;
- app.innerHTML=shell(`<div class="card shead"><h2>Search the regs</h2><div class="sbox">${SEARCHIC}<input id="sq" type="search" placeholder="e.g. how high should a banister be" value="${esc(sQ)}" aria-label="Search the regulations" autocomplete="off" autocapitalize="off" spellcheck="false" enterkeyhint="search"></div><p class="snote" id="snote" aria-live="polite"></p></div><div id="sres"></div>`);
+ app.innerHTML=shell(`<div class="card shead"><h2>Search the regs</h2><div class="sbox">${SEARCHIC}<input id="sq" type="search" placeholder="e.g. how high should a banister be" value="${esc(sQ)}" aria-label="Search the regulations" autocomplete="off" autocapitalize="off" spellcheck="false" enterkeyhint="search"></div><p class="snote" id="snote" aria-live="polite"></p><p class="snote" id="semst"></p></div><div id="sres"></div>`);
  bindTabs();const inp=$('#sq');let tm;inp.addEventListener('input',()=>{clearTimeout(tm);tm=setTimeout(()=>{sQ=inp.value;drawResults()},120)});
  inp.addEventListener('keydown',e=>{if(e.key==='Enter'){e.preventDefault();inp.blur()}});
  $('#sres').addEventListener('click',e=>{const c=e.target.closest('[data-try]');if(c){sQ=c.dataset.try;inp.value=sQ;drawResults();return}const g=e.target.closest('[data-go]');if(g)goResult(lastRes[+g.dataset.go])});
- drawResults();if(!sQ)setTimeout(()=>{try{inp.focus()}catch(e){}},60)}
+ drawResults();semStatus();if(SEM.state==='off')startSemantic();if(!sQ)setTimeout(()=>{try{inp.focus()}catch(e){}},60)}
 function goResult(r){if(!r)return;SFX.tap();const q=sQ.trim();if(q){RECENT=[q,...RECENT.filter(x=>x!==q)].slice(0,6);try{localStorage.setItem(RKEY,JSON.stringify(RECENT))}catch(e){}}
  const d=r.d;libOpen={};libOpen[d.ui]=true;libQ='';view='library';render();fromSearch=true;library();
  const el=(d.id&&document.getElementById(d.id))||document.getElementById('s'+d.li)||app.querySelector(`.lpart[data-ui="${d.ui}"]`);
@@ -986,7 +1033,7 @@ ${sp(250,100,2.3)}${sp(180,96,2.45)}${sp(232,72,2.6)}
    im.animate([{transform:'none'},{transform:`translate(${b.left+b.width/2-(a.left+a.width/2)}px,${b.top+b.height/2-(a.top+a.height/2)}px) scale(${k})`}],{duration:520,easing:'cubic-bezier(.5,0,.3,1)',fill:'forwards'})}catch(e){}
   setTimeout(()=>{if(gone)return;el.classList.add('go');ic.remove()},540)},1000);
  setTimeout(end,5300)}
-splash();render();cloud();govFetch();if('serviceWorker' in navigator&&location.protocol==='https:')navigator.serviceWorker.register('sw.js').catch(()=>{});
+splash();render();cloud();govFetch();setTimeout(()=>{if(SEM.state==='off')startSemantic()},7000);if('serviceWorker' in navigator&&location.protocol==='https:')navigator.serviceWorker.register('sw.js').catch(()=>{});
 }
 </script>
 </body>

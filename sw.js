@@ -1,16 +1,20 @@
 /* Building Regs Trainer offline support.
    App files: try the network first so lesson updates arrive, fall back to the saved copy offline.
-   Fonts: saved after first load. GOV.UK update check: always live, never cached. */
-const CACHE = 'regs-trainer-v1';
+   Fonts and the meaning-search engine (from cdn.jsdelivr.net): saved after first download.
+   The meaning model itself is saved by its own library on the phone.
+   GOV.UK update check: always live, never cached. */
+const CACHE = 'regs-trainer-v2';
 const APP = ['./', 'index.html', 'data.js', 'art.js', 'manifest.json', 'icon-192.png', 'icon-512.png', 'maskable-512.png', 'apple-touch-icon.png'];
+const SAVE_AFTER_FIRST_USE = ['fonts.googleapis.com', 'fonts.gstatic.com', 'cdn.jsdelivr.net'];
 
 self.addEventListener('install', e => {
   e.waitUntil(caches.open(CACHE).then(c => c.addAll(APP)).then(() => self.skipWaiting()));
 });
 
 self.addEventListener('activate', e => {
+  // Only clear this app's older caches, never the meaning model's own cache.
   e.waitUntil(caches.keys()
-    .then(keys => Promise.all(keys.filter(k => k !== CACHE).map(k => caches.delete(k))))
+    .then(keys => Promise.all(keys.filter(k => k.startsWith('regs-trainer-') && k !== CACHE).map(k => caches.delete(k))))
     .then(() => self.clients.claim()));
 });
 
@@ -28,9 +32,10 @@ self.addEventListener('fetch', e => {
     return;
   }
 
-  if (url.hostname === 'fonts.googleapis.com' || url.hostname === 'fonts.gstatic.com') {
+  if (SAVE_AFTER_FIRST_USE.includes(url.hostname)) {
     e.respondWith(caches.match(req).then(hit => hit || fetch(req).then(res => {
-      const copy = res.clone(); caches.open(CACHE).then(c => c.put(req, copy)); return res;
+      if (res.ok || res.type === 'opaque') { const copy = res.clone(); caches.open(CACHE).then(c => c.put(req, copy)); }
+      return res;
     })));
   }
 });
