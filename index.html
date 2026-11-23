@@ -931,8 +931,8 @@ function runSearch(raw){const ix=SIX||(SIX=buildIndex());raw=String(raw||'').toL
  for(const d of ix.docs){const uk=UNITS[d.ui].k;if(out.part&&uk!==out.part)continue;let sc=0,hit=0,hits=new Set();
   for(const g of groups){let b=0;for(const [t,w] of g){const f=d.tf[t];if(f){const v=f*w*idf(t);if(v>b)b=v;hits.add(t)}}if(b){sc+=b;hit++}}
   if(groups.length&&!hit)continue;sc=groups.length?sc*Math.pow(hit/groups.length,2)*KB[d.k]:(d.k==='s'?2:1);res.push({d,sc,hits})}
- out.all=finish(res);out.res=out.all.slice(0,40);return out}
-function finish(res){res.sort((a,b)=>b.sc-a.sc);const seen=new Set();return res.filter(r=>{const key=r.d.k+(r.d.id||'')+(r.d.p?r.d.p.join():'');if(seen.has(key))return false;seen.add(key);return true})}
+ out.all=rankUnique(res);out.res=out.all.slice(0,40);return out}
+function rankUnique(res){res.sort((a,b)=>b.sc-a.sc);const seen=new Set();return res.filter(r=>{const key=r.d.k+(r.d.id||'')+(r.d.p?r.d.p.join():'');if(seen.has(key))return false;seen.add(key);return true})}
 function hl(text,hits){return String(text).split(/([A-Za-z0-9².]+)/).map((w,i)=>{if(i%2===0)return esc(w);const t=toks(w);return t.some(x=>hits.has(x))?`<mark>${esc(w)}</mark>`:esc(w)}).join('')}
 const clip=(t,n=170)=>{t=String(t||'');return t.length>n?t.slice(0,t.lastIndexOf(' ',n)>60?t.lastIndexOf(' ',n):n)+'…':t};
 
@@ -975,7 +975,7 @@ function hybrid(r,qv){const ix=SIX,V=SEM.vecs,N=ix.docs.length,sims=new Float32A
  const all=r.all||[],lexMax=all.length?all[0].sc:0,lex=new Map(all.map(x=>[x.d.i,x])),floor=Math.max(.3,mx-.2),out=[];
  for(let i=0;i<N;i++){const d=ix.docs[i];if(r.part&&UNITS[d.ui].k!==r.part)continue;const L=lex.get(i);if(!L&&sims[i]<floor)continue;
   const ln=L&&lexMax?L.sc/lexMax:0,sn=Math.max(0,(sims[i]-.2)/Math.max(.05,mx-.2));out.push({d,sc:(.5*ln+.5*sn)*(L?1:KB[d.k]),hits:L?L.hits:new Set(),sem:!L})}
- return finish(out).slice(0,40)}
+ return rankUnique(out).slice(0,40)}
 let sQ='',fromSearch=false,lastRes=[];
 const RKEY='regs-trainer-recent';let RECENT=[];try{RECENT=JSON.parse(localStorage.getItem(RKEY))||[]}catch(e){RECENT=[]}
 const TRY=['banister height','fire door','wheelchair turning space','escape window size','stair pitch','travel distance in flats','lift size','toilet door width'];
