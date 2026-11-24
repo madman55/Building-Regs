@@ -413,6 +413,41 @@ background:radial-gradient(70% 90px at 18% 100%,color-mix(in srgb,var(--c) 26%,l
 
 
 
+
+
+/* ---------- "Looking for" chips ---------- */
+.slook{display:flex;flex-wrap:wrap;align-items:center;gap:6px;margin:8px 0 0}.slook:empty{display:none}
+.lkt{font-size:12px;font-weight:700;color:var(--mute);margin-inline-end:2px}
+.lk{display:inline-flex;align-items:center;gap:6px;min-height:32px;padding:2px 6px 2px 10px;border-radius:999px;border:2px solid var(--act);background:color-mix(in srgb,var(--act) 10%,var(--bg));color:var(--ink);font:700 13px var(--fun);cursor:pointer}
+.lk i{font-style:normal;opacity:.55;font-size:15px}.lk.ctx{border-color:#1d70b8;background:color-mix(in srgb,#1d70b8 10%,var(--bg))}
+.lk.sm{min-height:28px;border-width:1px;border-color:var(--line);background:none;font-weight:600;color:var(--mute)}
+.lkr{display:inline-flex;flex-wrap:wrap;align-items:center;gap:4px;font-size:12px;color:var(--mute)}
+.lkreset{border:0;background:none;color:var(--act);font:700 12px var(--fun);text-decoration:underline;cursor:pointer;min-height:32px}
+.lk:focus-visible,.lkreset:focus-visible{outline:3px solid var(--act);outline-offset:2px}
+/* ---------- official text results + viewer ---------- */
+.stb{display:block;margin:3px 0 2px}.kd.st1{background:light-dark(#e8f1fa,#0f2740);color:light-dark(#1d70b8,#8cc4f0)}.kd.st2{background:light-dark(#fdecea,#3a1512);color:light-dark(#b3261e,#f2a49e)}
+#dvst{display:block;margin-bottom:4px}#dvst .kd{margin:0}
+
+.rh{display:flex;align-items:baseline;gap:8px;margin:18px 4px 10px;font:700 17px var(--fun)}.rh span{font:500 13px Inter,sans-serif;color:var(--mute)}
+.sr.off{border-color:color-mix(in srgb,#1d70b8 45%,var(--line));box-shadow:0 3px 0 color-mix(in srgb,#1d70b8 45%,var(--line))}.sr.off small{color:#1d70b8}
+.otext{display:block;font-style:normal;font-size:15px;line-height:1.5;color:var(--ink)}.owhere{display:block;margin-top:6px;font-size:12px;color:var(--mute)}
+.oimg{display:block;width:100%;height:auto;max-height:240px;object-fit:contain;object-position:left top;margin-top:6px;border-radius:8px;background:#fff;border:1px solid var(--line)}
+.ogl{margin:4px 4px 6px;font-size:12px;color:var(--mute)}
+.adp{display:block;margin:8px 0 0;font-size:14px}
+html.dvopen,html.dvopen body{overflow:hidden}
+#dv{position:fixed;inset:0;z-index:9000;display:flex;flex-direction:column;background:light-dark(#eef1f4,#0f1215);color:var(--ink)}
+.dvbar{display:flex;align-items:center;gap:10px;padding:max(10px,env(safe-area-inset-top)) 12px 8px;background:var(--card);border-bottom:1px solid var(--line)}
+.dvx{width:44px;height:44px;flex:none;border:0;border-radius:12px;background:none;color:var(--mute);font-size:24px;cursor:pointer}.dvx svg{width:22px;height:22px}
+.dvt{min-width:0}.dvt b{display:block;font:700 15px var(--fun);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}.dvt span{font-size:12px;color:var(--mute)}
+.dvtools{display:flex;gap:8px;padding:8px 12px;background:var(--card);border-bottom:1px solid var(--line)}.dvtools .sp{flex:1}
+.dvtools button{min-width:44px;height:40px;border-radius:12px;border:2px solid var(--line);background:var(--bg);color:var(--ink);font:700 20px var(--fun);cursor:pointer}
+.dvbody{flex:1;overflow:auto;padding:8px;-webkit-overflow-scrolling:touch}.dvpage{position:relative;margin:0 auto;background:#fff;box-shadow:0 2px 12px #0003}
+#dvc{display:block}#dvhl{position:absolute;inset:0;pointer-events:none}
+.dvmark{position:absolute;border:3px solid #ffbf47;background:#ffdd0033;border-radius:4px;box-shadow:0 0 0 4px #ffbf4733;animation:dvpulse 1.6s ease-out 2}
+@keyframes dvpulse{50%{box-shadow:0 0 0 10px #ffbf4700}}
+.dvload{text-align:center;color:var(--mute);padding:20px}
+.dvfoot{padding:10px 14px max(10px,env(safe-area-inset-bottom));background:var(--card);border-top:1px solid var(--line);font-size:13px}.dvfoot a{color:#1d70b8;font-weight:700;display:inline-flex;align-items:center;gap:4px}.dvfoot svg,.dvload svg{width:14px;height:14px;flex:none}.dvfoot small{display:block;margin-top:4px;color:var(--mute);font-size:11px}
+@media(prefers-reduced-motion:reduce){.dvmark{animation:none}}
 /* ---------- plain-English card, why lines, small official link ---------- */
 .plain{display:grid;gap:12px}.plain>div{padding:14px 16px;border-radius:16px;border:2px solid var(--line);background:var(--bg)}
 .plain b{display:block;font:800 13px var(--fun);text-transform:uppercase;letter-spacing:.04em;color:var(--d,var(--act));margin-bottom:4px}.plain p{margin:0;font-size:16px;line-height:1.5}
@@ -530,6 +565,7 @@ mark{background:light-dark(#fff1a8,#5a4a00);color:inherit;border-radius:3px;padd
 
 #fx{position:fixed;inset:0;pointer-events:none;z-index:70;width:100%;height:100%}
 @media(prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}}
+.chk{margin:4px 2px 10px;padding:9px 11px;border-radius:12px;background:#fff6e0;border:1.5px solid #f3d58a;color:#6b4e00;font-size:12.5px;line-height:1.4}.chk b{display:block;font-size:13px;margin-bottom:2px}
 </style>
 </head>
 <body>
@@ -729,7 +765,7 @@ else if(c.t==='watch')body=`<div class="kick">Watch out</div><h2 class="ch">Easy
 else if(c.t==='pairs'){c.rev=c.rev||c.p.map(()=>false);const nr=c.rev.filter(Boolean).length,all=nr===c.p.length;
  body=`<div class="kick">Know the pairs</div><h2 class="ch">Test yourself first</h2><p class="phint">Say each answer in your head, then tap to check it.</p><div class="pairs reveal">${c.p.map(([a,b],k)=>`<button class="prv${c.rev[k]?' on':''}" data-pr="${k}" aria-expanded="${c.rev[k]}"><b>${esc(a)}</b><span class="pans">${c.rev[k]?esc(b):'<i>Tap to reveal</i>'}</span></button>`).join('')}</div><div class="pbar"><span id="pcount">${nr} of ${c.p.length} revealed</span><button class="btn ghost small" id="pall">${all?'Hide all':'Show all'}</button></div>`}
 else if(c.t==='fact'){const q=c.q,k=facts.indexOf(c)+1;const ans=q.t==='mc'?q.o[0]:q.t==='tf'?(q.a?'True':'False'):q.a[0]+(q.u[0]==='°'?'':' ')+q.u;
- body=`<div class="kick">Key fact ${k} of ${facts.length}</div><p class="fq">${esc(q.q)}</p><div class="fa${q.t==='tf'?(q.a?' t':' f'):''}">${esc(ans)}</div>${q.art?`<div class="fig2">${diagram(q.art,labelFor(q))}</div>`:''}<p class="fx">${esc(q.x||'')}</p>${q.why?`<p class="why"><b>Why it matters:</b> ${esc(q.why)}</p>`:''}<div class="ref">${esc(q.r||'')}${src?` · <a href="${esc(src.url)}" target="_blank" rel="noopener">check the source ${ARROW}</a>`:''}</div>`}
+ body=`<div class="kick">Key fact ${k} of ${facts.length}</div><p class="fq">${esc(q.q)}</p><div class="fa${q.t==='tf'?(q.a?' t':' f'):''}">${esc(ans)}</div>${q.art?`<div class="fig2">${diagram(q.art,labelFor(q))}</div>`:''}<p class="fx">${esc(q.x||'')}</p>${q.why?`<p class="why"><b>Why it matters:</b> ${esc(q.why)}</p>`:''}<div class="ref">${esc(q.r||'')}${src?` · <a href="${esc(src.url)}" target="_blank" rel="noopener">check the source ${ARROW}</a>`:''}</div>${q.r&&refDoc(q.r)&&/p\.(\d+)/.test(q.r)?`<button class="linkb adp" data-doc="${refDoc(q.r).code}" data-adp="${q.r.match(/p\.(\d+)/)[1]}">Open the official page</button>`:''}`}
 else{let first=false;
  if(DK.lesson>=0){const key=LES[DK.lesson].key;if(!S.taught[key]){S.taught[key]=1;addXp(5);newQuests();save();first=true;SFX.done();confetti()}}
  else if(!S.read[DK.ui]){S.read[DK.ui]=1;addXp(5);newQuests();save();first=true;SFX.done();confetti()}
@@ -927,7 +963,7 @@ app.querySelectorAll('.opt,.tile').forEach(b=>b.disabled=true);
 const praise=ok?(L.combo>=5?'On fire!':L.combo>=3?'Amazing!':['Nice!','Spot on!','Correct!','Great job!','Brilliant!'][Math.random()*5|0]):q.t==='match'?'Got there, with some mix-ups':'Not quite';
 const ms=$('#mas');if(ms){ms.innerHTML=mascot(ok?'happy':'sad');ms.className='mas '+(ok?'hop':'shake')}
 const ft=$('#ft');ft.className='foot '+(ok?'ok':'no');
-ft.innerHTML=`<div class="in"><div class="vrow"><div class="vic">${ok?I.check:I.cross}</div><div class="verdict">${praise}</div></div>${!ok&&answer?`<p>${q.t==='match'?'You mixed up':'Correct answer'}: <span class="ans">${esc(answer)}</span></p>`:''}${q.x?`<p>${esc(q.x)}</p>`:''}${q.why?`<p class="why"><b>Why it matters:</b> ${esc(q.why)}</p>`:''}${q.r?`<div class="ref">${esc(q.r)}${(q.doc||(docsOf(QU[q.id])[0]||{}).url)?` · <a href="${esc(q.doc||docsOf(QU[q.id])[0].url)}" target="_blank" rel="noopener">read it on GOV.UK ${ARROW}</a>`:''}</div>`:''}${nudge?`<p class="nudge">${BULB}Whoa, that was quick! Slow down and read each one properly, it sticks better.</p>`:''}<button class="btn" id="nx">Continue</button></div>`;
+ft.innerHTML=`<div class="in"><div class="vrow"><div class="vic">${ok?I.check:I.cross}</div><div class="verdict">${praise}</div></div>${!ok&&answer?`<p>${q.t==='match'?'You mixed up':'Correct answer'}: <span class="ans">${esc(answer)}</span></p>`:''}${q.x?`<p>${esc(q.x)}</p>`:''}${q.why?`<p class="why"><b>Why it matters:</b> ${esc(q.why)}</p>`:''}${q.r&&refDoc(q.r)&&/p\.(\d+)/.test(q.r)?`<button class="linkb adp" data-doc="${refDoc(q.r).code}" data-adp="${q.r.match(/p\.(\d+)/)[1]}">Open the official page</button>`:''}${q.r?`<div class="ref">${esc(q.r)}${(q.doc||(docsOf(QU[q.id])[0]||{}).url)?` · <a href="${esc(q.doc||docsOf(QU[q.id])[0].url)}" target="_blank" rel="noopener">read it on GOV.UK ${ARROW}</a>`:''}</div>`:''}${nudge?`<p class="nudge">${BULB}Whoa, that was quick! Slow down and read each one properly, it sticks better.</p>`:''}<button class="btn" id="nx">Continue</button></div>`;
 const out=!ok&&!L.practice&&!easy()&&S.hearts<=0;$('#nx').onclick=()=>{L.locked=false;SFX.tap();out?outHearts():ask()};$('#nx').focus({preventScroll:true})}
 
 function burst(n){const b=document.createElement('div');b.className='burst';b.innerHTML=`${I.fire}<b>${n} in a row!</b>`;document.body.appendChild(b);if(n>=5)SFX.fire();setTimeout(()=>b.remove(),1500)}
@@ -986,6 +1022,7 @@ if(/^[1-4]$/.test(e.key)&&L.opts&&!L.locked&&(L.cur.t==='mc'||L.cur.t==='tf')){c
 /* Android back button (used by the phone app): close sheets, leave lessons, return to the path */
 window.__back=()=>{const v=document.querySelector('.veil');if(v){v.remove();return true}
 if(view==='lesson'){if(DK){DK=null;view='learn';render();return true}if(document.querySelector('.end')||!L){L=null;view='learn';render();return true}quit();return true}
+if($('#dv')){closeOfficial();return true}
 if(view==='library'&&fromSearch){searchView();scrollTo(0,0);return true}
 if(view!=='learn'){view='learn';render();scrollTo(0,0);return true}return false};
 
@@ -1076,7 +1113,7 @@ function toks(str,sur){let s=String(str||'').toLowerCase().replace(/[’']/g,'')
  s=s.replace(/(\d+(?:\.\d+)?)\s*(mm|millimet(?:re|er)s?|m|met(?:re|er)s?)(?![a-z0-9])/g,(x,n,u)=>{const v=/^m(?:et|$)/.test(u)&&u!=='mm'?Math.round(parseFloat(n)*1000):parseFloat(n);out.push(n,String(v));return' '});
  s=s.replace(/\d+\.\d+/g,x=>{out.push(x);return' '});
  for(const w of s.split(/[^a-z0-9]+/)){if(!w)continue;const t=stemW(w);out.push(t);if(sur){if(!sur[t])sur[t]=w;if(sur._all)sur._all[w]=t}}return out}
-const SYN0={firedoor:'fire door',fireexit:'fire escape exit',smokealarm:'smoke alarm',stairwell:'stair stairway',stairlift:'stair lift',banister:'guarding handrail',bannister:'guarding handrail',balustrade:'guarding handrail',railing:'guarding handrail',rail:'handrail guarding',parapet:'guarding',balcony:'guarding balcony',fall:'guarding',drop:'guarding',
+const SYN0={door:'door doorset',doors:'door doorset',staircase:'stair',marking:'manifestation',markings:'manifestation',stickers:'manifestation',dots:'manifestation',firedoor:'fire door',fireexit:'fire escape exit',smokealarm:'smoke alarm',stairwell:'stair stairway',stairlift:'stair lift',banister:'guarding handrail',bannister:'guarding handrail',balustrade:'guarding handrail',railing:'guarding handrail',rail:'handrail guarding',parapet:'guarding',balcony:'guarding balcony',fall:'guarding',drop:'guarding',
  step:'stair rise going',staircase:'stair',stairway:'stair',steps:'stair',riser:'rise riser',tread:'going tread',steep:'pitch gradient',angle:'pitch',slope:'gradient ramp pitch',gradient:'gradient ramp',head:'headroom',ceiling:'headroom',
  spiral:'spiral helical',helical:'spiral helical',loft:'loft roof',attic:'loft roof',exit:'escape exit',fireescape:'escape',alarm:'alarm smoke detection',detector:'alarm detection',detection:'alarm detection',sprinkler:'sprinkler',
  disabled:'wheelchair accessible',disability:'wheelchair accessible',accessible:'wheelchair accessible access',wheelchair:'wheelchair',toilet:'wc sanitary toilet',loo:'wc toilet',lavatory:'wc',washroom:'wc sanitary',bathroom:'bathroom wc',
@@ -1090,35 +1127,123 @@ const SYN0={firedoor:'fire door',fireexit:'fire escape exit',smokealarm:'smoke a
  child:'child climb',kid:'child climb',toddler:'child climb',climb:'climb',gap:'gap opening',hole:'opening gap',turn:'turning',space:'space area',size:'size dimension',big:'size',small:'size'};
 let SIX=null,SYN={};const KB={s:1.15,f:1,w:.95,p:.8};const VAGUE=new Set(['high','tall','wide','narrow','far','long','big','small','size','space','level']);
 function buildIndex(){const docs=[],df={},sur={_all:{}};for(const k in SYN0){const t=toks(k)[0];SYN[t]=SYN0[k]}
- const add=(o,fields)=>{o.i=docs.length;const tf={};for(const [txt,w] of fields)for(const t of toks(txt,sur)){if(STOP.has(t))continue;if(!tf[t]||tf[t]<w)tf[t]=w}o.tf=tf;docs.push(o);for(const t in tf)df[t]=(df[t]||0)+1};
+ const HV=new Set(),PH=new Set(),heads=[];
+ const add=(o,fields)=>{o.i=docs.length;const tf={},seq=[];for(const [txt,w] of fields)for(const t of toks(txt,sur)){seq.push(t);if(STOP.has(t))continue;if(!tf[t]||tf[t]<w)tf[t]=w}o.tf=tf;o.st=' '+seq.join(' ')+' ';docs.push(o);for(const t in tf)df[t]=(df[t]||0)+1};
+ const ctxOf=t=>/buildings other than dwellings|non-domestic/i.test(t)?'O':/common access areas|contain flats/i.test(t)?'F':/\bfor dwellings\b|\bin dwellings\b|\bdwellinghouses?\b/i.test(t)?'D':/\bfor all buildings\b/i.test(t)?'A':null;
  LES.forEach((l,li)=>{const u=UNITS[l.ui],uf=[u.name,.6],m=l.meta,sn=m?m.sec+' '+m.name:'';
-  if(m){add({k:'s',li,ui:l.ui,id:'s'+li},[[sn,3],[m.intro,1],uf]);m.watch.forEach((w,wi)=>add({k:'w',li,ui:l.ui,id:'w'+li+'_'+wi,w},[[w,2],[sn,.8],uf]))}
+  const lctx=m&&m.vol?(m.vol==1?'D':'O'):null;if(m)heads.push(sn);
+  if(m){add({k:'s',li,ui:l.ui,id:'s'+li,ctx:lctx},[[sn,3],[m.intro,1],uf]);m.watch.forEach((w,wi)=>add({k:'w',li,ui:l.ui,id:'w'+li+'_'+wi,w,ctx:lctx||ctxOf(w)},[[w,2],[sn,.8],uf]))}
   l.qs.forEach(q=>{if(q.t==='match'){q.p.forEach(pp=>add({k:'p',li,ui:l.ui,id:m?'s'+li:'',p:pp},[[pp.join(' '),2.2],uf]));return}
-   add({k:'f',li,ui:l.ui,id:fid(q),q},[[answerOf(q),2.2],[q.t==='mc'?q.q:'',1.4],[q.x||'',1],[q.r||'',1.2],[sn,.8],uf])})});
- const all=sur._all;delete sur._all;return{docs,df,sur,vocab:Object.keys(df),surf:Object.entries(all).filter(([w,t])=>df[t]&&!/^\d/.test(w))}}
+   add({k:'f',li,ui:l.ui,id:fid(q),q,ctx:lctx||ctxOf(q.q)||(/\b(house|home|dwelling)\b/i.test(q.q)?'D':/\b(office|school|shop|hospital|assembly|retail|factory)\b/i.test(q.q)?'O':null)},[[answerOf(q),2.2],[q.t==='mc'?q.q:'',1.4],[q.x||'',1],[q.r||'',1.2],[sn,.8],uf])})});
+ for(const D of OFF){const kui=UNITS.findIndex(u=>u.k===D.unit);D.blocks.forEach(b=>{if(b.title)heads.push(b.title);if(b.sub)heads.push(b.sub)});D.blocks.forEach(b=>add({k:OK_KIND[b.k]||'oX',ui:kui,li:-1,b,st:b.st,ctx:ctxOf(b.sub||'')||b.ctx||null},[[b.title||'',2.6],[b.num?(b.k==='para'?'paragraph '+b.num:b.k+' '+b.num):'',2],[b.text,b.k==='diagram'?1.2:1.6],[(b.sub||''),1.8],[(b.sec||''),.9],['approved document '+D.code[0]+' part '+D.code[0]+(D.code==='B1'?' volume 1 dwellings':D.code==='B2'?' volume 2 buildings other than dwellings':''),.3]]))}
+ heads.forEach(hd=>{const ts=toks(hd).filter(t=>!STOP.has(t)&&!/^\d/.test(t));ts.forEach(t=>HV.add(t));for(let i=0;i+1<ts.length;i++)PH.add(ts[i]+' '+ts[i+1])});
+ const all=sur._all;delete sur._all;return{HV,PH,docs,df,sur,vocab:Object.keys(df),surf:Object.entries(all).filter(([w,t])=>df[t]&&!/^\d/.test(w))}}
 const fid=q=>'f'+q.id.replace(/[^a-zA-Z0-9]/g,'_');
 function edit1(a,b,max){if(Math.abs(a.length-b.length)>max)return max+1;let pp=null,prev=Array.from({length:b.length+1},(_,i)=>i);for(let i=1;i<=a.length;i++){const cur=[i];let mn=i;for(let j=1;j<=b.length;j++){cur[j]=Math.min(prev[j]+1,cur[j-1]+1,prev[j-1]+(a[i-1]===b[j-1]?0:1));if(pp&&j>1&&a[i-1]===b[j-2]&&a[i-2]===b[j-1])cur[j]=Math.min(cur[j],pp[j-2]+1);if(cur[j]<mn)mn=cur[j]}if(mn>max)return max+1;pp=prev;prev=cur}return prev[b.length]}
+
+/* ---------- understanding a longer question ----------
+   Nothing is thrown away: key phrases and regs terms count most, building-type words become context
+   (dwellings / other buildings), every other word still counts a little, and the meaning model reads
+   the whole question. The search shows what it understood, and any part can be removed with a tap. */
+const CTXW={D:/\b(block of flats|blocks of flats|house|houses|home|homes|dwelling|dwellings|dwellinghouse|bungalow|maisonette|flat|flats|apartment|apartments|domestic)\b/,
+ O:/\b(office|offices|school|schools|shop|shops|retail|hospital|hospitals|factory|warehouse|hotel|hotels|restaurant|cafe|café|theatre|cinema|stadium|commercial|non-domestic|workplace|assembly|public building)\b/};
+const CONCEPTS=[[/\bloft\b[\s\S]*\bconver|\bconver\w*\b[\s\S]*\bloft\b/,'loft conversion'],[/\bopen[- ]?risers?\b|\brisers?\b[\s\S]{0,24}\bopen\b/,'open riser'],
+ [/\broof terrace\b|\bterrace\b[\s\S]{0,20}\broof\b/,'roof terrace'],[/\bjuliet\b/,'juliet balcony'],[/\b(head ?room|head height)\b/,'headroom'],[/\bglass doors?\b|\bglazed doors?\b/,'glass door'],
+ [/\bspiral\b|\bhelical\b/,'helical stair'],[/\b(second|2nd|two|additional|extra|another) (common )?(stair|staircase|stairway)s?\b|\bmore than one (common )?stair/,'more than one common stair'],[/\bfire ?doors?\b/,'fire doorset'],[/\bwinders?\b|\btapered\b/,'tapered tread'],[/\bcar ?park\b/,'vehicle barrier'],[/\bloading bays?\b/,'loading bay']];
+let sEx=new Set();
+function understand(raw,ix){const u={ctx:null,flats:false,phrases:[],words:{},drop:new Set()};const low=' '+raw.toLowerCase()+' ';
+ if(!/\bflat roofs?\b/.test(low)){const d=CTXW.D.test(low),o=CTXW.O.test(low);if(d!==o)u.ctx=d?'D':'O';u.flats=/\b(flat|flats|apartment|apartments)\b/.test(low)&&!/\bflat roofs?\b/.test(low)}
+ if(u.ctx&&sEx.has('c'))u.ctx=null;
+ if(u.ctx||sEx.has('c'))for(const m of low.matchAll(new RegExp(CTXW.D.source+'|'+CTXW.O.source,'g')))toks(m[0]).forEach(t=>u.drop.add(t));
+ const qsur={_all:{}};const seq=toks(raw,qsur).filter(t=>!STOP.has(t));u.words=qsur;
+ for(const[re,ph]of CONCEPTS)if(re.test(low)&&!sEx.has('p:'+ph))u.phrases.push(ph);
+ for(let i=0;i+1<seq.length;i++){const pp=seq[i]+' '+seq[i+1];if(ix.PH.has(pp)&&!u.drop.has(seq[i])&&!u.drop.has(seq[i+1])){const label=(qsur[seq[i]]||seq[i])+' '+(qsur[seq[i+1]]||seq[i+1]);if(!sEx.has('p:'+label)&&!u.phrases.includes(label))u.phrases.push(label)}}
+ u.ptoks=new Set(u.phrases.flatMap(ph=>toks(ph)).filter(t=>!STOP.has(t)&&!['more','than'].includes(t)));u.pstems=u.phrases.map(ph=>toks(ph));return u}
 function runSearch(raw){const ix=SIX||(SIX=buildIndex());raw=String(raw||'').toLowerCase().trim();const out={res:[],syn:[],fix:[],part:null,miss:[]};if(!raw)return out;
  const pm=raw.match(/\b(?:part|ad|approved document)\s+(hr|[a-z7])\b/);if(pm){const k=pm[1].toUpperCase();if(UNITS.some(u=>u.k===k)){out.part=k;raw=raw.replace(pm[0],' ')}}
- const qt=[...new Set(toks(raw).filter(t=>!STOP.has(t)))],endsTyping=/[a-z0-9]$/.test(raw),groups=[],syn=new Set(),fix=new Set();
+ const U=understand(raw,ix);out.u=U;
+ const qt=[...new Set(toks(raw).filter(t=>!STOP.has(t)).concat([...U.ptoks]))].filter(t=>!U.drop.has(t)&&!sEx.has('t:'+t)&&!(U.phrases.length===0&&false)),endsTyping=/[a-z0-9]$/.test(raw),groups=[],syn=new Set(),fix=new Set();
  qt.forEach((t,i)=>{const g=new Map(),put=(k,w)=>{if(ix.df[k]&&(g.get(k)||0)<w)g.set(k,w)};put(t,VAGUE.has(t)?.45:1);
   (SYN[t]||'').split(' ').forEach(x=>toks(x).forEach(y=>{if(y===t||!ix.df[y])return;put(y,.85);syn.add(ix.sur[y]||y)}));
-  if(!g.size&&!/^\d/.test(t)&&t.length>=3){const mx=t.length>=8?2:1;let best=mx+1,cands=[];for(const [w,v] of ix.surf){if(w.length<4||STOP.has(w)||STOP.has(v))continue;const d=Math.min(edit1(t,w,mx),edit1(t,v,mx));if(d<best){best=d;cands=[v]}else if(d===best&&!cands.includes(v))cands.push(v)}
+  if(!g.size&&!/^\d/.test(t)&&t.length>=3&&!U.ptoks.has(t)){const mx=t.length>=8?2:1;let best=mx+1,cands=[];for(const [w,v] of ix.surf){if(w.length<4||STOP.has(w)||STOP.has(v))continue;const d=Math.min(edit1(t,w,mx),edit1(t,v,mx));if(d<best){best=d;cands=[v]}else if(d===best&&!cands.includes(v))cands.push(v)}
    cands.sort((x,y)=>((ix.sur[x]||x).slice(0,2)===t.slice(0,2)?0:1)-((ix.sur[y]||y).slice(0,2)===t.slice(0,2)?0:1)||ix.df[y]-ix.df[x]);
    if(best<=mx)cands.slice(0,t.length<=4?1:2).forEach(v=>{put(v,.75);fix.add(ix.sur[v]||v);(SYN[v]||'').split(' ').forEach(x=>toks(x).forEach(y=>put(y,.65)))})}
   if(i===qt.length-1&&endsTyping&&t.length>=3&&!/^\d/.test(t)){let n=0;for(const v of ix.vocab)if(v!==t&&v.startsWith(t)&&n<12){put(v,.7);n++}}
-  if(g.size)groups.push(g);else out.miss.push(t)});
+  if(g.size){g.imp=U.ptoks.has(t)?1.6:ix.HV.has(t)?1.2:.7;g.t=t;groups.push(g)}else out.miss.push(t)});
  out.syn=[...syn].slice(0,5);out.fix=[...fix].slice(0,3);
  const N=ix.docs.length,idf=t=>Math.log(1+N/ix.df[t]),res=[];out.groups=groups.length;
+ out.ctx=U.ctx;out.flats=U.flats;
+ out.look=U.phrases.map(ph=>({key:'p:'+ph,label:ph,main:1})).concat(groups.filter(g=>!U.ptoks.has(g.t)).sort((a,b)=>b.imp-a.imp).map(g=>({key:'t:'+g.t,label:U.words[g.t]||ix.sur[g.t]||g.t,main:g.imp>1})));
+ if(U.ctx)out.look.push({key:'c',label:U.ctx==='D'?'in dwellings':'in buildings other than dwellings',ctx:1});
+ const totImp=groups.reduce((a,g)=>a+g.imp,0);
  if(!groups.length&&!out.part)return out;
  for(const d of ix.docs){const uk=UNITS[d.ui].k;if(out.part&&uk!==out.part)continue;let sc=0,hit=0,hits=new Set();
-  for(const g of groups){let b=0;for(const [t,w] of g){const f=d.tf[t];if(f){const v=f*w*idf(t);if(v>b)b=v;hits.add(t)}}if(b){sc+=b;hit++}}
-  if(groups.length&&!hit)continue;sc=groups.length?sc*Math.pow(hit/groups.length,2)*KB[d.k]:(d.k==='s'?2:1);res.push({d,sc,hits})}
+  let hitImp=0;for(const g of groups){let b=0;for(const [t,w] of g){const f=d.tf[t];if(f){const v=f*w*idf(t);if(v>b)b=v;hits.add(t)}}if(b){sc+=b*g.imp;hit++;hitImp+=g.imp}}
+  if(groups.length&&!hit)continue;sc=groups.length?sc*Math.pow(hitImp/totImp,2)*KB[d.k]:(d.k==='s'?2:1);
+  for(const ps of U.pstems)if(ps.length>1&&(d.st.includes(' '+ps.join(' ')+' ')||d.st.includes(' '+ps.slice().reverse().join(' ')+' ')))sc*=1.35;
+  sc*=ctxMul(d,U.ctx,U.flats);if(d.st==='from2029')sc*=.55;if(d.b){const L=d.b.text.length;if(L>700)sc/=1+Math.log(L/700)*.6}res.push({d,sc,hits})}
  out.all=rankUnique(res);out.res=out.all.slice(0,40);return out}
+function ctxMul(d,ctx,flats){if(!ctx||!d.ctx)return 1;if(d.ctx===ctx)return 1.35;if(d.ctx==='A')return 1.1;if(d.ctx==='F')return ctx==='D'&&flats?1.3:ctx==='D'?.95:.75;return .7}
 function rankUnique(res){res.sort((a,b)=>b.sc-a.sc);const seen=new Set();return res.filter(r=>{const key=r.d.k+(r.d.id||'')+(r.d.p?r.d.p.join():'');if(seen.has(key))return false;seen.add(key);return true})}
 function hl(text,hits){return String(text).split(/([A-Za-z0-9².]+)/).map((w,i)=>{if(i%2===0)return esc(w);const t=toks(w);return t.some(x=>hits.has(x))?`<mark>${esc(w)}</mark>`:esc(w)}).join('')}
 const clip=(t,n=170)=>{t=String(t||'');return t.length>n?t.slice(0,t.lastIndexOf(' ',n)>60?t.lastIndexOf(' ',n):n)+'…':t};
 
+
+/* ---------- Official text: Approved Documents (AD K, AD B Vol 1 and Vol 2) ----------
+   Each JSON file holds one document's official wording block by block: requirements, numbered paragraphs,
+   tables, diagrams (cropped from the official PDF) and key terms, each with its page and position, plus
+   the page's 2029 status where AD B marks one. Search returns these first; tapping one opens the official
+   PDF page in a built-in viewer with the matching part highlighted. Licensed under the OGL v3.0. */
+const OFF_FILES=['adk.json','adb1.json','adb2.json'];let OFF=[],ADK=null;
+const OFF_READY=Promise.all(OFF_FILES.map(f=>fetch(f).then(r=>r.ok?r.json():null).catch(()=>null))).then(list=>{
+ OFF=list.filter(d=>d&&d.blocks);OFF.forEach((d,i)=>{d.short=d.short||('AD '+d.code);d.unit=d.unit||d.code[0];d.blocks.forEach(b=>b.doc=i)});ADK=OFF.find(d=>d.code==='K')||null;SIX=null;return OFF});
+const ADK_READY=OFF_READY;
+const OK_KIND={req:'oR',para:'oP',text:'oX',table:'oT',diagram:'oD',term:'oK'};
+Object.assign(KB,{oT:1.3,oD:1.25,oP:1.1,oK:1.2,oR:1,oX:.9});
+const isOfficial=d=>d.k&&d.k[0]==='o';
+const docOf=b=>OFF[b.doc]||ADK;
+function ppOf(D,pg){return D.pagemap?(D.pagemap[pg]||null):(pg-D.offset>0?pg-D.offset:null)}
+function pgOf(D,pp){if(!D.pagemap)return +pp+D.offset;for(const k in D.pagemap)if(D.pagemap[k]==pp)return +k;return null}
+function adkLabel(b){return b.k==='para'?'Para '+b.num:b.k==='table'?'Table '+b.num:b.k==='diagram'?'Diagram '+b.num:b.k==='term'?'Key term':b.k==='req'?b.title.split(' · ')[0]:((b.sub||'').split(' · ')[0]||'Text')}
+function adkWhere(b){const sec=(b.sec||'').replace(/^Section (\d+):.*/,'Section $1').replace(/^Requirement ([A-Z][\d.]+):.*/,'Requirement $1').replace(/^(Appendix [A-Z]):.*/,'$1');return[sec,(b.sub||'').split(' · ')[0]].filter(Boolean).join(' · ')}
+function stBadge(b){return b.st==='until2029'?'<span class="kd st1">In force until 1 Sep 2029</span>':b.st==='from2029'?'<span class="kd st2">From 2 Sep 2029 · not yet in force</span>':''}
+function adkSnippet(text,hits,n=34){const w=String(text).split(/\s+/);let i=w.findIndex(x=>toks(x).some(t=>hits.has(t)));if(i<0)i=0;const a=Math.max(0,i-10),b=Math.min(w.length,a+n);return(a>0?'… ':'')+hl(w.slice(a,b).join(' '),hits)+(b<w.length?' …':'')}
+function adkCard(r,i){const b=r.d.b,D=docOf(b),lab=adkLabel(b);
+ const head=b.k==='table'||b.k==='diagram'?`<b>${esc(lab)}: ${hl(b.title,r.hits)}</b>`:b.k==='term'?`<b>${hl(b.title,r.hits)}</b>`:'';
+ const body=b.img?`<img class="oimg" src="${b.img}" alt="${esc(lab+': '+b.title)}" loading="lazy">`:`<em class="otext">${adkSnippet(b.text,r.hits)}</em>`;
+ return`<button class="sr off" data-go="${i}"><span class="srt"><small>${esc(D.short)} · ${esc(b.k==='term'?'Appendix A':lab)}${b.pp?' · page '+b.pp:''}${r.sem?'<span class="kd rel">Related</span>':''}</small>${stBadge(b)?`<span class="stb">${stBadge(b)}</span>`:''}${head}${body}<span class="owhere">${esc(adkWhere(b))}</span></span></button>`}
+/* viewer */
+let PDFJS=null,DV=null;const PDFDOCS={};
+async function pdfDoc(D){if(PDFDOCS[D.pdf])return PDFDOCS[D.pdf];PDFJS=PDFJS||await import('./pdfjs.js');PDFJS.GlobalWorkerOptions.workerSrc='pdfjs-worker.js';PDFDOCS[D.pdf]=await PDFJS.getDocument({url:D.pdf,isEvalSupported:false,disableRange:true,disableStream:true}).promise;return PDFDOCS[D.pdf]}
+function openOfficial(b,pageOverride,Dx){const D=b?docOf(b):Dx||ADK;if(!D)return;SFX.tap();const pg=pageOverride||b&&b.pg||1;
+ DV={b:b||null,pg,zoom:1,D};let el=$('#dv');if(!el){el=document.createElement('div');el.id='dv';document.body.appendChild(el)}
+ el.innerHTML=`<div class="dvbar"><button class="dvx" id="dvx" aria-label="Close">${I.cross}</button><div class="dvt"><b>${esc(D.short+(b?' · '+adkLabel(b)+(b.title&&b.k!=='req'?': '+b.title:''):''))}</b><span id="dvp"></span></div></div>
+ <div class="dvtools"><button id="dvprev" aria-label="Previous page">‹</button><button id="dvnext" aria-label="Next page">›</button><span class="sp"></span><button id="dvzo" aria-label="Zoom out">−</button><button id="dvzi" aria-label="Zoom in">+</button></div>
+ <div class="dvbody" id="dvbody"><div class="dvpage" id="dvpage"><canvas id="dvc"></canvas><div id="dvhl"></div></div><p class="dvload" id="dvload">Opening the official page…</p></div>
+ <div class="dvfoot"><span id="dvst"></span><a href="${esc(D.pdfUrl)}#page=${pg}" target="_blank" rel="noopener">Open on GOV.UK ${ARROW}</a><small>${esc(D.licence)}</small></div>`;
+ document.documentElement.classList.add('dvopen');
+ $('#dvx').onclick=closeOfficial;$('#dvprev').onclick=()=>{if(DV.pg>1){DV.pg--;DV.b=null;drawPage(false)}};$('#dvnext').onclick=()=>{if(DV.pg<DV.D.pages){DV.pg++;DV.b=null;drawPage(false)}};
+ $('#dvzi').onclick=()=>{DV.zoom=Math.min(3,DV.zoom*1.35);drawPage(true)};$('#dvzo').onclick=()=>{DV.zoom=Math.max(.8,DV.zoom/1.35);drawPage(true)};
+ drawPage(true)}
+function closeOfficial(){const el=$('#dv');if(el)el.remove();document.documentElement.classList.remove('dvopen');DV=null}
+async function drawPage(scrollToHit){const pgN=DV.pg,D=DV.D,pp=ppOf(D,pgN);$('#dvp').textContent=`${pp?'Page '+pp+' · ':''}PDF page ${pgN} of ${D.pages}`;
+ const a=$('.dvfoot a');if(a)a.href=D.pdfUrl+'#page='+pgN;
+ const onPage=D.blocks.find(x=>x.pg===pgN&&x.st&&x.st!=='now');const st=$('#dvst');if(st)st.innerHTML=onPage?stBadge(onPage):'';
+ try{const doc=await pdfDoc(D);if(!DV||DV.pg!==pgN)return;const page=await doc.getPage(pgN);const body=$('#dvbody'),cw=body.clientWidth-16;
+  const base=page.getViewport({scale:1}),scale=cw/base.width*DV.zoom,vp=page.getViewport({scale}),dpr=Math.min(2.5,window.devicePixelRatio||1);
+  const c=$('#dvc');c.width=Math.floor(vp.width*dpr);c.height=Math.floor(vp.height*dpr);c.style.width=vp.width+'px';c.style.height=vp.height+'px';$('#dvpage').style.width=vp.width+'px';
+  await page.render({canvasContext:c.getContext('2d'),viewport:vp,transform:dpr!==1?[dpr,0,0,dpr,0,0]:null}).promise;$('#dvload').style.display='none';
+  const hl=$('#dvhl');hl.innerHTML='';let first=null;
+  if(DV.b){const rects=[];const b=DV.b;
+   if(b.crop&&b.crop[0]===pgN)rects.push(b.crop.slice(1));
+   else{const on=b.boxes.filter(x=>x[0]===pgN);if(on.length)rects.push([Math.min(...on.map(x=>x[1])),Math.min(...on.map(x=>x[2])),Math.max(...on.map(x=>x[3])),Math.max(...on.map(x=>x[4]))])}
+   for(const[x0,y0,x1,y1]of rects){const T6=vp.transform,pt=(x,y)=>[T6[0]*x+T6[2]*y+T6[4],T6[1]*x+T6[3]*y+T6[5]],p1=pt(x0-4,D.ph-y1-3),p2=pt(x1+4,D.ph-y0+3),r=[p1[0],p1[1],p2[0],p2[1]];const L=Math.min(r[0],r[2]),T=Math.min(r[1],r[3]);
+    const d=document.createElement('div');d.className='dvmark';d.style.cssText=`left:${L}px;top:${T}px;width:${Math.abs(r[2]-r[0])}px;height:${Math.abs(r[3]-r[1])}px`;hl.appendChild(d);first=first||d}}
+  if(scrollToHit&&first)first.scrollIntoView({block:'center',inline:'center'});else if(!scrollToHit)body.scrollTop=0}
+ catch(e){try{console.warn('Viewer:',e&&e.message)}catch(_){}const l=$('#dvload');if(l){l.style.display='block';l.innerHTML=`Couldn’t open the page here. <a href="${esc(D.pdfUrl)}#page=${pgN}" target="_blank" rel="noopener">Open it on GOV.UK ${ARROW}</a>`}}}
+/* "Open the official page" from a lesson reference like "AD K, Table 1.1, p.5" or "AD B Vol 1, para 2.10, p.15" */
+function refDoc(r){const m=/^AD ([A-Z])(?:\s*Vol(?:ume)?\.?\s*(\d))?/.exec(r||'');if(!m)return null;const code=m[1]+(m[2]||'');return OFF.find(d=>d.code===code)||null}
+document.addEventListener('click',e=>{const a=e.target.closest&&e.target.closest('[data-adp]');if(!a)return;e.preventDefault();const D=OFF.find(d=>d.code===a.dataset.doc)||ADK;if(!D)return;const pg=pgOf(D,+a.dataset.adp);if(pg)openOfficial(null,pg,D)});
 /* ---------- meaning search ----------
    A small sentence model (all-MiniLM-L6-v2, run on the phone by transformers.js) turns every fact
    into a "meaning fingerprint" once, in a background worker, and saves them on the device.
@@ -1130,12 +1255,12 @@ function semStatus(){const el=$('#semst');if(!el)return;const st=SEM.state;
  el.innerHTML=st==='on'?'✓ Understands meaning, not just exact words':st==='loading'?`Meaning search is setting up in the background${SEM.pct?` (${SEM.pct}%)`:''}. Word search works now.`:st==='wait'?`Meaning search sets itself up on Wi-Fi (about 45MB, once). <button class="linkb" id="semgo">Set up now</button>`:'';
  const b=$('#semgo');if(b)b.onclick=()=>startSemantic(true)}
 const idbKV=(mode,fn)=>new Promise((res,rej)=>{const r=indexedDB.open('regs-trainer',1);r.onupgradeneeded=()=>r.result.createObjectStore('kv');r.onerror=()=>rej(r.error);r.onsuccess=()=>{const db=r.result,tx=db.transaction('kv',mode),q=fn(tx.objectStore('kv'));tx.oncomplete=()=>{db.close();res(q&&q.result)};tx.onerror=()=>{db.close();rej(tx.error)}}});
-function semText(d){const u=UNITS[d.ui],m=LES[d.li].meta,nm=u.name+': ';
+function semText(d){if(isOfficial(d)){const b=d.b;return(docOf(b).short+'. '+(b.sub||'')+'. '+(b.title?b.title+'. ':'')+b.text).slice(0,600)}const u=UNITS[d.ui],m=LES[d.li].meta,nm=u.name+': ';
  if(d.k==='s')return nm+m.sec+'. '+m.name+'. '+m.intro;if(d.k==='w')return nm+d.w+(m?' ('+m.name+')':'');if(d.k==='p')return nm+d.p.join(' — ');
  const q=d.q;return(nm+(q.t==='mc'?q.q+' ':'')+answerOf(q)+'. '+(q.x||'')).slice(0,600)}
 function semCall(msg,transfer){return new Promise((res,rej)=>{const id=++SEM.seq;SEM.wait[id]={res,rej};SEM.w.postMessage({...msg,id},transfer||[])})}
 function semFail(){SEM.state='failed';try{SEM.w&&SEM.w.terminate()}catch(e){}SEM.w=null;for(const k in SEM.wait){SEM.wait[k].rej(new Error('off'))}SEM.wait={};semStatus()}
-async function startSemantic(force){if(SEM.state==='loading'||SEM.state==='on')return;
+async function startSemantic(force){if(SEM.state==='loading'||SEM.state==='on')return;await ADK_READY;
  if(!window.Worker||!window.indexedDB||!/^https:|^http:\/\/localhost/.test(location.href)){SEM.state='failed';return}
  const c=navigator.connection;if(!force&&c&&(c.saveData||c.type==='cellular'||/2g/.test(c.effectiveType||''))){SEM.state='wait';semStatus();return}
  SEM.state='loading';SEM.pct=0;semStatus();
@@ -1157,7 +1282,7 @@ function hybrid(r,qv){const ix=SIX,V=SEM.vecs,N=ix.docs.length,sims=new Float32A
  for(let i=0;i<N;i++){let s=0;const o=i*DIM;for(let j=0;j<DIM;j++)s+=V[o+j]*qv[j];sims[i]=s;if(s>mx)mx=s}
  const all=r.all||[],lexMax=all.length?all[0].sc:0,lex=new Map(all.map(x=>[x.d.i,x])),floor=Math.max(.3,mx-.2),out=[];
  for(let i=0;i<N;i++){const d=ix.docs[i];if(r.part&&UNITS[d.ui].k!==r.part)continue;const L=lex.get(i);if(!L&&sims[i]<floor)continue;
-  const ln=L&&lexMax?L.sc/lexMax:0,sn=Math.max(0,(sims[i]-.2)/Math.max(.05,mx-.2));out.push({d,sc:(.5*ln+.5*sn)*(L?1:KB[d.k]),hits:L?L.hits:new Set(),sem:!L})}
+  const ln=L&&lexMax?L.sc/lexMax:0,sn=Math.max(0,(sims[i]-.2)/Math.max(.05,mx-.2));out.push({d,sc:(.5*ln+.5*sn)*(L?1:KB[d.k])*(L?1:ctxMul(d,r.ctx,r.flats))*(d.st==='from2029'?.55:1),hits:L?L.hits:new Set(),sem:!L})}
  return rankUnique(out).slice(0,40)}
 let sQ='',fromSearch=false,lastRes=[];
 const RKEY='regs-trainer-recent';let RECENT=[];try{RECENT=JSON.parse(localStorage.getItem(RKEY))||[]}catch(e){RECENT=[]}
@@ -1167,18 +1292,21 @@ function srCard(r,i){const d=r.d,u=UNITS[d.ui],l=LES[d.li],m=l.meta,where=esc(un
  else{const q=d.q;main=answerOf(q);sub=(q.t==='mc'?q.q+' ':'')+clip(q.x||'',140)+(q.r?' ('+q.r+')':'')}
  return`<button class="sr" data-go="${i}" style="${tv(d.ui)}"><span class="pi">${partIc(u.k)}</span><span class="srt"><small>${where}${kd?`<span class="kd">${kd}</span>`:''}${r.sem?'<span class="kd rel">Related</span>':''}</small><b>${hl(main,r.hits)}</b><em>${hl(sub,r.hits)}</em></span></button>`}
 function drawResults(){const box=$('#sres'),note=$('#snote');if(!box)return;const r=runSearch(sQ);lastRes=r.res;
- const q=sQ.trim();if(SEM.state==='on'&&/[a-z]{3}/i.test(q)){semQuery(q).then(qv=>{if(sQ.trim()!==q||!$('#sres'))return;lastRes=hybrid(r,qv);paint(r,lastRes)}).catch(()=>{})}
+ const q=sQ.trim();let qm=q;for(const k of sEx)if(k.startsWith('t:')||k.startsWith('p:'))qm=qm.replace(new RegExp('\\b'+k.slice(2).replace(/[^a-z0-9 ]/gi,'')+'\\w*','gi'),' ');if(SEM.state==='on'&&/[a-z]{3}/i.test(q)){semQuery(qm).then(qv=>{if(sQ.trim()!==q||!$('#sres'))return;lastRes=hybrid(r,qv);paint(r,lastRes)}).catch(()=>{})}
  paint(r,lastRes)}
-function paint(r,list){const box=$('#sres'),note=$('#snote');if(!box)return;
+function paint(r,list){const box=$('#sres'),note=$('#snote');if(!box)return;const lk=$('#slook');if(lk){const L=(r.look||[]);const main=L.filter(x=>x.main||x.ctx),rest=L.filter(x=>!x.main&&!x.ctx&&!/^t:\d/.test(x.key));
+  lk.innerHTML=sQ.trim()&&L.length&&sQ.trim().split(/\s+/).length>=3?`<span class="lkt">Looking for</span>${main.map(x=>`<button class="lk${x.ctx?' ctx':''}" data-lk="${esc(x.key)}" aria-label="Remove ${esc(x.label)}">${esc(x.label)}<i>×</i></button>`).join('')}${rest.length?`<span class="lkr">also: ${rest.map(x=>`<button class="lk sm" data-lk="${esc(x.key)}" aria-label="Remove ${esc(x.label)}">${esc(x.label)}<i>×</i></button>`).join('')}</span>`:''}${sEx.size?'<button class="lkreset" id="lkreset">Undo removals</button>':''}`:''}
  const bits=[];if(r.part)bits.push(`Only Part <b>${esc(r.part)}</b>`);if(r.fix.length)bits.push(`Did you mean <b>${r.fix.map(esc).join(', ')}</b>?`);if(r.syn.length)bits.push(`Also matching ${r.syn.map(esc).join(', ')}`);
  note.innerHTML=sQ.trim()?(list.length?`${list.length===40?'Top 40':list.length} result${list.length===1?'':'s'}`:'')+(bits.length?(list.length?' · ':'')+bits.join(' · '):''):'';
  if(!sQ.trim()){box.innerHTML=`${RECENT.length?`<p class="small" style="margin:4px 4px 0">Recent</p><div class="chips2">${RECENT.map(t=>`<button class="chip2" data-try="${esc(t)}">${esc(t)}</button>`).join('')}</div>`:''}<p class="small" style="margin:16px 4px 0">Try something like</p><div class="chips2">${TRY.map(t=>`<button class="chip2" data-try="${esc(t)}">${esc(t)}</button>`).join('')}</div><p class="small" style="margin:16px 4px 0">Type it however you'd say it. Add "part B" to search one Part. Figures work in mm or m.</p>`;return}
- box.innerHTML=list.length?list.map(srCard).join(''):`<div class="sempty"><div style="width:90px;margin:0 auto">${mascot('sad')}</div><p>Nothing in the app matches that yet${r.miss.length?` (no match for “${esc(r.miss.join(' '))}”)`:''}. Try a different word, or open the Approved Document on GOV.UK from the Library.</p></div>`}
-function searchView(){view='search';fromSearch=false;
- app.innerHTML=shell(`<div class="card shead"><h2>Search the regs</h2><div class="sbox">${SEARCHIC}<input id="sq" type="search" placeholder="e.g. how high should a banister be" value="${esc(sQ)}" aria-label="Search the regulations" autocomplete="off" autocapitalize="off" spellcheck="false" enterkeyhint="search"></div><p class="snote" id="snote" aria-live="polite"></p><p class="snote" id="semst"></p></div><div id="sres"></div>`);
- bindTabs();const inp=$('#sq');let tm;inp.addEventListener('input',()=>{clearTimeout(tm);tm=setTimeout(()=>{sQ=inp.value;drawResults()},120)});
+ const off=list.filter(r=>isOfficial(r.d)),les=list.filter(r=>!isOfficial(r.d));lastRes=off.concat(les);
+ box.innerHTML=list.length?(off.length?`<h3 class="rh">In the official text <span>${esc([...new Set(off.slice(0,12).map(r=>docOf(r.d.b).short))].join(', '))}</span></h3><p class="chk"><b>Check before you rely on it.</b> Search can miss or misrank things. Open the result and read the full paragraph, including any conditions and cross-references.</p>${off.slice(0,12).map((r,i)=>adkCard(r,i)).join('')}<p class="ogl">Contains public sector information licensed under the Open Government Licence v3.0, © Crown copyright. Always check the current document before relying on it.</p>`:'')+(les.length?`<h3 class="rh">In the lessons <span>summaries, for learning</span></h3>${les.map((r,i)=>srCard(r,off.length+i)).join('')}`:''):`<div class="sempty"><div style="width:90px;margin:0 auto">${mascot('sad')}</div><p>Nothing in the app matches that yet${r.miss.length?` (no match for “${esc(r.miss.join(' '))}”)`:''}. Try a different word, or open the Approved Document on GOV.UK from the Library.</p></div>`}
+function searchView(){view='search';fromSearch=false;if(!ADK)ADK_READY.then(d=>{if(d&&view==='search'&&$('#sres'))drawResults()});
+ app.innerHTML=shell(`<div class="card shead"><h2>Search the regs</h2><div class="sbox">${SEARCHIC}<input id="sq" type="search" placeholder="e.g. how high should a banister be" value="${esc(sQ)}" aria-label="Search the regulations" autocomplete="off" autocapitalize="off" spellcheck="false" enterkeyhint="search"></div><p class="snote" id="snote" aria-live="polite"></p><div class="slook" id="slook"></div><p class="snote" id="semst"></p></div><div id="sres"></div>`);
+ bindTabs();const inp=$('#sq');let tm;inp.addEventListener('input',()=>{clearTimeout(tm);tm=setTimeout(()=>{sQ=inp.value;sEx=new Set();drawResults()},120)});
+ $('#slook').addEventListener('click',e=>{const b=e.target.closest('[data-lk]');if(b){SFX.tap();sEx.add(b.dataset.lk);drawResults();return}if(e.target.closest('#lkreset')){sEx=new Set();drawResults()}});
  inp.addEventListener('keydown',e=>{if(e.key==='Enter'){e.preventDefault();inp.blur()}});
- $('#sres').addEventListener('click',e=>{const c=e.target.closest('[data-try]');if(c){sQ=c.dataset.try;inp.value=sQ;drawResults();return}const g=e.target.closest('[data-go]');if(g)goResult(lastRes[+g.dataset.go])});
+ $('#sres').addEventListener('click',e=>{const c=e.target.closest('[data-try]');if(c){sQ=c.dataset.try;inp.value=sQ;sEx=new Set();drawResults();return}const g=e.target.closest('[data-go]');if(g){const r=lastRes[+g.dataset.go];if(r&&isOfficial(r.d))openOfficial(r.d.b);else goResult(r)}});
  drawResults();semStatus();if(SEM.state==='off')startSemantic();if(!sQ)setTimeout(()=>{try{inp.focus()}catch(e){}},60)}
 function goResult(r){if(!r)return;SFX.tap();const q=sQ.trim();if(q){RECENT=[q,...RECENT.filter(x=>x!==q)].slice(0,6);try{localStorage.setItem(RKEY,JSON.stringify(RECENT))}catch(e){}}
  const d=r.d;libOpen={};libOpen[d.ui]=true;libQ='';view='library';render();fromSearch=true;library();
@@ -1216,7 +1344,7 @@ ${sp(250,100,2.3)}${sp(180,96,2.45)}${sp(232,72,2.6)}
    im.animate([{transform:'none'},{transform:`translate(${b.left+b.width/2-(a.left+a.width/2)}px,${b.top+b.height/2-(a.top+a.height/2)}px) scale(${k})`}],{duration:520,easing:'cubic-bezier(.5,0,.3,1)',fill:'forwards'})}catch(e){}
   setTimeout(()=>{if(gone)return;el.classList.add('go');ic.remove()},540)},1000);
  setTimeout(end,5300)}
-splash();render();cloud();govFetch();setTimeout(()=>{if(SEM.state==='off')startSemantic()},7000);if('serviceWorker' in navigator&&location.protocol==='https:')navigator.serviceWorker.register('sw.js').catch(()=>{});
+splash();render();cloud();govFetch();setTimeout(()=>{if(SEM.state==='off')startSemantic()},7000);if('serviceWorker' in navigator&&location.protocol==='https:')navigator.serviceWorker.register('sw.js').then(()=>navigator.serviceWorker.ready).then(r=>setTimeout(()=>{const c=navigator.connection;if(!(c&&c.saveData)&&r.active)r.active.postMessage('keep-docs')},5000)).catch(()=>{});
 }
 </script>
 </body>
