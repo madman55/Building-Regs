@@ -146,6 +146,16 @@ button:focus-visible,input:focus-visible{outline:3px solid var(--act);outline-of
 /* end screens */
 .end{max-width:560px;min-height:100vh;min-height:100dvh;margin:0 auto;padding:10vh 16px 32px;text-align:center;display:flex;flex-direction:column}
 .end .grow{flex:1}
+.rev{margin:26px 0 18px;text-align:start}.rev h2{display:flex;align-items:center;gap:8px;margin:0 0 4px;font-size:20px}
+.rev h2 span{min-width:28px;height:28px;padding:0 8px;display:inline-grid;place-items:center;border-radius:999px;background:color-mix(in srgb,var(--bad) 16%,var(--bg));color:var(--bad);font-size:15px}
+.rev>.small{margin:0 0 12px;max-width:none}
+.rline{border:2px solid var(--line);border-inline-start:5px solid var(--bad);border-radius:14px;padding:12px 14px;margin:0 0 10px;background:var(--bg)}
+.rline .rq{margin:0 0 8px;color:var(--ink);font-weight:600;max-width:none}
+.rline .ra{display:flex;gap:8px;align-items:flex-start;font-weight:800;color:var(--good,#58a700)}.rline .ra svg{width:20px;height:20px;flex:none;margin-top:2px}.rline .ra span{color:var(--ink)}
+.rline .rx{margin:6px 0 0;font-size:14px;max-width:none}.rline .rr{display:block;margin-top:6px;font-size:12px;font-weight:700;color:var(--mute)}
+.rpairs li.mx{font-weight:700;color:var(--ink)}.rpairs li.mx em{margin-inline-start:8px;padding:0 6px;border-radius:6px;font-style:normal;font-size:11px;font-weight:800;background:color-mix(in srgb,var(--bad) 16%,var(--bg));color:var(--bad)}
+.rpairs{list-style:none;margin:4px 0 0;padding:0;display:grid;gap:4px;font-size:14px}.rpairs b{display:inline-block;min-width:44px;margin-inline-end:8px;color:var(--d,var(--act))}
+.rev .btn{margin-top:6px;display:flex;align-items:center;justify-content:center;gap:8px}.rev .btn svg{width:22px;height:22px;flex:none}
 .end h1{font-size:clamp(32px,9vw,46px);margin:18px 0 10px;color:var(--hvDk)}
 .end h1.fire{color:var(--fire)}.end h1.gemh{color:var(--gem)}.end h1.badh{color:var(--bad)}
 .end p{color:var(--mute);margin:0 auto 22px;max-width:34ch}
@@ -221,7 +231,16 @@ button:focus-visible,input:focus-visible{outline:3px solid var(--act);outline-of
 .fa.t{color:var(--ok)}.fa.f{color:var(--bad)}
 .fx{font-size:16px;margin:0 0 6px}
 .ch{font-family:Inter,sans-serif!important;font-stretch:100%!important;font-size:20px!important;margin-bottom:14px!important}
-.pairs{display:grid;gap:8px}.pairs div{display:flex;gap:12px;align-items:center;padding:10px 12px;border:2px solid var(--line);border-radius:14px}
+.pairs{display:grid;gap:8px}
+.phint{margin:-4px 0 12px;color:var(--mute);font-size:15px}
+.pairs.reveal .prv{display:flex;gap:12px;align-items:center;width:100%;min-height:52px;padding:10px 12px;border:2px dashed var(--line);border-radius:14px;background:none;color:var(--ink);font:inherit;text-align:start;cursor:pointer}
+.pairs.reveal .prv.on{border-style:solid;cursor:default}.pairs.reveal .prv.on .pans{animation:pfade .3s ease-out}
+.pairs.reveal .prv:focus-visible{outline:3px solid var(--act);outline-offset:2px}
+.pairs.reveal .pans i{color:var(--mute);font-style:normal;font-size:14px;opacity:.8}
+@keyframes pfade{from{opacity:0;transform:translateX(-6px)}to{opacity:1;transform:none}}
+.pbar{display:flex;align-items:center;justify-content:space-between;gap:12px;margin:14px 2px 0;color:var(--mute);font-size:14px}
+.pbar .btn.small{width:auto;min-height:44px;padding:0 18px;font-size:14px}
+@media(prefers-reduced-motion:reduce){.pairs.reveal .prv.on .pans{animation:none}}.pairs div{display:flex;gap:12px;align-items:center;padding:10px 12px;border:2px solid var(--line);border-radius:14px}
 .pairs b{min-width:52px;height:36px;display:grid;place-items:center;border-radius:10px;background:var(--hv);color:var(--hvInk);font-family:Archivo,sans-serif;font-stretch:112%}
 .intro .big{width:150px;height:150px}
 
@@ -391,6 +410,40 @@ background:radial-gradient(70% 90px at 18% 100%,color-mix(in srgb,var(--c) 26%,l
 .lbody{padding:6px 14px 14px}
 
 
+
+
+
+/* ---------- plain-English card, why lines, small official link ---------- */
+.plain{display:grid;gap:12px}.plain>div{padding:14px 16px;border-radius:16px;border:2px solid var(--line);background:var(--bg)}
+.plain b{display:block;font:800 13px var(--fun);text-transform:uppercase;letter-spacing:.04em;color:var(--d,var(--act));margin-bottom:4px}.plain p{margin:0;font-size:16px;line-height:1.5}
+.why{margin:10px 0 0;padding:10px 12px;border-radius:12px;background:color-mix(in srgb,var(--c,var(--act)) 10%,var(--bg));font-size:15px}.foot .why{background:color-mix(in srgb,currentColor 8%,transparent)}
+.govsmall{margin:0 0 16px;font-size:14px}.govsmall a{color:var(--mute);font-weight:600;text-decoration:underline;text-underline-offset:3px}.govsmall svg{width:12px;height:12px}
+/* ---------- Start here card ---------- */
+.starthere{display:flex;align-items:center;gap:12px;width:100%;margin:0 0 14px;padding:16px;border-radius:22px;border:0;background:linear-gradient(135deg,#58cc02,#3fa400);color:#fff;text-align:start;font:inherit;cursor:pointer;box-shadow:0 5px 0 #2f7d00}
+.starthere:active{transform:translateY(3px);box-shadow:0 2px 0 #2f7d00}.starthere:focus-visible{outline:3px solid var(--act);outline-offset:3px}
+.starthere .shm{width:74px;height:74px;flex:none}.starthere .sht{flex:1;min-width:0}
+.starthere small{display:block;font:800 13px var(--fun);opacity:.9}.starthere b{display:block;font:700 26px/1.1 var(--fun);margin:2px 0 4px}.starthere em{display:block;font-style:normal;font-size:14px;line-height:1.35;opacity:.95}
+.starthere .shgo{flex:none;padding:10px 14px;border-radius:14px;background:#fff;color:#3fa400;font:800 15px var(--fun);text-transform:uppercase;box-shadow:0 3px 0 #2f7d0066}
+@media(max-width:380px){.starthere .shm{width:58px;height:58px}.starthere b{font-size:22px}}
+/* ---------- Spot the mistake / speed nudge ---------- */
+.spot{padding:16px 14px;border:2px solid var(--line);border-radius:18px;background:var(--bg);margin-bottom:14px;line-height:2.35;font:500 18px/2.35 Inter,sans-serif}
+.spw{display:inline;padding:5px 2px;margin:0;border:0;border-bottom:2px dotted color-mix(in srgb,var(--ink) 25%,transparent);border-radius:4px;background:none;color:var(--ink);font:inherit;line-height:inherit;cursor:pointer;-webkit-box-decoration-break:clone;box-decoration-break:clone}
+.spw.sel{background:color-mix(in srgb,var(--c,var(--act)) 18%,var(--bg));border-bottom:2px solid var(--c,var(--act));color:var(--d,var(--act));font-weight:700}
+.spw.good,.spw.fixme{background:var(--okBg);border-bottom:2px solid var(--ok);color:var(--ok);font-weight:700}.spw.fixme{border-bottom-style:dashed}
+.spw.wrong{background:var(--badBg);border-bottom:2px solid var(--bad);color:var(--bad)}.spw s{opacity:.7}
+.spw.out{opacity:.3;pointer-events:none}.spw:focus-visible{outline:3px solid var(--act);outline-offset:2px}
+.opt.allok{min-height:56px;display:flex;align-items:center;justify-content:center;gap:8px;width:100%;padding:10px 16px;font-size:17px}.opt.allok svg{width:22px;height:22px}
+.opt.allok.sel{border-color:var(--c,var(--act))}.opt.allok.good{border-color:var(--ok);background:var(--okBg);color:var(--ok)}.opt.allok.fixme{border-color:var(--ok);border-style:dashed;color:var(--ok)}
+.spfrom{display:block;margin:-6px 0 10px;color:var(--mute);font-size:13px;font-weight:600}
+.nudge{display:flex;gap:8px;align-items:flex-start;margin:10px 0 0;padding:10px 12px;border-radius:12px;background:light-dark(#fff3c4,#3a2f08);color:light-dark(#7a4b00,#ffd76a);font-weight:700;font-size:14px}.nudge svg{width:20px;height:20px;flex:none}
+/* ---------- Beginner mode ---------- */
+.hintb{margin-inline-start:auto;display:inline-flex;align-items:center;gap:5px;min-height:36px;padding:0 12px;border-radius:999px;border:2px solid var(--line);background:var(--card);color:var(--ink);font:800 13px var(--fun);text-transform:none;letter-spacing:0;cursor:pointer}
+.hintb svg{width:18px;height:18px;color:#e0a100}.hintb:disabled{opacity:.45;cursor:default}
+.opt.out{opacity:.28;text-decoration:line-through;pointer-events:none}
+.wel .lvl{display:block;width:100%;margin:0 0 12px;padding:16px 18px;border-radius:18px;border:2px solid var(--line);background:var(--card);color:var(--ink);text-align:start;font:inherit;cursor:pointer;box-shadow:0 4px 0 var(--line)}
+.wel .lvl b{display:block;font:700 19px var(--fun);margin-bottom:4px}.wel .lvl span{display:block;color:var(--mute);font-size:15px;line-height:1.4}
+.wel .lvl:focus-visible{outline:3px solid var(--act);outline-offset:2px}.wel .lvl:active{transform:translateY(3px);box-shadow:0 1px 0 var(--line)}
+.setl small{display:block;font-size:12px;color:var(--mute)}
 /* ---------- casual search ---------- */
 .sbtn{display:flex;align-items:center;gap:10px;width:100%;min-height:52px;margin:0 0 14px;padding:0 16px;border-radius:16px;border:2px solid var(--line);background:var(--card);color:var(--mute);font:500 16px Inter,sans-serif;text-align:start;cursor:pointer;box-shadow:0 3px 0 var(--line)}
 .sbtn svg,.sbox svg{width:22px;height:22px;flex:none;color:var(--act)}.sbtn span{flex:1;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
@@ -546,7 +599,9 @@ const QUESTS=[{id:'xp',name:'Earn 20 XP',n:20,get:()=>S.todayXp},{id:'combo',nam
 const dstr=d=>d.getFullYear()+'-'+String(d.getMonth()+1).padStart(2,'0')+'-'+String(d.getDate()).padStart(2,'0');
 const dayOff=n=>{const d=new Date();d.setDate(d.getDate()+n);return dstr(d)};
 const today=()=>dayOff(0),yday=()=>dayOff(-1);
-const blank=()=>({xp:0,gems:0,streak:0,lastDay:'',todayDay:'',todayXp:0,bestCombo:0,lessonsToday:0,claimed:{},hearts:MAXH,heartsDay:'',done:{},chests:{},mistakes:{},read:{},taught:{},hist:{},sound:true,updated:0,qbest:{},last:-1,qseen:{},finals:{}});
+const blank=()=>({xp:0,gems:0,streak:0,lastDay:'',todayDay:'',todayXp:0,bestCombo:0,lessonsToday:0,claimed:{},hearts:MAXH,heartsDay:'',done:{},chests:{},mistakes:{},read:{},taught:{},hist:{},sound:true,updated:0,qbest:{},last:-1,qseen:{},finals:{},level:'',mxq:{}});
+const easy=()=>S.level==='new';
+const mistakeQ=id=>QBY[id]||S.mxq[id];
 function norm(o){const b=blank();o=o&&typeof o==='object'?o:{};for(const k in b)if(o[k]===undefined||o[k]===null||typeof o[k]!==typeof b[k])o[k]=b[k];return o}
 let S=blank();try{S=norm(JSON.parse(localStorage.getItem(KEY)))}catch(e){S=blank()}
 let ref=null,chain=Promise.resolve();
@@ -586,12 +641,12 @@ const close=()=>v.remove();v.addEventListener('click',e=>{if(e.target===v)close(
 function countUp(el,to,ms=700){const t0=performance.now();(function f(t){const k=Math.min(1,(t-t0)/ms);el.textContent=(el.dataset.p||'')+Math.round(to*k)+(el.dataset.s||'');if(k<1)requestAnimationFrame(f)})(t0)}
 let view='learn',openPop=-1;
 
-function statsBar(){const s=streak();return`<div class="stat fl${s?'':' off'}" title="Day streak">${s?I.fire:(I.fireOff||I.fire)}${s}</div><div class="stat gm" title="Gems">${I.gem}${S.gems}</div><div class="stat ht" title="Hearts">${I.heart}${S.hearts}</div>`}
+function statsBar(){const s=streak();return`<div class="stat fl${s?'':' off'}" title="Day streak">${s?I.fire:(I.fireOff||I.fire)}${s}</div><div class="stat gm" title="Gems">${I.gem}${S.gems}</div><div class="stat ht" title="${easy()?'Beginner mode: hearts are never lost':'Hearts'}">${I.heart}${easy()?'∞':S.hearts}</div>`}
 function shell(inner){return`<header class="bar"><div class="in"><h1>Building Regs</h1>${statsBar()}</div></header><main class="wrap">${inner}</main>
 <nav class="tabs"><div class="in">${[['learn','Learn',I.home],['library','Library',LIBIC],['quests','Quests',I.target],['profile','Profile',I.user]].map(([v,n,ic])=>`<button class="tab${view===v?' on':''}" data-v="${v}" aria-current="${view===v?'page':'false'}">${ic}${n}</button>`).join('')}</div></nav>`}
 function enter(){const m=app.querySelector('main');if(m){m.classList.remove('enter');void m.offsetWidth;m.classList.add('enter')}}
 function bindTabs(){app.querySelectorAll('.tab').forEach(b=>b.onclick=()=>{SFX.tap();fromSearch=false;view=b.dataset.v;openPop=-1;DK=null;render();scrollTo(0,0);enter()})}
-function render(){roll();if(view==='search')return searchView();if(view==='library')return library();if(view==='quests')return quests();if(view==='profile')return profile();return learn()}
+function render(){roll();if(!S.level&&view!=='lesson')return welcome();if(view==='search')return searchView();if(view==='library')return library();if(view==='quests')return quests();if(view==='profile')return profile();return learn()}
 
 /* ---------- learn (path) ---------- */
 const OFFS=[16,50,64,42,10];
@@ -614,7 +669,7 @@ function syncHero(force){if(view!=='learn')return;const hero=$('#hero');if(!hero
 document.querySelectorAll('.world').forEach(w=>{if(w.getBoundingClientRect().top<=lim)ui=+w.dataset.ui});
 if(ui!==heroUi||force){heroUi=ui;hero.setAttribute('style',tv(ui));hero.innerHTML=heroHtml(ui);hero.classList.remove('swap');void hero.offsetWidth;hero.classList.add('swap')}}
 addEventListener('scroll',()=>{if(heroTick)return;heroTick=requestAnimationFrame(()=>{heroTick=0;syncHero()})},{passive:true});
-function learn(){view='learn';const n=nextIdx(),nr=nextReadUnit(n),mc=Object.keys(S.mistakes).filter(id=>QBY[id]).length;let path='';
+function learn(){view='learn';const n=nextIdx(),nr=nextReadUnit(n),mc=Object.keys(S.mistakes).filter(id=>mistakeQ(id)).length;let path='';
 UNITS.forEach((u,ui)=>{const ls=LES.map((l,i)=>({l,i})).filter(o=>o.l.ui===ui),open=unlocked(ls[0].i),dir=ui%2?-1:1;let j=0;const o=()=>OFFS[j++%5]*dir;
 path+=`<section class="world${open?'':' locked'}" data-ui="${ui}" style="${tv(ui)}"><div class="divider"><span>${esc(unitLabel(u,ui))} · ${esc(u.name)}</span></div>${govCheck(ui)}
 <div class="cloud c1"></div><div class="cloud c2"></div><div class="cloud c3"></div><div class="hills"></div>
@@ -630,8 +685,8 @@ path+=`<div class="secpill">Final revision · the whole unit</div><div class="nw
 const cd=unitDone(ui),co=!!S.chests[ui];
 path+=`<div class="nwrap" style="transform:translateX(${o()}px)"><button class="node chest${cd&&!co?' ready':''}" data-c="${ui}" aria-label="Reward chest${co?' (opened)':cd?' (ready)':' (locked)'}">${co?I.chestOpen:cd?I.chest:I.chestLock}</button></div></div></section>`});
 const pct=Math.min(100,Math.round(S.todayXp/GOAL*100));
-const say=n<0?'You’ve finished every lesson. Keep practising to stay sharp!':S.todayXp>=GOAL?'Daily goal smashed! Come back tomorrow for your streak.':S.hearts<=0?'Out of hearts. Practise mistakes to earn one back.':n===0&&nr===0?'Hi, I’m Purl! Let’s start by learning the Parts.':nr>=0?'Next up: learn '+UNITS[nr].name+', then try the lesson.':'Next up: '+UNITS[LES[n].ui].name+'. You’ve got this.';
-app.innerHTML=shell(`<button class="sbtn" data-search>${SEARCHIC}<span>Search the regs, e.g. “banister height”</span></button><div class="card hello-card"><div class="hello">${mascot(S.todayXp>=GOAL||n<0?'cheer':'idle')}<div class="say">${esc(say)}</div></div><div class="goalrow"><div class="ring" style="--p:${pct}"><span>${S.todayXp}</span></div><div class="gtx"><b>${S.todayXp>=GOAL?'Daily goal done!':'Daily goal'}</b><span>${S.todayXp} of ${GOAL} XP today</span></div></div>
+const say=n<0?'You’ve finished every lesson. Keep practising to stay sharp!':S.todayXp>=GOAL?'Daily goal smashed! Come back tomorrow for your streak.':S.hearts<=0&&!easy()?'Out of hearts. Practise mistakes to earn one back.':n===0&&nr===0?'Hi, I’m Purl! Let’s start by learning the Parts.':nr>=0?'Next up: learn '+UNITS[nr].name+', then try the lesson.':'Next up: '+UNITS[LES[n].ui].name+'. You’ve got this.';
+app.innerHTML=shell(`<button class="sbtn" data-search>${SEARCHIC}<span>Search the regs, e.g. “banister height”</span></button>${unitDone(0)?'':startHere()}<div class="card hello-card"><div class="hello">${mascot(S.todayXp>=GOAL||n<0?'cheer':'idle')}<div class="say">${esc(say)}</div></div><div class="goalrow"><div class="ring" style="--p:${pct}"><span>${S.todayXp}</span></div><div class="gtx"><b>${S.todayXp>=GOAL?'Daily goal done!':'Daily goal'}</b><span>${S.todayXp} of ${GOAL} XP today</span></div></div>
 <div class="row2"><button class="btn" id="go">${n<0?'Practise':Object.keys(S.done).length?'Continue':'Start'}</button><button class="btn ghost" id="pr" ${mc?'':'disabled'}>Mistakes · ${mc}</button></div></div>
 <div class="card jumpc"><div class="jh"><b>Jump to any Part</b><span>Every lesson is open. Start wherever you like.</span></div><div class="jump">${UNITS.map((u,ui)=>{const ls=LES.filter(l=>l.ui===ui),d=ls.filter(l=>S.done[l.key]).length;return`<button class="jp${d===ls.length?' done':''}" data-j="${ui}" style="${tv(ui)}" aria-label="Jump to ${esc(u.name)}"><span class="pi">${partIc(u.k)}</span><b>${esc(u.k==='?'?'Start':u.k==='7'?'Reg 7':u.k)}</b><i><em style="width:${Math.round(d/ls.length*100)}%"></em></i></button>`}).join('')}</div></div>
 <div class="hero" id="hero"></div>${path}
@@ -656,9 +711,9 @@ function readPop(ui,open,rd){const n=cardsFor(ui).length-2;return`<div class="po
 let DK=null;
 const unitQs=ui=>LES.filter(l=>l.ui===ui).flatMap(l=>l.qs);
 const sectioned=ui=>LES.some(l=>l.ui===ui&&l.meta);
-function cardsFor(ui){const cs=[{t:'intro'}];if(sectioned(ui)){cs.push({t:'sections'});cs.push({t:'end'});return cs}
+function cardsFor(ui){const cs=[{t:'intro'}];if(PLAIN[UNITS[ui].k])cs.push({t:'plain'});if(sectioned(ui)){cs.push({t:'sections'});cs.push({t:'end'});return cs}
 const all=unitQs(ui),pairs=all.filter(q=>q.t==='match').flatMap(q=>q.p);if(pairs.length)cs.push({t:'pairs',p:pairs});all.filter(q=>q.t!=='match'&&q.t!=='build').forEach(q=>cs.push({t:'fact',q}));cs.push({t:'end'});return cs}
-function cardsForLesson(i){const l=LES[i],m=l.meta,cs=[{t:'sec'}];if(m.watch&&m.watch.length)cs.push({t:'watch'});
+function cardsForLesson(i){const l=LES[i],m=l.meta,cs=[{t:'sec'}];if(easy()&&!S.read[l.ui]&&PLAIN[UNITS[l.ui].k]&&LES.findIndex(x=>x.ui===l.ui)===i)cs.unshift({t:'plain'});if(m.watch&&m.watch.length)cs.push({t:'watch'});
 const pairs=l.qs.filter(q=>q.t==='match').flatMap(q=>q.p);if(pairs.length)cs.push({t:'pairs',p:pairs});l.qs.filter(q=>q.t!=='match'&&q.t!=='build').forEach(q=>cs.push({t:'fact',q}));cs.push({t:'end'});return cs}
 function labelFor(q){if(q.t==='num')return q.a[0]+(q.u.length<=3?q.u:'');if(q.t==='mc')return q.o[0].length<=9?q.o[0]:'✓';return'✓'}
 function deck(ui,then){S.last=LES.findIndex(l=>l.ui===ui);roll();L=null;DK={ui,then:then??-1,cs:cardsFor(ui),i:0,lesson:-1};view='lesson';drawCard()}
@@ -666,13 +721,15 @@ function lessonDeck(i){S.last=i;roll();L=null;DK={ui:LES[i].ui,then:i,cs:cardsFo
 const WARN='<svg viewBox="0 0 24 24"><path d="M12 3 22 20H2z" fill="#ffc800" stroke="#ffc800" stroke-width="3" stroke-linejoin="round"/><rect x="11" y="9" width="2.4" height="6" rx="1.2" fill="#15171a"/><circle cx="12.2" cy="17.4" r="1.3" fill="#15171a"/></svg>';
 function drawCard(){const c=DK.cs[DK.i],u=UNITS[DK.ui],N=DK.cs.length,facts=DK.cs.filter(x=>x.t==='fact'),m=DK.lesson>=0?LES[DK.lesson].meta:null;let body='';
 const src=m&&m.doc?{t:'Approved Document '+u.k+(m.vol?' Vol '+m.vol:'')+' (PDF)',url:m.doc}:docsOf(DK.ui)[0];
-if(c.t==='intro')body=`<div class="intro"><div class="pi pbig">${partIc(u.k)}</div><div class="kick">${unitLabel(u,DK.ui)}</div><h1>${esc(u.name)}</h1><p class="lead">${esc(u.intro||'')}</p><div class="govs">${docsOf(DK.ui).map(d=>govLink(d)).join('')}</div><div class="ask"><div class="mas">${mascot('happy')}</div><div class="say">${sectioned(DK.ui)?'Each section has its own lesson. I’ll teach you the key points before every one.':'Let’s go through the key facts. Tap Next, or swipe.'}</div></div></div>`;
+if(c.t==='intro')body=`<div class="intro"><div class="pi pbig">${partIc(u.k)}</div><div class="kick">${unitLabel(u,DK.ui)}</div><h1>${esc(u.name)}</h1><p class="lead">${esc(u.intro||'')}</p>${govBlock(docsOf(DK.ui))}<div class="ask"><div class="mas">${mascot('happy')}</div><div class="say">${sectioned(DK.ui)?'Each section has its own lesson. I’ll teach you the key points before every one.':'Let’s go through the key facts. Tap Next, or swipe.'}</div></div></div>`;
 else if(c.t==='sections')body=`<div class="kick">What’s in this Part</div><h2 class="ch">${LES.filter(l=>l.ui===DK.ui).length} section lessons</h2><div class="secs">${LES.filter(l=>l.ui===DK.ui).map((l,k)=>`<div class="${S.done[l.key]?'dn':''}"><b>${k+1}</b><span><strong>${esc(l.meta?l.meta.name:'Lesson '+(k+1))}</strong>${l.meta?`<small>${l.meta.vol?'Volume '+l.meta.vol+' · ':''}${esc(l.meta.sec.replace(/^Vol \d /,''))}</small>`:''}</span>${S.done[l.key]?I.check:''}</div>`).join('')}</div>`;
-else if(c.t==='sec')body=`<div class="intro"><div class="kick">${esc(m.sec)}</div><h1>${esc(m.name)}</h1><p class="lead">${esc(m.intro)}</p><div class="pagechip">${BOOKN}<span>In the Approved Document: <b>${esc(m.sec.split(' · ')[0])}</b>, from printed page ${m.page}</span></div><div class="govs">${src?govLink(src):''}</div><div class="ask"><div class="mas">${mascot('happy')}</div><div class="say">I’ll show you the key points, then you’ll answer ${LES[DK.lesson].qs.length} questions.</div></div></div>`;
+else if(c.t==='sec')body=`<div class="intro"><div class="kick">${esc(m.sec)}</div><h1>${esc(m.name)}</h1><p class="lead">${esc(m.intro)}</p><div class="pagechip">${BOOKN}<span>In the Approved Document: <b>${esc(m.sec.split(' · ')[0])}</b>, from printed page ${m.page}</span></div>${govBlock([src])}<div class="ask"><div class="mas">${mascot('happy')}</div><div class="say">I’ll show you the key points, then you’ll answer ${LES[DK.lesson].qs.length} questions.</div></div></div>`;
+else if(c.t==='plain'){const pl=PLAIN[u.k];body=`<div class="kick">In plain English</div><h2 class="ch">${esc(u.k==='?'?'What are the Building Regulations?':unitLabel(u,DK.ui)+' · '+u.name)}</h2><div class="plain"><div><b>What it’s about</b><p>${esc(pl[0])}</p></div><div><b>Why it exists</b><p>${esc(pl[1])}</p></div><div><b>You’ll see it in</b><p>${esc(pl[2])}</p></div></div>`}
 else if(c.t==='watch')body=`<div class="kick">Watch out</div><h2 class="ch">Easy to miss in this section</h2><div class="watch">${m.watch.map(w=>`<div>${WARN}<p>${esc(w)}</p></div>`).join('')}</div>`;
-else if(c.t==='pairs')body=`<div class="kick">Know the pairs</div><h2 class="ch">Match the letter to the subject</h2><div class="pairs">${c.p.map(([a,b])=>`<div><b>${esc(a)}</b><span>${esc(b)}</span></div>`).join('')}</div>`;
+else if(c.t==='pairs'){c.rev=c.rev||c.p.map(()=>false);const nr=c.rev.filter(Boolean).length,all=nr===c.p.length;
+ body=`<div class="kick">Know the pairs</div><h2 class="ch">Test yourself first</h2><p class="phint">Say each answer in your head, then tap to check it.</p><div class="pairs reveal">${c.p.map(([a,b],k)=>`<button class="prv${c.rev[k]?' on':''}" data-pr="${k}" aria-expanded="${c.rev[k]}"><b>${esc(a)}</b><span class="pans">${c.rev[k]?esc(b):'<i>Tap to reveal</i>'}</span></button>`).join('')}</div><div class="pbar"><span id="pcount">${nr} of ${c.p.length} revealed</span><button class="btn ghost small" id="pall">${all?'Hide all':'Show all'}</button></div>`}
 else if(c.t==='fact'){const q=c.q,k=facts.indexOf(c)+1;const ans=q.t==='mc'?q.o[0]:q.t==='tf'?(q.a?'True':'False'):q.a[0]+(q.u[0]==='°'?'':' ')+q.u;
- body=`<div class="kick">Key fact ${k} of ${facts.length}</div><p class="fq">${esc(q.q)}</p><div class="fa${q.t==='tf'?(q.a?' t':' f'):''}">${esc(ans)}</div>${q.art?`<div class="fig2">${diagram(q.art,labelFor(q))}</div>`:''}<p class="fx">${esc(q.x||'')}</p><div class="ref">${esc(q.r||'')}${src?` · <a href="${esc(src.url)}" target="_blank" rel="noopener">check the source ${ARROW}</a>`:''}</div>`}
+ body=`<div class="kick">Key fact ${k} of ${facts.length}</div><p class="fq">${esc(q.q)}</p><div class="fa${q.t==='tf'?(q.a?' t':' f'):''}">${esc(ans)}</div>${q.art?`<div class="fig2">${diagram(q.art,labelFor(q))}</div>`:''}<p class="fx">${esc(q.x||'')}</p>${q.why?`<p class="why"><b>Why it matters:</b> ${esc(q.why)}</p>`:''}<div class="ref">${esc(q.r||'')}${src?` · <a href="${esc(src.url)}" target="_blank" rel="noopener">check the source ${ARROW}</a>`:''}</div>`}
 else{let first=false;
  if(DK.lesson>=0){const key=LES[DK.lesson].key;if(!S.taught[key]){S.taught[key]=1;addXp(5);newQuests();save();first=true;SFX.done();confetti()}}
  else if(!S.read[DK.ui]){S.read[DK.ui]=1;addXp(5);newQuests();save();first=true;SFX.done();confetti()}
@@ -682,6 +739,10 @@ app.innerHTML=`<div class="ls" style="${tv(DK.ui)}"><div class="lt2"><button cla
 <div class="lb deckb ${DK.dir<0?'qback':'qin'}" id="dk">${body}</div>${c.t==='end'?'':`<div class="foot"><div class="in row2"><button class="btn ghost" id="bk" ${DK.i?'':'disabled'}>Back</button><button class="btn" id="nk">Next</button></div></div>`}</div>`;
 $('#dq').onclick=()=>{DK=null;view='learn';render()};
 if($('#nk')){$('#nk').onclick=()=>deckGo(1);$('#bk').onclick=()=>deckGo(-1)}
+if(c.t==='pairs'){const upd=()=>{const nr=c.rev.filter(Boolean).length;$('#pcount').textContent=nr+' of '+c.p.length+' revealed';$('#pall').textContent=nr===c.p.length?'Hide all':'Show all'};
+ const show=(k,on)=>{c.rev[k]=on;const b=app.querySelector(`[data-pr="${k}"]`);b.classList.toggle('on',on);b.setAttribute('aria-expanded',on);b.querySelector('.pans').innerHTML=on?esc(c.p[k][1]):'<i>Tap to reveal</i>'};
+ app.querySelectorAll('[data-pr]').forEach(b=>b.onclick=e=>{e.stopPropagation();const k=+b.dataset.pr;if(c.rev[k])return;SFX.tap();show(k,true);upd()});
+ $('#pall').onclick=e=>{e.stopPropagation();SFX.tap();const on=c.rev.some(r=>!r);c.p.forEach((_,k)=>show(k,on));upd()}}
 if($('#gs'))$('#gs').onclick=()=>{const li=DK.then>=0?DK.then:LES.findIndex(l=>l.ui===DK.ui);DK=null;startQuiz(li)};
 if($('#gh'))$('#gh').onclick=()=>{DK=null;view='learn';render()};
 const el=$('#dk');let x0=null;el.addEventListener('touchstart',e=>{x0=e.touches[0].clientX},{passive:true});el.addEventListener('touchend',e=>{if(x0===null)return;const dx=e.changedTouches[0].clientX-x0;x0=null;if(Math.abs(dx)>60&&c.t!=='end')deckGo(dx<0?1:-1)},{passive:true});scrollTo(0,0)}
@@ -717,7 +778,7 @@ const run=()=>{libQ=$('#lq').value.trim().toLowerCase();let hits=0;
 void run}
 
 /* ---------- quests ---------- */
-function quests(){const mc=Object.keys(S.mistakes).filter(id=>QBY[id]).length;
+function quests(){const mc=Object.keys(S.mistakes).filter(id=>mistakeQ(id)).length;
 app.innerHTML=shell(`<div class="card"><h2>Daily quests</h2><p class="small" style="margin:0 0 6px">New quests every day. Each one is worth 10 gems.</p>
 ${QUESTS.map(q=>{const v=Math.min(q.n,q.get()),f=v>=q.n;return`<div class="quest${f?' fin':''}"><div class="qi">${f?I.chestOpen:I.chest}</div><div class="qb"><strong>${q.name}</strong><div class="meter"><i style="width:${v/q.n*100}%"></i></div><div class="small" style="margin-top:4px">${v} / ${q.n}${f?' · done':''}</div></div><div class="rw">${I.gem}10</div></div>`}).join('')}</div>
 <div class="card"><h2>Practice</h2><p class="small" style="margin:0 0 4px">Practice never costs hearts and earns one back.</p>
@@ -733,15 +794,48 @@ app.innerHTML=shell(`<div class="card"><h2>Your progress</h2><div class="grid4" 
 <div class="card"><h2>Last 7 days</h2><div class="bars">${days.map(d=>`<div class="${d.t?'today':''}"><span>${d.v||''}</span><i style="height:${Math.round(d.v/mx*90)}%"></i>${d.l}</div>`).join('')}</div></div>
 <div class="card"><h2>Official documents</h2><p class="small" style="margin:0 0 10px">The current Approved Documents for England, straight from GOV.UK. Links open in your browser.</p><div class="lib">${UNITS.map((u,ui)=>docsOf(ui).map(d=>`<a href="${esc(d.url)}" target="_blank" rel="noopener"><span class="pi">${partIc(u.k)}</span><span><b>${esc(d.t)}</b><small>${esc(unitLabel(u,ui))}</small></span>${ARROW}</a>`).join('')).join('')}</div></div>
 <div class="card"><h2>Settings</h2><div class="set" style="border:0"><span>Sound effects</span><button class="sw" id="snd" role="switch" aria-checked="${S.sound}" aria-label="Sound effects"></button></div>
-<div class="set"><span>Hearts: ${S.hearts} / ${MAXH}</span><button class="btn gemb" id="rf" style="width:auto;margin:0;padding:0 14px;min-height:44px;font-size:13px" ${S.hearts>=MAXH||S.gems<REFILL?'disabled':''}>Refill · ${REFILL} gems</button></div>
+<div class="set"><span class="setl">Beginner mode<small>No hearts lost, figures as multiple choice, hints</small></span><button class="sw" id="beg" role="switch" aria-checked="${easy()}" aria-label="Beginner mode"></button></div>
+<div class="set"><span>${easy()?'Hearts: not used in Beginner mode':`Hearts: ${S.hearts} / ${MAXH}`}</span><button class="btn gemb" id="rf" style="width:auto;margin:0;padding:0 14px;min-height:44px;font-size:13px" ${S.hearts>=MAXH||S.gems<REFILL?'disabled':''}>Refill · ${REFILL} gems</button></div>
 <div class="set"><span>Start again from scratch</span><button class="btn ghost" id="rs" style="width:auto;margin:0;padding:0 14px;min-height:44px;font-size:13px;color:var(--bad)">Reset</button></div></div>`);
-bindTabs();$('#snd').onclick=()=>{S.sound=!S.sound;save();SFX.tap();profile()};$('#rf').onclick=refill;
+bindTabs();$('#snd').onclick=()=>{S.sound=!S.sound;save();SFX.tap();profile()};$('#beg').onclick=()=>{S.level=easy()?'std':'new';save();SFX.tap();toast(easy()?'Beginner mode on':'Standard mode on');profile()};$('#rf').onclick=refill;
 $('#rs').onclick=()=>sheet(`<h2>Reset all progress?</h2><p class="small">Your XP, streak, gems and completed lessons will be cleared. This can’t be undone.</p><button class="btn" style="background:var(--bad);box-shadow:0 4px 0 var(--badDk)" id="yes">Reset everything</button><button class="btn ghost" data-close>Keep my progress</button>`,(v,close)=>{v.querySelector('#yes').onclick=()=>{const snd=S.sound;S=blank();S.sound=snd;save();close();view='learn';render()}})}
 function refill(){if(S.gems<REFILL||S.hearts>=MAXH)return;S.gems-=REFILL;S.hearts=MAXH;save();SFX.gem();toast('Hearts refilled');render()}
 
 /* ---------- lesson engine ---------- */
 let L=null;
-function begin(qs,o){DK=null;if(o&&o.idx>=0)S.last=o.idx;L=Object.assign({qs,queue:qs.map((_,k)=>k),total:qs.length,right:0,wrong:0,seen:new Set(),missed:new Set(),combo:0,best:0,t0:Date.now(),practice:false,idx:-1},o);view='lesson';ask()}
+function begin(qs,o){DK=null;if(o&&o.idx>=0)S.last=o.idx;qs=spreadKinds(qs);L=Object.assign({qs,fast:0,queue:qs.map((_,k)=>k),total:qs.length,right:0,wrong:0,seen:new Set(),missed:new Set(),combo:0,best:0,t0:Date.now(),practice:false,idx:-1},o);view='lesson';ask()}
+
+/* ---------- new formats: Spot the mistake, Which is bigger? ---------- */
+/* Spot the mistake: a real rule from the lesson with one figure swapped for a believable wrong one,
+   or (about a third of the time) left correct, so "All correct" is sometimes the right answer. */
+function spotItems(l,ui){const u=UNITS[ui],m=l?l.meta:null,doc=m&&m.doc?m.doc:(docsOf(ui)[0]||{}).url,ref=m?'AD '+u.k+(m.vol?' Vol '+m.vol:'')+' · '+m.sec.split(' · ')[0]+', p.'+m.page:unitLabel(u,ui);
+ const out=[],src=textsOf(l,ui).concat(l?l.qs.map(q=>q.x||''):[]);
+ src.forEach(t=>String(t).split(/(?<=[.!?])\s+(?=[A-Z])/).forEach(sen=>{sen=sen.trim();const ms=[...sen.matchAll(TOKRE)];if(!ms.length||sen.length>200||sen.split(/\s+/).length<8||sen.includes('___')||!/^[A-Z]/.test(sen)||/^(It|Its|It’s|It's|This|That|These|Those|They|Them|There|Both|Also|And|But|Or|So|Then|Here|Each|Either|Neither|Such|Same|Otherwise|Unlike|Only)\b/.test(sen)||/^\d/.test(sen)||!/[.!?]$/.test(sen))return;
+  out.push({key:'s:'+h(sen),make:()=>{const P=unitPools(ui),chips=(txt)=>txt.split(/\s+/).filter(Boolean).map(w=>({t:w,n:/\d/.test(w)}));
+   const base={t:'spot',id:'s:'+h(sen),fix:sen,r:ref,doc,from:m?m.name:u.name};
+   if(Math.random()<.33){const c=chips(sen);return Object.assign(base,{q:sen,c,wrong:-1,x:'There was no mistake here.'})}
+   const c=shuf(ms).find(mm=>sen.split(mm[0]).length===2&&/(^|\s)$/.test(sen.slice(0,mm.index))&&/^($|[\s,.;:)])/.test(sen.slice(mm.index+mm[0].length)));if(!c)return null;
+   const k=tokKind(c),v=tokVal(c),ds=nearest(v,P.tok[k]||[],k).slice(0,2);if(!ds.length)return null;const w=fmtTok(ds[Math.random()*ds.length|0],k);if(w===c[0])return null;
+   const before=chips(sen.slice(0,c.index)),after=sen.slice(c.index+c[0].length),tail=after.match(/^[,.;:)]*/)[0],rest=chips(after.slice(tail.length));
+   const cs=before.concat([{t:w+tail,n:true}],rest);return Object.assign(base,{q:sen.slice(0,c.index)+w+after,c:cs,wrong:before.length,w,a:c[0],x:`It should say ${c[0]}, not ${w}.`})}})}));return out}
+/* Which is bigger? Two figure questions with the same unit from the same Part. */
+const CMPU=new Set(['mm','m','m²','°','dB','°C','l/s','kW']);
+function cmpItems(l,ui){const mine=l.qs.filter(q=>q.t==='num'&&CMPU.has(q.u));if(!mine.length)return[];
+ const all=LES.filter(x=>x.ui===ui).flatMap(x=>x.qs).filter(q=>q.t==='num'&&CMPU.has(q.u));
+ const lab=q=>q.q.replace(/\s*\?$/,'').replace(/\b(?:how (?:many|much|far|high|wide|long|deep|steep|big)(?: [a-zA-Z²³/]+)?|what (?:temperature|width|height|size|distance|area|rate|level|depth))(?=[\s?,.;:]|$)/gi,'…').replace(/\s+/g,' ').trim();
+ return mine.map(q=>({key:'c:'+q.id,make:()=>{const v=parseFloat(q.a[0]),cands=all.filter(o=>o!==q&&o.u===q.u&&!o.q.startsWith('…')&&!q.q.startsWith('…')).filter(o=>{const r=parseFloat(o.a[0])/v;return r>0&&(r>=1.15||r<=1/1.15)});
+  if(!cands.length)return null;const near=cands.filter(o=>l.qs.includes(o)),from=near.length?near:cands,p=from[Math.random()*from.length|0],pv=parseFloat(p.a[0]),big=v>pv?q:p,small=big===q?p:q;
+  return{t:'mc',cmp:true,id:'c:'+q.id+'|'+p.id,q:'Which of these has the bigger figure?',o:[lab(big),lab(small)],
+   x:`${lab(big)}: ${fmtNum(big.a[0],big.u)}. ${lab(small)}: ${fmtNum(small.a[0],small.u)}.`,r:[big.r,small.r].filter(Boolean).filter((r,i,a)=>a.indexOf(r)===i).join(' · '),doc:q.doc}}}))}
+/* Keep formats mixed: never the same kind twice in a row when it can be avoided. */
+const kindOf=q=>q.cmp?'cmp':q.t;
+function spreadKinds(qs){const pool=qs.slice(),out=[];while(pool.length){const last=out.length?kindOf(out[out.length-1]):null;let i=pool.findIndex(q=>kindOf(q)!==last);if(i<0)i=0;out.push(pool.splice(i,1)[0])}return out}
+/* Spot the mistake: tap a word, or All correct. */
+function pickSpot(k){if(L.locked)return;const b=app.querySelector(`[data-sp="${k}"]`);if(!b||b.classList.contains('out'))return;SFX.tap();app.querySelectorAll('[data-sp]').forEach(x=>x.classList.remove('sel'));b.classList.add('sel');L.sel=k;$('#ck').disabled=false}
+function checkSpot(){const q=L.cur,ok=L.sel===q.wrong;
+ app.querySelectorAll('[data-sp]').forEach(b=>{const k=+b.dataset.sp;if(k===q.wrong)b.classList.add(ok?'good':'fixme');else if(k===L.sel&&!ok)b.classList.add('wrong')});
+ if(q.wrong>=0){const b=app.querySelector(`[data-sp="${q.wrong}"]`);if(b)b.innerHTML=`<s>${esc(q.w)}</s> ${esc(q.a)}`}
+ verdict(ok,q.wrong>=0?q.fix:'All correct, there was no mistake')}
 /* ---------- quiz generator: a fresh mix from the whole unit every time ---------- */
 const TOKRE=/(?<![\w.:\-–\/])(\d+(?:\.\d+)?)(mm|m²|m³|m|°C|°|kN\/m²|N|%|dB|kW)(?![A-Za-z0-9²³\/])|(?<![\w.:\/])1:(\d+)(?!\d)/g;
 const tokKind=m=>m[3]?':':m[2],tokVal=m=>parseFloat(m[3]||m[1]);
@@ -767,7 +861,7 @@ function gapItems(l,ui){const u=UNITS[ui],m=l?l.meta:null,doc=m&&m.doc?m.doc:(do
  const out=[],src=textsOf(l,ui).map(t=>[t,7]).concat(l?l.qs.map(q=>[q.x||'',10]):[]);src.forEach(([t,minW])=>String(t).split(/(?<=[.!?])\s+(?=[A-Z])/).forEach(sen=>{const ms=[...sen.matchAll(TOKRE)].filter(mm=>mm.index>0);if(!ms.length||sen.length>230||sen.split(/\s+/).length<minW||sen.includes('___'))return;
   out.push({key:'g:'+h(sen),make:()=>{const P=unitPools(ui),c=shuf(ms).find(mm=>sen.split(mm[0]).length===2);if(!c)return null;const k=tokKind(c),v=tokVal(c),ds=nearest(v,P.tok[k]||[],k);if(ds.length<3)return null;
    return{t:'build',id:'g:'+h(sen),q:sen.slice(0,c.index)+'___'+sen.slice(c.index+c[0].length),a:[c[0]],d:ds.map(d=>fmtTok(d,k)),r:ref,doc}}})}));return out}
-function quizItems(l,ui){const li=LES.indexOf(l),its=l.qs.map(q=>({key:q.id,make:()=>varyQ(q,ui)})).concat(gapItems(l,ui));return its.map(it=>({key:it.key,make:()=>{const q=it.make();return q?Object.assign({},q,{_l:li}):null}}))}
+function quizItems(l,ui){const li=LES.indexOf(l),its=l.qs.map(q=>({key:q.id,make:()=>varyQ(q,ui)})).concat(gapItems(l,ui),shuf(spotItems(l,ui)).slice(0,3),shuf(cmpItems(l,ui)).slice(0,2));return its.map(it=>({key:it.key,make:()=>{const q=it.make();return q?Object.assign({},q,{_l:li}):null}}))}
 function buildQuiz(groups,n){const pick=[],now=Date.now(),age=k=>(S.qseen[k]||0)-Math.random()*864e5*2;groups=shuf(groups.filter(g=>g.length)).map(g=>g.slice().sort((a,b)=>age(a.key)-age(b.key)));
  let gi=0,guard=0;while(pick.length<n&&groups.some(g=>g.length)&&guard++<500){const g=groups[gi++%groups.length];if(!g.length)continue;const it=g.shift(),q=it.make();if(q){pick.push(q);S.qseen[it.key]=now}}
  save();return shuf(pick)}
@@ -776,36 +870,41 @@ function finalTest(ui){SFX.tap();const ls=LES.filter(l=>l.ui===ui),groups=ls.map
 function secQuiz(i,back){SFX.tap();const l=LES[i];S.last=i;const its=quizItems(l,l.ui),n=Math.min(10,its.length);begin(buildQuiz([its],n),{practice:true,quiz:l.ui,sec:i,back})}
 const qbestOf=k=>S.qbest[k]>=0?S.qbest[k]:null;
 function start(i){const l=LES[i];if(l&&l.meta&&!S.taught[l.key]&&!S.done[l.key])return lessonDeck(i);startQuiz(i)}
-function startQuiz(i){roll();if(S.hearts<=0)return outHearts();begin(LES[i].qs.slice(),{idx:i,redo:!!S.done[LES[i].key]})}
-function practice(only,mixed){roll();let ids=mixed?[]:Object.keys(S.mistakes).filter(id=>QBY[id]);
+function startQuiz(i){roll();if(S.hearts<=0&&!easy())return outHearts();const l=LES[i],extra=[];for(const g of[spotItems(l,l.ui),cmpItems(l,l.ui)]){for(const it of shuf(g)){const q=it.make();if(q){extra.push(q);break}}}
+begin(l.qs.slice().concat(extra),{idx:i,redo:!!S.done[l.key]})}
+function practice(only,mixed){roll();let ids=mixed?[]:Object.keys(S.mistakes).filter(id=>mistakeQ(id));const fromMistakes=ids.length>0;
 if(!ids.length&&!only)ids=LES.filter(l=>S.done[l.key]).flatMap(l=>l.qs.map(q=>q.id));
-if(!ids.length)return toast('Nothing to practise yet');begin(shuf(ids).slice(0,8).map(id=>QBY[id]),{practice:true})}
+if(!ids.length)return toast('Nothing to practise yet');begin(shuf(ids).slice(0,8).map(id=>mistakeQ(id)).filter(Boolean),{practice:true,review:fromMistakes})}
 
-function ask(){if(!L.queue.length)return finish();const qi=L.queue[0],q=L.qs[qi];L.cur=q;L.sel=null;L.again=L.seen.has(qi);L.seen.add(qi);
-const kind={mc:'Choose the right answer',tf:'True or false?',num:'Type the figure',match:'Tap the matching pairs',build:'Fill the gaps'}[q.t];
+function ask(){if(!L.queue.length)return finish();const qi=L.queue[0],q=L.qs[qi];L.cur=q;L.tAsk=Date.now();L.sel=null;L.again=L.seen.has(qi);L.seen.add(qi);L.numMc=q.t==='num'&&easy();L.mWrong=[];
+const kind=q.cmp?'Which is bigger?':L.numMc?'Choose the right figure':{spot:'Spot the mistake',mc:'Choose the right answer',tf:'True or false?',num:'Type the figure',match:'Tap the matching pairs',build:'Fill the gaps'}[q.t];
 let body='';
 if(q.t==='mc'){L.opts=shuf(q.o.map((t,k)=>({t,ok:k===0})));body=`<div class="opts">${L.opts.map((o,k)=>`<button class="opt" data-k="${k}"><span class="k">${k+1}</span>${esc(o.t)}</button>`).join('')}</div>`}
 else if(q.t==='tf'){L.opts=[{t:'True',ok:q.a===true},{t:'False',ok:q.a===false}];body=`<div class="opts tf">${L.opts.map((o,k)=>`<button class="opt" data-k="${k}"><span class="k">${k+1}</span>${o.t}</button>`).join('')}</div>`}
+else if(q.t==='spot'){body=`<div class="spot">${q.c.map((c,k)=>`<button class="spw${c.n?' n':''}" data-sp="${k}">${esc(c.t)}</button>`).join(' ')}</div><button class="opt allok" data-sp="-1">${I.check}All correct</button>`}
+else if(L.numMc){L.opts=numChoices(q);body=`<div class="opts">${L.opts.map((o,k)=>`<button class="opt" data-k="${k}"><span class="k">${k+1}</span>${esc(o.t)}</button>`).join('')}</div>`}
 else if(q.t==='num'){body=`<div class="num"><input id="ni" inputmode="decimal" autocomplete="off" placeholder="Your answer" aria-label="Your answer"><span>${esc(q.u)}</span></div>`}
 else if(q.t==='build'){L.bank=shuf(q.a.concat(q.d).map((t,k)=>({t,k})));L.fill=q.a.map(()=>null);body=`<div class="sentence" id="sen"></div><div class="bank" id="bank"></div>`}
 else{L.left=shuf(q.p.map((p,k)=>({t:p[0],k})));L.right=shuf(q.p.map((p,k)=>({t:p[1],k})));L.matched=0;L.pick=null;
 body=`<div class="mgrid"><div class="col">${L.left.map(o=>`<button class="opt" data-s="l" data-k="${o.k}">${esc(o.t)}</button>`).join('')}</div><div class="col">${L.right.map(o=>`<button class="opt" data-s="r" data-k="${o.k}">${esc(o.t)}</button>`).join('')}</div></div>`}
-app.innerHTML=`<div class="ls" style="${tv(L.quiz!==undefined?L.quiz:L.practice?QU[q.id]:LES[L.idx].ui)}"><div class="lt2"><button class="x" id="q" aria-label="Quit lesson">${I.cross}</button><div class="prog${L.combo>=3?' hot':''}" id="pg">${L.combo>=3?`<div class="combo">${L.combo} in a row</div>`:''}<i style="width:${Math.max(4,Math.round((L.final?L.total-L.queue.length:L.right)/L.total*100))}%"></i></div>${L.practice?`<div class="stat bo">${I.bolt}</div>`:`<div class="stat ht lhearts" id="hh">${I.heart}${S.hearts}</div>`}</div>
-<div class="lb qin"><div class="kind">${kind}${L.again?'<span class="tag">Previous mistake</span>':''}</div><div class="ask"><div class="mas" id="mas">${mascot(L.again?'think':'idle')}</div><div class="say"><h2>${q.t==='build'?'Complete the sentence':esc(q.q)}</h2></div></div>${q.art?`<div class="fig2">${diagram(q.art)}</div>`:''}${body}</div>
+app.innerHTML=`<div class="ls" style="${tv(L.quiz!==undefined?L.quiz:L.practice?(QU[q.id]??q._ui??0):LES[L.idx].ui)}"><div class="lt2"><button class="x" id="q" aria-label="Quit lesson">${I.cross}</button><div class="prog${L.combo>=3?' hot':''}" id="pg">${L.combo>=3?`<div class="combo">${L.combo} in a row</div>`:''}<i style="width:${Math.max(4,Math.round((L.final?L.total-L.queue.length:L.right)/L.total*100))}%"></i></div>${L.practice?`<div class="stat bo">${I.bolt}</div>`:`<div class="stat ht lhearts" id="hh">${I.heart}${easy()?'∞':S.hearts}</div>`}</div>
+<div class="lb qin"><div class="kind">${kind}${L.again?'<span class="tag">Previous mistake</span>':''}${easy()&&q.t!=='tf'&&!q.cmp?`<button class="hintb" id="hint">${BULB}Hint</button>`:''}</div><div class="ask"><div class="mas" id="mas">${mascot(L.again?'think':'idle')}</div><div class="say"><h2>${q.t==='build'?'Complete the sentence':q.t==='spot'?'One figure might be wrong. Tap it, or tap All correct.':esc(q.q)}</h2>${q.t==='spot'&&q.from?`<small class="spfrom">From: ${esc(q.from)}</small>`:''}</div></div>${q.art?`<div class="fig2">${diagram(q.art)}</div>`:''}${body}</div>
 <div class="foot" id="ft"><div class="in">${q.t==='match'?'<div class="hint">Tap one on the left, then its match on the right</div>':'<button class="btn" id="ck" disabled>Check</button>'}</div></div></div>`;
 $('#q').onclick=quit;
-if(q.t==='mc'||q.t==='tf'){app.querySelectorAll('.opt').forEach(b=>b.onclick=()=>pickOpt(+b.dataset.k));$('#ck').onclick=checkChoice}
+if(q.t==='mc'||q.t==='tf'||L.numMc){app.querySelectorAll('.opt').forEach(b=>b.onclick=()=>pickOpt(+b.dataset.k));$('#ck').onclick=checkChoice}
 else if(q.t==='num'){const ni=$('#ni');ni.oninput=()=>$('#ck').disabled=!ni.value.trim();$('#ck').onclick=checkNum;setTimeout(()=>ni.focus(),60)}
 else if(q.t==='build'){drawBuild();$('#ck').onclick=checkBuild}
-else app.querySelectorAll('.opt').forEach(b=>b.onclick=()=>tapMatch(b))}
+else if(q.t==='spot'){app.querySelectorAll('[data-sp]').forEach(b=>b.onclick=()=>pickSpot(+b.dataset.sp));$('#ck').onclick=checkSpot}
+else app.querySelectorAll('.opt').forEach(b=>b.onclick=()=>tapMatch(b));
+const hb=$('#hint');if(hb)hb.onclick=useHint}
 
-function pickOpt(k){if(L.locked)return;SFX.tap();app.querySelectorAll('.opt').forEach(x=>x.classList.remove('sel'));app.querySelector(`.opt[data-k="${k}"]`).classList.add('sel');L.sel=k;$('#ck').disabled=false}
+function pickOpt(k){if(L.locked)return;if(app.querySelector(`.opt[data-k="${k}"]`).classList.contains('out'))return;SFX.tap();app.querySelectorAll('.opt').forEach(x=>x.classList.remove('sel'));app.querySelector(`.opt[data-k="${k}"]`).classList.add('sel');L.sel=k;$('#ck').disabled=false}
 function drawBuild(){const q=L.cur;let k=0;$('#sen').innerHTML=esc(q.q).replace(/___/g,()=>{const i=k++,f=L.fill[i];return`<span class="slot">${f?`<button class="tile" data-f="${i}">${esc(f.t)}</button>`:''}</span>`});
 $('#bank').innerHTML=L.bank.map((b,i)=>L.fill.includes(b)?`<span class="ghostt">${esc(b.t)}</span>`:`<button class="tile" data-b="${i}">${esc(b.t)}</button>`).join('');
 app.querySelectorAll('[data-b]').forEach(t=>t.onclick=()=>{if(L.locked)return;const s=L.fill.indexOf(null);if(s<0)return;SFX.tap();L.fill[s]=L.bank[+t.dataset.b];drawBuild()});
 app.querySelectorAll('[data-f]').forEach(t=>t.onclick=()=>{if(L.locked)return;SFX.tap();L.fill[+t.dataset.f]=null;drawBuild()});
 $('#ck').disabled=L.fill.includes(null)}
-function checkChoice(){const ok=L.opts[L.sel].ok;app.querySelectorAll('.opt').forEach((b,k)=>{if(L.opts[k].ok&&ok)b.classList.add('good');else if(k===L.sel&&!ok)b.classList.add('wrong')});verdict(ok,L.opts.find(o=>o.ok).t)}
+function checkChoice(){if(L.sel===null)return;const ok=L.opts[L.sel].ok;app.querySelectorAll('.opt').forEach((b,k)=>{if(L.opts[k].ok&&ok)b.classList.add('good');else if(k===L.sel&&!ok)b.classList.add('wrong')});verdict(ok,L.opts.find(o=>o.ok).t)}
 function checkNum(){const q=L.cur,raw=$('#ni').value.trim().toLowerCase().replace(/,/g,'').replace(/[^\d.\-]/g,'');const ok=q.a.some(a=>a===raw||(raw!==''&&parseFloat(a)===parseFloat(raw)));$('#ni').readOnly=true;verdict(ok,q.a[0]+' '+q.u)}
 function checkBuild(){const q=L.cur,got=L.fill.map(f=>f.t);const ok=q.any?got.slice().sort().join('|')===q.a.slice().sort().join('|'):got.join('|')===q.a.join('|');let k=0;verdict(ok,q.q.replace(/___/g,()=>q.a[k++]))}
 function tapMatch(b){if(L.locked)return;const side=b.dataset.s,k=+b.dataset.k;
@@ -813,21 +912,23 @@ if(side==='l'){SFX.tap();app.querySelectorAll('.opt[data-s=l]').forEach(x=>x.cla
 if(L.pick===null){b.classList.add('shake');setTimeout(()=>b.classList.remove('shake'),350);return}
 const lb=app.querySelector(`.opt[data-s=l][data-k="${L.pick}"]`);
 if(k===L.pick){SFX.good();lb.classList.remove('sel');[lb,b].forEach(x=>{x.classList.add('good');setTimeout(()=>{x.classList.remove('good');x.classList.add('gone')},380)});L.pick=null;
-if(++L.matched===L.cur.p.length)setTimeout(()=>verdict(true,''),450)}
-else{SFX.bad();buzz(40);b.classList.add('wrong','shake');setTimeout(()=>b.classList.remove('wrong','shake'),450)}}
+if(++L.matched===L.cur.p.length)setTimeout(()=>{const q=L.cur,mixed=[...new Set(L.mWrong)];if(!mixed.length)return verdict(true,'');
+ (L.mix=L.mix||new Map()).set(q,new Set(mixed));verdict(false,mixed.map(i=>q.p[i][0]+' = '+q.p[i][1]).join(' · '))},450)}
+else{SFX.bad();buzz(40);L.mWrong.push(L.pick);b.classList.add('wrong','shake');setTimeout(()=>b.classList.remove('wrong','shake'),450)}}
 
-function verdict(ok,answer){L.locked=true;const q=L.cur,qi=L.queue.shift();
-if(ok){L.right++;L.combo++;L.best=Math.max(L.best,L.combo);if(L.practice)delete S.mistakes[q.id];if(q.t!=='match')SFX.good();if([3,5,8,12].includes(L.combo))burst(L.combo)}
-else{L.wrong++;L.combo=0;L.missed.add(qi);if(QBY[q.id])S.mistakes[q.id]=1;if(!L.final)L.queue.push(qi);SFX.bad();buzz([60,40,60]);
-if(!L.practice){S.hearts=Math.max(0,S.hearts-1);const hh=$('#hh');if(hh){hh.innerHTML=I.heart+S.hearts;hh.classList.add('hit')}}save()}
+function verdict(ok,answer){L.locked=true;{const hb=$('#hint');if(hb)hb.disabled=true}const q=L.cur,qi=L.queue.shift();
+const quick=Date.now()-(L.tAsk||0)<2000&&q.t!=='match';L.fast=quick?(L.fast||0)+1:0;const nudge=L.fast>=3;if(nudge)L.fast=0;
+if(ok){L.right++;if(!L.again){L.combo++;L.best=Math.max(L.best,L.combo);if([3,5,8,12].includes(L.combo))burst(L.combo)}if(L.review&&!L.again){delete S.mistakes[q.id];delete S.mxq[q.id]}if(q.t!=='match')SFX.good()}
+else{L.wrong++;L.combo=0;L.missed.add(qi);saveMistake(q);if(!L.final)L.queue.push(qi);SFX.bad();buzz([60,40,60]);
+if(!L.practice&&!easy()){S.hearts=Math.max(0,S.hearts-1);const hh=$('#hh');if(hh){hh.innerHTML=I.heart+S.hearts;hh.classList.add('hit')}}save()}
 const pg=$('#pg');pg.querySelector('i').style.width=Math.max(4,Math.round((L.final?L.total-L.queue.length:L.right)/L.total*100))+'%';pg.classList.toggle('hot',L.combo>=3);
 const old=pg.querySelector('.combo');if(old)old.remove();if(L.combo>=3)pg.insertAdjacentHTML('afterbegin',`<div class="combo">${L.combo} in a row</div>`);
 app.querySelectorAll('.opt,.tile').forEach(b=>b.disabled=true);
-const praise=ok?(L.combo>=5?'On fire!':L.combo>=3?'Amazing!':['Nice!','Spot on!','Correct!','Great job!','Brilliant!'][Math.random()*5|0]):'Not quite';
+const praise=ok?(L.combo>=5?'On fire!':L.combo>=3?'Amazing!':['Nice!','Spot on!','Correct!','Great job!','Brilliant!'][Math.random()*5|0]):q.t==='match'?'Got there, with some mix-ups':'Not quite';
 const ms=$('#mas');if(ms){ms.innerHTML=mascot(ok?'happy':'sad');ms.className='mas '+(ok?'hop':'shake')}
 const ft=$('#ft');ft.className='foot '+(ok?'ok':'no');
-ft.innerHTML=`<div class="in"><div class="vrow"><div class="vic">${ok?I.check:I.cross}</div><div class="verdict">${praise}</div></div>${!ok&&answer?`<p>Correct answer: <span class="ans">${esc(answer)}</span></p>`:''}${q.x?`<p>${esc(q.x)}</p>`:''}${q.r?`<div class="ref">${esc(q.r)}${(q.doc||(docsOf(QU[q.id])[0]||{}).url)?` · <a href="${esc(q.doc||docsOf(QU[q.id])[0].url)}" target="_blank" rel="noopener">read it on GOV.UK ${ARROW}</a>`:''}</div>`:''}<button class="btn" id="nx">Continue</button></div>`;
-const out=!ok&&!L.practice&&S.hearts<=0;$('#nx').onclick=()=>{L.locked=false;SFX.tap();out?outHearts():ask()};$('#nx').focus({preventScroll:true})}
+ft.innerHTML=`<div class="in"><div class="vrow"><div class="vic">${ok?I.check:I.cross}</div><div class="verdict">${praise}</div></div>${!ok&&answer?`<p>${q.t==='match'?'You mixed up':'Correct answer'}: <span class="ans">${esc(answer)}</span></p>`:''}${q.x?`<p>${esc(q.x)}</p>`:''}${q.why?`<p class="why"><b>Why it matters:</b> ${esc(q.why)}</p>`:''}${q.r?`<div class="ref">${esc(q.r)}${(q.doc||(docsOf(QU[q.id])[0]||{}).url)?` · <a href="${esc(q.doc||docsOf(QU[q.id])[0].url)}" target="_blank" rel="noopener">read it on GOV.UK ${ARROW}</a>`:''}</div>`:''}${nudge?`<p class="nudge">${BULB}Whoa, that was quick! Slow down and read each one properly, it sticks better.</p>`:''}<button class="btn" id="nx">Continue</button></div>`;
+const out=!ok&&!L.practice&&!easy()&&S.hearts<=0;$('#nx').onclick=()=>{L.locked=false;SFX.tap();out?outHearts():ask()};$('#nx').focus({preventScroll:true})}
 
 function burst(n){const b=document.createElement('div');b.className='burst';b.innerHTML=`${I.fire}<b>${n} in a row!</b>`;document.body.appendChild(b);if(n>=5)SFX.fire();setTimeout(()=>b.remove(),1500)}
 function quit(){sheet(`<div style="text-align:center"><div class="big" style="width:110px;height:110px">${mascot('sad')}</div><h2>Wait, don’t go!</h2><p class="small">You’ll lose your progress in this lesson if you quit now.</p><button class="btn" data-close>Keep learning</button><button class="btn ghost" id="qq" style="color:var(--bad)">End session</button></div>`,(v,close)=>{v.querySelector('#qq').onclick=()=>{close();const b=L&&L.back;L=null;view=b||'learn';render()}})}
@@ -844,7 +945,7 @@ function collate(){const by={};L.qs.forEach((q,qi)=>{const k=q._l>=0?q._l:-1,b=b
 const rows=Object.values(by).sort((a,b)=>a.ok/a.n-b.ok/b.n||b.n-a.n);return{ui:L.quiz,score:L.total-L.missed.size,total:L.total,rows}}
 const secName=li=>{if(li<0)return'Unit introduction';const l=LES[li];return l.meta?l.meta.name:'Lesson '+(l.li+1)};
 const secSub=li=>{if(li<0)return'The unit overview';const l=LES[li];return l.meta?l.meta.sec.split(' · ')[0]:UNITS[l.ui].name};
-function missLine(q){let a;if(q.t==='build'){let k=0;a=q.q.replace(/___/g,()=>q.a[k++])}else if(q.t==='mc')a=q.o[0];else if(q.t==='num')a=fmtNum(q.a[0],q.u);else if(q.t==='tf')a=/^Answer: /.test(q.x||'')?(q.a?'True':'False')+' — '+q.x.slice(8).split('. ')[0]:(q.a?'True':'False');else a='';
+function missLine(q){if(q.t==='spot')return`<div class="fmiss"><b>${esc(q.fix)}</b>${q.r?`<span>${esc(q.r)}</span>`:''}</div>`;let a;if(q.t==='build'){let k=0;a=q.q.replace(/___/g,()=>q.a[k++])}else if(q.t==='mc')a=q.o[0];else if(q.t==='num')a=fmtNum(q.a[0],q.u);else if(q.t==='tf')a=/^Answer: /.test(q.x||'')?(q.a?'True':'False')+' — '+q.x.slice(8).split('. ')[0]:(q.a?'True':'False');else a='';
 return`<div class="fmiss">${q.t!=='build'?`<p>${esc(q.q)}</p>`:''}<b>${esc(a)}</b>${q.r?`<span>${esc(q.r)}</span>`:''}</div>`}
 function finalScreen(f,xp){SFX.done();if(f.score>=8)confetti();const u=UNITS[f.ui],weak=f.rows.filter(r=>r.miss.length),strong=f.rows.filter(r=>!r.miss.length);
 const msg=f.score===f.total?'Flawless. You know this unit inside out.':f.score>=8?'Strong result. Just a couple of things to polish.':f.score>=5?'Good base. Revise the sections below, then try again.':'This unit needs another read. Start with the sections below.';
@@ -857,15 +958,21 @@ countUp($('#c1'),xp);scrollTo(0,0);
 const leave=fn=>{L=null;view='learn';fn()};
 app.querySelectorAll('[data-frd]').forEach(b=>b.onclick=()=>{SFX.tap();const li=+b.dataset.frd;leave(()=>li>=0&&LES[li].meta?lessonDeck(li):deck(f.ui,-1))});
 app.querySelectorAll('[data-fqz]').forEach(b=>b.onclick=()=>{const li=+b.dataset.fqz;leave(()=>li>=0?secQuiz(li):unitQuiz(f.ui))})}
-function done(xp,acc,secs,perfect){SFX.done();confetti();const qz=L.quiz!==undefined,u=qz?UNITS[L.quiz]:L.practice?null:UNITS[LES[L.idx].ui],first=L.total-L.missed.size;
+function done(xp,acc,secs,perfect){SFX.done();confetti();const missed=[...L.missed].sort((a,b)=>a-b).map(i=>L.qs[i]).filter(Boolean),qz=L.quiz!==undefined,u=qz?UNITS[L.quiz]:L.practice?null:UNITS[LES[L.idx].ui],first=L.total-L.missed.size;
 app.innerHTML=`<div class="end" style="${tv(qz?L.quiz:L.practice?0:LES[L.idx].ui)}"><div class="grow"><div class="big">${mascot('cheer')}</div><h1>${qz?(perfect?'Perfect quiz!':'Quiz complete!'):L.practice?'Practice complete!':perfect?'Perfect lesson!':'Lesson complete!'}</h1><p>${qz?esc(u.name+(L.sec>=0&&LES[L.sec].meta?' · '+LES[L.sec].meta.name:''))+` · ${first} of ${L.total} right first time.`+(perfect?' +5 bonus XP.':' Anything you missed is saved in Mistakes.'):L.practice?'Mistakes you got right are cleared, and you earned a heart back.':esc(u.name)+(perfect?(L.redo?' · nice refresher.':' · no mistakes, +5 bonus XP and 5 gems.'):' · anything you missed is saved in Mistakes.')}</p>
-<div class="tiles"><div class="st y"><span>Total XP</span><b data-p="+" id="c1">+0</b></div><div class="st g"><span>${acc===100?'Amazing':acc>=80?'Great':'Good'}</span><b data-s="%" id="c2">0%</b></div><div class="st b"><span>Time</span><b>${Math.floor(secs/60)}:${String(secs%60).padStart(2,'0')}</b></div></div></div><button class="btn" id="nx2">Continue</button></div>`;
-countUp($('#c1'),xp);countUp($('#c2'),acc)}
+<div class="tiles"><div class="st y"><span>Total XP</span><b data-p="+" id="c1">+0</b></div><div class="st g"><span>${acc===100?'Amazing':acc>=80?'Great':'Good'}</span><b data-s="%" id="c2">0%</b></div><div class="st b"><span>Time</span><b>${Math.floor(secs/60)}:${String(secs%60).padStart(2,'0')}</b></div></div>${missed.length?`<div class="rev"><h2>What you got wrong <span>${missed.length}</span></h2><p class="small">Here are the right answers. You got ${missed.length===1?'it':'these'} right in the end, and ${missed.length===1?'it’s':'they’re'} saved in Mistakes to practise again.</p>${missed.map(reviewLine).join('')}<button class="btn ghost" id="rvp">${I.quiz}Practise ${missed.length===1?'it':'these'} again</button></div>`:''}</div><button class="btn" id="nx2">Continue</button></div>`;
+countUp($('#c1'),xp);countUp($('#c2'),acc);
+const rv=$('#rvp');if(rv)rv.onclick=()=>{SFX.tap();begin(missed.slice(),{practice:true,review:true});scrollTo(0,0)}}
+function reviewLine(q){if(q.t==='spot')return`<div class="rline"><p class="rq">Spot the mistake</p><div class="ra">${I.check}<span>${esc(q.fix)}</span></div><p class="rx">${q.wrong>=0?`It said ${esc(q.w)}. It should be ${esc(q.a)}.`:'There was no mistake in this one.'}</p>${q.r?`<span class="rr">${esc(q.r)}</span>`:''}</div>`;let a='',extra='';
+ if(q.t==='build'){let k=0;a=q.q.replace(/___/g,()=>q.a[k++])}else if(q.t==='mc')a=q.o[0];else if(q.t==='num')a=fmtNum(q.a[0],q.u);else if(q.t==='tf')a=q.a?'True':'False';
+ else if(q.t==='match'){const mx=(L&&L.mix&&L.mix.get(q))||new Set();extra=`<ul class="rpairs">${q.p.map((p,i)=>`<li${mx.has(i)?' class="mx"':''}><b>${esc(p[0])}</b>${esc(p[1])}${mx.has(i)?'<em>mixed up</em>':''}</li>`).join('')}</ul>`}
+ const x=String(q.x||'').replace(/^Answer: /,'');
+ return`<div class="rline">${q.t!=='build'?`<p class="rq">${esc(q.q)}</p>`:''}${a?`<div class="ra">${I.check}<span>${esc(a)}</span></div>`:''}${extra}${x&&q.t!=='build'?`<p class="rx">${esc(x)}</p>`:''}${q.r?`<span class="rr">${esc(q.r)}</span>`:''}</div>`}
 function streakScreen(){SFX.fire();const s=streak();const wk=[...Array(7)].map((_,k)=>{const d=new Date();d.setDate(d.getDate()-6+k);return{l:'MTWTFSS'[(d.getDay()+6)%7],on:!!S.hist[dstr(d)]}});
 app.innerHTML=`<div class="end"><div class="grow"><div class="big">${I.flameBig}<b>${s}</b></div><h1 class="fire">${s} day streak!</h1><p>${s===1?'You’ve started a streak. Do a lesson every day to keep it going.':'You’re on a roll. Come back tomorrow to keep it alive.'}</p>
 <div class="week">${wk.map(d=>`<div><i class="${d.on?'on':''}">${d.on?I.fire:''}</i>${d.l}</div>`).join('')}</div></div><button class="btn" id="nx2" style="background:var(--fire);box-shadow:0 4px 0 #b86200">Continue</button></div>`}
 function questScreen(q){SFX.gem();confetti();app.innerHTML=`<div class="end"><div class="grow"><div class="big">${I.chestOpen}</div><h1 class="gemh">Quest complete!</h1><p>${esc(q.name)} — you earned 10 gems. Gems refill your hearts.</p><div class="stat gm" style="justify-content:center;font-size:28px">${I.gem}${S.gems}</div></div><button class="btn gemb" id="nx2">Continue</button></div>`}
-function outHearts(){view='lesson';const mc=Object.keys(S.mistakes).filter(id=>QBY[id]).length;
+function outHearts(){view='lesson';const mc=Object.keys(S.mistakes).filter(id=>mistakeQ(id)).length;
 app.innerHTML=`<div class="end"><div class="grow"><div class="big">${mascot('sad')}</div><h1 class="badh">Out of hearts</h1><p>Hearts refill tomorrow. Spend gems to refill now, or practise your mistakes to earn one back.</p></div>
 <button class="btn gemb" id="rf2" ${S.gems>=REFILL?'':'disabled'}>Refill hearts · ${REFILL} gems (you have ${S.gems})</button><button class="btn" id="p" ${mc?'':'disabled'}>Practise mistakes</button><button class="btn ghost" id="h">Back to the course</button></div>`;
 $('#rf2').onclick=()=>{refill();view='learn';render()};$('#p').onclick=()=>practice(true);$('#h').onclick=()=>{view='learn';render()}}
@@ -882,6 +989,82 @@ if(view==='lesson'){if(DK){DK=null;view='learn';render();return true}if(document
 if(view==='library'&&fromSearch){searchView();scrollTo(0,0);return true}
 if(view!=='learn'){view='learn';render();scrollTo(0,0);return true}return false};
 
+
+
+/* ---------- plain-English intros for each Part (reviewed by Joseph, Nov 2026) ---------- */
+const PLAIN={
+'?':['The Building Regulations are the minimum rules for building work in England. They’re split into Parts, each named by a letter, and each Part covers one topic, like fire, stairs or energy.','So every new building, extension or big alteration is safe, healthy, usable and not wasteful, whoever builds it. Each Part has an Approved Document showing one accepted way to meet its rules, and building control checks the work.','Any extension, loft conversion or new build. If you’ve ever heard “you’ll need building regs approval for that”, this is what it means.'],
+A:['Buildings must stand up. Walls, floors, roofs and foundations have to carry their own weight, people and furniture, wind and snow, safely down into the ground.','So buildings don’t crack, sag or collapse. In 1968 one corner of Ronan Point, a tower block in east London, collapsed after a gas explosion. That’s why there’s also a rule that one failure mustn’t bring down far more of the building than it should.','Steel beams when a wall is knocked through, foundations being dug, roof timbers in a loft.'],
+B:['If there’s a fire, people must be warned, get out safely, and the fire must be slowed down long enough for that to happen. Firefighters also need to be able to get in and do their job.','Fire spreads fast and smoke kills quickly. The Grenfell Tower fire in 2017 led to many of the most recent changes.','Smoke alarms, fire doors that close by themselves, fire exit signs, escape stairs in blocks of flats, and windows big enough to climb out of.'],
+C:['Keep water and harmful ground gases out of the building, and deal with any contaminated land before building on it.','Damp makes buildings rot and makes people ill. Some areas also have radon, a natural radioactive gas from the ground that can build up indoors.','The damp-proof course line near the bottom of a brick wall, plastic sheeting under a new floor, and mould on cold walls when it goes wrong.'],
+D:['The shortest Part. Insulation foam pumped into cavity walls must not give off toxic fumes into the home.','Some foams can release formaldehyde, an irritating gas, into the rooms if they’re installed in the wrong kind of wall.','The small drilled holes, filled in afterwards, in the outside walls of houses that have had cavity wall insulation added.'],
+E:['Stop noise travelling between neighbours, and between rooms inside a home. It also covers good acoustics in schools.','Hearing your neighbour’s TV or footsteps through the wall or ceiling is miserable, especially in flats and semi-detached homes.','The party wall between two semis, the floor between flats, and the sound tests done on new homes before people move in.'],
+F:['Get fresh air in and stale, damp air out, without needing to leave windows wide open.','Cooking, showers and breathing all add moisture and pollutants to the air. Without ventilation you get condensation, mould and poor air.','Extractor fans in kitchens and bathrooms, and the thin trickle vents along the top of window frames.'],
+G:['Homes need a safe water supply, hot water that won’t scald you, toilets and washbasins, and fittings that don’t waste water.','Very hot water can badly burn people, especially children and older people. Large hot water cylinders also need safety devices so they can’t overheat or burst.','The temperature limiter on a new bath tap, dual-flush toilets, and the pipes and valves around a hot water cylinder.'],
+H:['Take dirty water and sewage away safely, deal with rainwater, and give bins a sensible place to live.','Leaking or blocked drains spread disease and smells, and rainwater with nowhere to go floods buildings.','Manhole covers in a driveway, gutters and downpipes, septic tanks on rural houses, and bin stores outside flats.'],
+J:['Anything that burns fuel, like a boiler, a wood burner or an open fire, must get enough air, send its fumes safely outside, and not set the building alight.','Badly fitted appliances can leak carbon monoxide, a gas you can’t see or smell that can kill. Hot flues and stoves can also start fires.','The boiler flue poking out of an outside wall, carbon monoxide alarms, the stone or tile hearth under a stove, and oil tanks in gardens.'],
+K:['Stop people falling, tripping, and walking into things: stairs, ramps, balconies, glass doors and windows.','Falls are one of the most common causes of injury at home. Small details like step size, handrail height and gaps in railings make a big difference.','Handrails on stairs, balcony railings, safety glass in doors, the stickers or dots on big glass doors so people don’t walk into them, and barriers at the edge of car parks.'],
+L:['Use less energy to heat and power buildings, and produce less carbon while doing it.','Buildings use a big share of the country’s energy. Better insulation and cleaner heating cut bills and emissions, and the targets get tougher every few years.','Loft insulation, double and triple glazing, heat pumps and solar panels, and the energy calculations done for every new home.'],
+M:['Buildings should work for everyone, including wheelchair users, older people, and parents with buggies.','A single step or a narrow door can stop someone getting into a building at all. Some new homes are also built so they can be adapted as people’s needs change.','Ramps and level entrances, wide doors, accessible toilets with grab rails, and light switches and sockets at easy-to-reach heights.'],
+O:['New homes mustn’t get uncomfortably hot in summer. That means limiting how much sun comes in and making sure heat can get out.','Well-insulated new homes, especially flats with lots of glass, can trap heat and become too hot to sleep in. Hotter summers make it worse.','Fewer or smaller windows on sunny sides of new flats, windows that open wide enough to cool a room, and external shading.'],
+P:['Electrical work in homes must be done safely, and bigger jobs must be checked or certified.','Faulty wiring causes electric shocks and fires.','The fuse box (consumer unit), and the certificate an electrician gives you after a rewire or a new circuit.'],
+Q:['Doors and windows in new homes must be hard to break into.','Most burglaries happen through doors and windows, so they have to be made and fitted to a tested, secure standard.','Multi-point locks on front doors, and window and door frames tested against forced entry.'],
+R:['New homes must be ready for very fast (gigabit) broadband, and connected to it where that’s possible at reasonable cost.','Fast internet is now basic infrastructure, and it’s much easier and cheaper to plan it in than to dig it in later.','Ducts for fibre cables, and the box on the wall where the fibre enters the home.'],
+S:['New buildings with parking, and some major renovations, need electric vehicle charge points or the cabling for them.','To make it easy to switch to electric cars as the country moves away from petrol and diesel.','A charge point by the driveway of a new house, and charging bays in new car parks.'],
+T:['Added in 2024, Part T covers toilets in new non-residential buildings like offices, shops and restaurants. It includes separate toilets for men and women, and self-contained “universal” toilets anyone can use.','To make sure there are enough toilets, and toilets that suit everyone, in new public and work buildings.','Fully enclosed single toilet rooms with their own washbasin in new cafés and offices.'],
+'7':['Use suitable materials, and fit them properly. For taller residential buildings, the outside walls mustn’t contain combustible materials.','Even a good design fails if the materials are wrong or badly fitted. The ban on combustible materials in the outside walls of taller blocks came in after the Grenfell Tower fire.','The cladding and insulation on new tall blocks of flats, and product certificates on building sites.'],
+HR:['Tall residential buildings, at least 18 metres or 7 storeys with at least two homes, get a much stricter approval process with the Building Safety Regulator as building control.','The Grenfell Tower fire showed serious failings in how tall buildings were designed, built and checked. The Building Safety Act 2022 introduced checkpoints, called gateways, before building work can start and before people can move in.','New tall blocks of flats, and the news about the time new high-rise projects now take to get approved.']};
+/* "Why it matters" lines for key facts, matched by question wording. More to come for B, K and M. */
+const WHY=[[/^Maximum pitch of a private stair\?/,'Steeper than that and stairs get hard to come down safely, especially carrying something.'],
+ [/^Guarding height for an external balcony on a house\?/,'Higher outside, because a fall from a balcony is usually further and worse.'],
+ [/^Guarding height on an internal landing in a house\?/,'Higher outside, because a fall from a balcony is usually further and worse.'],
+ [/^Emergency escape window: minimum unobstructed openable area/,'Big enough for an adult to climb out if smoke blocks the stairs.'],
+ [/^Escape window: minimum clear height and width/,'Big enough for an adult to climb out if smoke blocks the stairs.'],
+ [/^Escape window: the bottom of the openable area/,'Low enough to climb over in a hurry, in the dark, in smoke.'],
+ [/^An accessible threshold is no more than/,'Small enough for a wheelchair or a buggy to roll over without a ramp.'],
+ [/^M4\(3\): diameter of the turning circle/,'About the space a wheelchair needs to turn all the way round.'],
+ [/^M4\(3\): turning circle in the bathroom/,'About the space a wheelchair needs to turn all the way round.']];
+LES.forEach(l=>l.qs.forEach(q=>{const w=WHY.find(([r])=>r.test(q.q));if(w)q.why=w[1]}));
+/* Beginners get one small link instead of the big GOV.UK buttons. */
+function govBlock(list){list=list.filter(Boolean);if(!list.length)return'';if(easy())return`<p class="govsmall"><a href="${esc(list[0].url)}" target="_blank" rel="noopener">Read the official document ${ARROW}</a></p>`;return`<div class="govs">${list.map(d=>govLink(d)).join('')}</div>`}
+/* ---------- Start here: a big, obvious first step for newcomers until The Parts is done ---------- */
+function startHere(){const ls=LES.filter(l=>l.ui===0),dn=ls.filter(l=>S.done[l.key]).length,begun=S.read[0]||dn>0;
+ return`<button class="starthere" data-sh style="${tv(0)}"><span class="shm">${mascot('happy')}</span><span class="sht"><small>${begun?'Carry on where you left off':'New here? Start here'}</small><b>${esc(UNITS[0].name)}</b><em>${begun?`${dn} of ${ls.length} lessons done.`:'A quick tour of what each Part of the Building Regulations covers. About 5 minutes.'}</em></span><span class="shgo">${begun?'Continue':'Start'}</span></button>`}
+document.addEventListener('click',e=>{const b=e.target.closest&&e.target.closest('[data-sh]');if(!b)return;SFX.tap();openPop=-1;
+ const first=LES.findIndex(l=>l.ui===0),next=LES.findIndex(l=>l.ui===0&&!S.done[l.key]);if(!S.read[0])deck(0,S.done[LES[first].key]?-1:first);else if(next>=0)startQuiz(next)});
+/* ---------- Mistakes: keep every wrong answer, including generated quiz questions ---------- */
+function saveMistake(q){if(!q||!q.id)return;S.mistakes[q.id]=1;if(!QBY[q.id]||q.t!==QBY[q.id].t||q.q!==QBY[q.id].q){const c=Object.assign({},q);delete c._l;
+ c._ui=L.quiz!==undefined?L.quiz:L.idx>=0&&LES[L.idx]?LES[L.idx].ui:QU[q.id];S.mxq[q.id]=c;const ks=Object.keys(S.mxq);if(ks.length>80)ks.slice(0,ks.length-80).forEach(k=>{delete S.mxq[k];if(!QBY[k])delete S.mistakes[k]})}}
+/* ---------- Beginner mode helpers ---------- */
+const BULB='<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 18h6M10 21h4"/><path d="M12 3a6 6 0 0 0-3.6 10.8c.6.5 1 1.2 1 2V16h5.2v-.2c0-.8.4-1.5 1-2A6 6 0 0 0 12 3z"/></svg>';
+/* Four figures to pick from: the right one plus believable neighbours, preferring real figures
+   from the same Part with the same unit, then rounded variations of the right answer. */
+function numChoices(q){const v=parseFloat(q.a[0]),dec=(String(q.a[0]).split('.')[1]||'').length,step=dec?Math.pow(10,-dec):v>=1000&&v%100===0?100:v>=100&&v%10===0?10:v>=10&&v%5===0?5:1;
+ const nice=x=>{const r=Math.round(x/step)*step;return+r.toFixed(dec)},seen=new Set([v]),pick=[];
+ const add=x=>{if(!(x>0)||seen.has(x)||x/v>3||v/x>3)return;seen.add(x);pick.push(x)};
+ const ui=L.quiz!==undefined?L.quiz:L.practice?QU[q.id]:LES[L.idx]?LES[L.idx].ui:undefined;
+ const pool=LES.filter(l=>ui===undefined||l.ui===ui).flatMap(l=>l.qs).filter(o=>o.t==='num'&&o.u===q.u).map(o=>parseFloat(o.a[0]));
+ shuf(pool).forEach(x=>pick.length<2&&add(x));
+ shuf([.5,.75,.8,1.2,1.25,1.5,2,.9,1.1,.6,1.4]).forEach(r=>pick.length<3&&add(nice(v*r)));
+ for(let k=1;pick.length<3&&k<20;k++){add(nice(v+k*step));add(nice(v-k*step))}
+ return shuf([{t:fmtNum(q.a[0],q.u),ok:true},...pick.slice(0,3).map(x=>({t:fmtNum(String(x),q.u),ok:false}))])}
+/* Hint: takes away a wrong option, places the next right tile, or makes one pair. */
+function useHint(){if(L.locked)return;const q=L.cur,hb=$('#hint');SFX.tap();L.hints=(L.hints||0)+1;
+ if(q.t==='mc'||L.numMc){const left=[...app.querySelectorAll('.opt[data-k]')].filter(b=>!b.classList.contains('out'));const wrong=left.filter(b=>!L.opts[+b.dataset.k].ok);
+  if(left.length<=2||!wrong.length){toast('Down to two. You’ve got this!');hb.disabled=true;return}
+  const b=wrong[Math.floor(Math.random()*wrong.length)];b.classList.add('out');b.disabled=true;b.classList.remove('sel');if(L.sel===+b.dataset.k){L.sel=null;$('#ck').disabled=true}
+  if(left.length-1<=2)hb.disabled=true;return}
+ if(q.t==='spot'){app.querySelectorAll('.spw:not(.n)').forEach(b=>{b.classList.add('out');b.classList.remove('sel');if(L.sel===+b.dataset.sp){L.sel=null;$('#ck').disabled=true}});hb.disabled=true;toast('Only the figures are left to check');return}
+ if(q.t==='build'){const i=L.fill.findIndex((f,k)=>!f||f.t!==q.a[k]);if(i<0)return;const t=L.bank.find(b=>b.t===q.a[i]&&L.fill.indexOf(b)<0)||L.bank.find(b=>b.t===q.a[i]);if(!t)return;
+  const was=L.fill.indexOf(t);if(was>=0)L.fill[was]=null;L.fill[i]=t;drawBuild();if(!L.fill.some((f,k)=>!f||f.t!==q.a[k]))hb.disabled=true;return}
+ if(q.t==='match'){const l=[...app.querySelectorAll('.opt[data-s=l]')].find(b=>!b.classList.contains('good')&&!b.classList.contains('gone'));if(!l)return;
+  const r=app.querySelector(`.opt[data-s=r][data-k="${l.dataset.k}"]`);tapMatch(l);if(r)tapMatch(r)}}
+/* First open: ask how much they already know. */
+function welcome(){view='welcome';app.innerHTML=`<div class="end wel"><div class="grow"><div class="big">${mascot('happy')}</div><h1>Welcome!</h1><p>How well do you know the Building Regulations already?</p>
+<button class="lvl" data-lv="new"><b>I’m new to this</b><span>Gentle mode: you never lose hearts, figures are multiple choice, and there’s a hint button when you’re stuck.</span></button>
+<button class="lvl" data-lv="std"><b>I know my way around</b><span>Standard mode: hearts, typed figures and no hints. A proper test.</span></button>
+<p class="small" style="margin-top:14px">You can change this any time in Profile.</p></div></div>`;
+ app.querySelectorAll('[data-lv]').forEach(b=>b.onclick=()=>{SFX.tap();S.level=b.dataset.lv;save();view='learn';render();scrollTo(0,0);if(S.level==='new')toast('Beginner mode on. Take your time!')})}
 /* ---------- casual search ----------
    Type roughly what you're after ("how high does a banister need to be", "fire dor").
    Everyday words map to regs terms, typos are forgiven, metres and millimetres are treated
