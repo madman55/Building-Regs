@@ -1,0 +1,30 @@
+{
+  "id": "/Building-Regs/lab/",
+  "name": "Building Regs Lab",
+  "short_name": "Regs Lab",
+  "description": "Experimental copy of Building Regs Trainer, for trying new ways to learn and work with the England Approved Documents.",
+  "start_url": "./",
+  "scope": "./",
+  "display": "standalone",
+  "orientation": "portrait",
+  "background_color": "#ffffff",
+  "theme_color": "#ffffff",
+  "icons": [
+    {
+      "src": "icon-192.png",
+      "sizes": "192x192",
+      "type": "image/png"
+    },
+    {
+      "src": "icon-512.png",
+      "sizes": "512x512",
+      "type": "image/png"
+    },
+    {
+      "src": "maskable-512.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "maskable"
+    }
+  ]
+}
