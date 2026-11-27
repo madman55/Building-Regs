@@ -22,6 +22,7 @@ Every experiment has its own on/off switch in `features.js`, shown on the Profil
 - `index.html`, `art.js`, `data.js`: the app (same structure as the original).
 - `features.js`: experiment switches, and the `reportTo` address for problem reports.
 - `lab-reference.js`: Phase 1 reference upgrades (labels, document status, saved items, report links).
+- `lab-learn.js` and `lab-hunts.js`: Regulation Hunter, "Where would you check?" questions and the confidence check.
 - `adk.json`, `adb1.json`, `adb2.json` and the three PDFs: the official text packs and documents.
 - `sw.js`: offline support. It only ever touches caches whose names start with `regs-lab-`.
 - `tools/`: how the document packs are built, plus the tests. See `tools/README.md`.

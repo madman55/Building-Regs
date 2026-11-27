@@ -2,6 +2,18 @@
 
 Why things are the way they are. Newest first.
 
+## 2026-11-27 · Phases 2 and 3 built together, ahead of the plan
+
+In the Lab, the quizzes looked identical to the original's, so the Lab didn't feel different. The hunts, the question rework and the confidence check were built together so the difference shows from the first lesson.
+
+## 2026-11-27 · "Where would you check?" is generated, not hand-written
+
+Figure questions whose lesson reference resolves to an exact table, diagram or paragraph are turned into "which of these holds the figure?" questions. Generating them from the verified references avoids writing 100+ new questions by hand, where each would be a chance for error. The safeguards on wrong options are in `reframe()` in `lab-learn.js`. Roughly a third stay as figure questions, so the confidence check has something to work on.
+
+## 2026-11-27 · Hunts are marked by the block picked
+
+Typed answers can't be marked reliably offline. Picking the paragraph, table or diagram can be marked exactly, and it's the skill being taught. Accepted and near-miss references are checked by `tools/check_refs.js`, so a document update can't silently break a hunt.
+
 ## 2026-11-26 · Lab modules reach the app through `window.APPX`
 
 The main app script is wrapped in a block, so its variables aren't visible to other files. `index.html` exposes a small read-only bridge, `window.APPX` (documents, the viewer state, and helpers such as `sheet`, `openOfficial` and `esc`). Lab modules use only that. Hooks in `index.html` call modules through `RF()`, which returns nothing when the switch is off.

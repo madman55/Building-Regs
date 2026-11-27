@@ -1,6 +1,8 @@
 ()=>{window.__K=window.__K||{};const K=window.__K,$=s=>document.querySelector(s),A=s=>[...document.querySelectorAll(s)];
  const qt=()=>(($('.say h2')||{}).textContent||'')+'|'+(($('#sen')||{}).textContent||'').replace(/\s+/g,' ').slice(0,40);
  if(!$('.ls'))return 'left';
+ if($('.cb')){$('.cb[data-c="sure"]').click();return 'confidence'}
+ if($('.hqcard')){window.LAB&&LAB.on&&0;return 'hunt'}
  const foot=A('.foot .btn').pop();
  if(foot&&foot.id!=='ck'&&!foot.disabled&&foot.offsetParent){const m=document.body.innerText.match(/Correct answer: ([^\n]+)/);if(m&&window.__q)K[window.__q]=m[1].trim();foot.click();return 'continue'}
  window.__q=qt();const ans=K[window.__q];

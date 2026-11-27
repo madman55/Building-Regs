@@ -2,6 +2,25 @@
 
 Newest first.
 
+## Lab 0.3 · 27 November 2026 · Phases 2 and 3: learning to look things up
+
+Three new switches, all on by default (Profile → Lab experiments). Code in `lab-learn.js`, hunts in `lab-hunts.js`.
+
+- **Regulation Hunter** (`hunter`). 15 hunts: 8 from AD K and 7 from AD B Vol 1. Each is a real question answered by finding the right paragraph, table or diagram with the app's own search, then tapping **This answers it**.
+  - Marked by the block picked. A near miss says "close" rather than giving the answer. After three misses the answer is shown and opened.
+  - Then a follow-up question that's answered by reading the found text. Every answer is quoted from the document.
+  - XP: 10 for a first-time find (6 after misses, 2 if shown), plus 3 for opening the page and 3 for the follow-up. No timer. A missed hunt never costs a heart.
+  - One hunt is slotted into each AD K lesson and each AD B Volume 1 lesson until all are found. There's also a Regulation Hunter card on Learn, with a list of all 15.
+- **Where would you check?** (`reframe`). 64 of the 159 type-the-figure questions now ask which table, diagram or paragraph holds the figure. The figure is then shown, with its source and a link that opens it. About a third of eligible questions stay as figure questions on purpose.
+  - Wrong options come from the same document and never contain the answer figure, refer to the answer, or sit on the same page.
+- **Confidence check** (`confidence`). On about one question in three outside Beginner mode, Check first asks: Sure / Think so / Not sure: check.
+  - "Check" opens the documents with the question already searched. A wrong answer after checking costs no heart.
+  - Sure and wrong gets a "This is why we check" note.
+  - Profile shows how often you're right when you say you're sure, and how often you stopped to check.
+- `tools/check_refs.js` now also checks every hunt answer and near-miss reference (all resolve).
+- New gate test `tools/tests/learn_lab.py`. The offline cache is now `regs-lab-v3`.
+- **Not yet independently reviewed:** the 15 hunts and their follow-up answers.
+
 ## Lab 0.2 · 26 November 2026 · Phase 1: reference foundations
 
 Switch: **Reference upgrades** (on by default; Profile → Lab experiments). Code in `lab-reference.js`.
