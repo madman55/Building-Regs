@@ -46,6 +46,17 @@ for (const { q, where } of qs) {
     if (!ok) bad.push(`${where}: "${q.r}": page ${p[1]} is not in ${D.short}`);
   }
 }
+// Regulation Hunter answers: every accept/near reference must resolve in its document.
+try { require(path.join(APP, 'lab-hunts.js')); } catch (e) {}
+for (const h of window.LAB_HUNTS || []) {
+  const D = byCode[h.doc];
+  if (!D) { bad.push(`hunt ${h.id}: document ${h.doc} not in the app`); continue; }
+  for (const [kind, refs] of [['accept', h.accept], ['near', h.near || []]]) for (const r of refs) {
+    const w = wants(r);
+    if (!w || !find(D, w)) bad.push(`hunt ${h.id}: ${kind} "${r}" not found in ${D.short}`);
+  }
+}
+console.log(`${(window.LAB_HUNTS || []).length} hunts checked.`);
 console.log(`${qs.length} questions with references; ${inApp} point at documents in the app.`);
 console.log(`${exact} open the exact table, diagram, paragraph or requirement; ${pageOnly} open a page; ${inApp - exact - pageOnly - bad.length} name the document only.`);
 if (bad.length) { console.log(`\n${bad.length} don't resolve:`); bad.forEach(b => console.log('  ' + b)); process.exit(1); }

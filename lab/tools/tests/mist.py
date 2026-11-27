@@ -20,7 +20,7 @@ with sync_playwright() as p:
     print('quiz done | wrong first time:',missed,'| streak banners seen:',sorted(combos))
     for _ in range(12):
         if pg.locator('#nx2').count():pg.click('#nx2');pg.wait_for_timeout(300)
-    pg.evaluate("[...document.querySelectorAll('.tab')].find(t=>/Learn/.test(t.textContent)).click()");pg.wait_for_timeout(300)
+    pg.wait_for_selector('.tab', timeout=15000);pg.evaluate("[...document.querySelectorAll('.tab')].find(t=>/Learn/.test(t.textContent)).click()");pg.wait_for_timeout(300)
     mt=pg.locator('button',has_text='MISTAKES').first.inner_text() if pg.locator('button',has_text='MISTAKES').count() else pg.locator('button',has_text='Mistakes').first.inner_text()
     print('Mistakes button now:',mt.replace('\n',' '))
     # practise mistakes, answering correctly (step.js remembers answers)
@@ -30,6 +30,6 @@ with sync_playwright() as p:
         if r=='left' or pg.locator('.ls').count()==0:break
     for _ in range(12):
         if pg.locator('#nx2').count():pg.click('#nx2');pg.wait_for_timeout(300)
-    pg.evaluate("[...document.querySelectorAll('.tab')].find(t=>/Learn/.test(t.textContent)).click()");pg.wait_for_timeout(300)
+    pg.wait_for_selector('.tab', timeout=15000);pg.evaluate("[...document.querySelectorAll('.tab')].find(t=>/Learn/.test(t.textContent)).click()");pg.wait_for_timeout(300)
     print('after practising them:',pg.locator('button',has_text='istakes').first.inner_text().replace('\n',' '))
     print('errors',errs);b.close()

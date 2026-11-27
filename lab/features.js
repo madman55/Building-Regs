@@ -8,8 +8,9 @@ window.LAB = (function () {
   const KEY = 'regs-lab-features';
   const LIST = [
     { id: 'reference', name: 'Reference upgrades', about: 'Saved items, document status, content labels, report a problem', phase: 1, ready: true, dflt: true },
-    { id: 'hunter', name: 'Regulation Hunter', about: 'Find the paragraph that answers a real question', phase: 2, ready: false },
-    { id: 'confidence', name: 'Confidence check', about: 'Say how sure you are; checking never costs a heart', phase: 3, ready: false },
+    { id: 'hunter', name: 'Regulation Hunter', about: 'Find the paragraph that answers a real question', phase: 2, ready: true, dflt: true },
+    { id: 'reframe', name: 'Where would you check?', about: 'Most type-the-figure questions ask where the figure lives instead', phase: 3, ready: true, dflt: true },
+    { id: 'confidence', name: 'Confidence check', about: 'Say how sure you are; checking never costs a heart', phase: 3, ready: true, dflt: true },
     { id: 'cases', name: 'Case files', about: 'Short fictional projects to investigate', phase: 4, ready: false }
   ];
   let st = {};
