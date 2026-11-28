@@ -5,9 +5,9 @@
    (skipped if the phone is in data saver mode), or the first time one is opened. Then they work offline.
    Fonts and the meaning-search engine (cdn.jsdelivr.net): saved after first download.
    GOV.UK update check: always live, never cached. */
-const CACHE = 'regs-lab-v3';
-const APP = ['./', 'index.html', 'features.js', 'lab-reference.js', 'lab-hunts.js', 'lab-learn.js', 'data.js', 'art.js', 'manifest.json', 'icon-192.png', 'icon-512.png', 'maskable-512.png', 'apple-touch-icon.png'];
-const OFFICIAL = ['adk.json', 'adb1.json', 'adb2.json', 'pdfjs.js', 'pdfjs-worker.js'];
+const CACHE = 'regs-lab-v4';
+const APP = ['./', 'index.html', 'features.js', 'lab-reference.js', 'lab-hunts.js', 'lab-learn.js', 'lab-lessons.js', 'data.js', 'art.js', 'manifest.json', 'icon-192.png', 'icon-512.png', 'maskable-512.png', 'apple-touch-icon.png'];
+const OFFICIAL = ['lessons/index.json', 'lessons/regs-101.json', 'lessons/k-stairs-1.json', 'adk.json', 'adb1.json', 'adb2.json', 'pdfjs.js', 'pdfjs-worker.js'];
 const PDFS = ['Approved_Document_K.pdf', 'AD_B1_2026.pdf', 'AD_B2_2026.pdf'];
 const SAVE_AFTER_FIRST_USE = ['fonts.googleapis.com', 'fonts.gstatic.com', 'cdn.jsdelivr.net'];
 

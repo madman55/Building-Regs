@@ -18,7 +18,7 @@ Use this when GOV.UK publishes a new version of an Approved Document.
 3. Check nothing is missing: `python3 check.py raw.json OUT.pdf FIRST_PAGE LAST_PAGE`. It reports gaps in paragraph numbering, plus any diagram or table captions in the PDF that weren't extracted.
 4. Update the document's details (edition, PDF name, GOV.UK links) in `documents.json`.
 5. Build the pack the app loads: `python3 build_pack.py raw.json B1 ..`
-6. From the Lab folder, run `node tools/check_refs.js` (every lesson reference and every hunt answer must still resolve), run the tests, then bump the cache name in `../sw.js` (for example `regs-lab-v2` to `regs-lab-v3`) so phones pick up the change.
+6. From the Lab folder, run `node tools/check_refs.js` (every lesson reference, hunt answer, and lesson quote or find must still resolve; it also reports lessons whose quoted wording changed. After editing a lesson's quotes, run it with `--sign`), run the tests, then bump the cache name in `../sw.js` (for example `regs-lab-v2` to `regs-lab-v3`) so phones pick up the change.
 
 `extract_adk_2013.py` is the older single-purpose script used for AD K (2013).
 
@@ -30,6 +30,7 @@ Run them from the Lab folder with `APP_DIR=. python3 tools/tests/<name>.py`.
 
 | Test | Checks |
 | --- | --- |
+| `lessons.py` | T1 gate: both lessons played start to finish (labels, taps, sort, experiment, quotes, finds, XP), the status page, preview mode, and the switch |
 | `learn_lab.py` | Phase 2–3 gate: a hunt played properly and one missed (no heart lost), "Where would you check?" and confidence checks in a lesson, the checking path, Profile stats, and the switches turning them off |
 | `reference.py` | Phase 1 gate: labels and edition on every result, status sheet, saved items, report links, lesson references, and the switch turning it off |
 | `side_by_side.py` | Phase 0 gate: the original and the Lab on one address stay independent. Set `SITE_DIR` to a folder with the original in `Building-Regs/` and the Lab in `Building-Regs/lab/` |

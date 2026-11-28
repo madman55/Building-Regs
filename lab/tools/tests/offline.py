@@ -10,7 +10,7 @@ with sync_playwright() as p:
     pg.goto('http://localhost:8773/');pg.wait_for_timeout(400)
     print('sw:',pg.evaluate("navigator.serviceWorker.register('sw.js').then(()=>navigator.serviceWorker.ready).then(()=>'ok')"))
     pg.wait_for_timeout(2500);pg.evaluate("navigator.serviceWorker.ready.then(r=>r.active.postMessage('keep-docs'))");pg.wait_for_timeout(5000)
-    print('saved:',pg.evaluate("caches.open('regs-lab-v3').then(c=>c.keys()).then(k=>k.map(r=>r.url.split('/').pop()).filter(n=>/pdf|json/.test(n)).sort().join(' '))"))
+    print('saved:',pg.evaluate("caches.open('regs-lab-v4').then(c=>c.keys()).then(k=>k.map(r=>r.url.split('/').pop()).filter(n=>/pdf|json/.test(n)).sort().join(' '))"))
     pg.reload();pg.wait_for_timeout(800)
     ctx.set_offline(True);pg.reload();pg.wait_for_timeout(1000)
     pg.evaluate("document.getElementById('splash')&&document.getElementById('splash').click()");pg.wait_for_timeout(500)

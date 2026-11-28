@@ -1,0 +1,185 @@
+{
+  "id": "k-stairs-1",
+  "title": "Understanding staircases",
+  "level": "beginner",
+  "minutes": 7,
+  "parts": [
+    "K"
+  ],
+  "elements": [
+    "stairs"
+  ],
+  "prereqs": [
+    "regs-101"
+  ],
+  "objectives": [
+    "Name the parts of a stair: rise, going, nosing, pitch, headroom",
+    "Explain how rise and going change a stair's steepness and length",
+    "Read AD K Table 1.1, including its notes"
+  ],
+  "status": {
+    "state": "draft",
+    "note": "Needs independent review, especially the explanation of rhythm and stride."
+  },
+  "revisions": [
+    "2026-11-28: first draft"
+  ],
+  "rewards": {
+    "xp": 25
+  },
+  "related": {
+    "hunts": [
+      "k-loft-headroom",
+      "k-rise-going"
+    ],
+    "unit": "K"
+  },
+  "steps": [
+    {
+      "type": "intro",
+      "text": [
+        "A stair that's too steep, or has uneven steps, is easy to fall on. Part K is about getting a stair's geometry right. First the words, then an experiment, then the real guidance."
+      ]
+    },
+    {
+      "type": "tap",
+      "title": "The parts of a stair",
+      "art": "stair-section",
+      "min": 6,
+      "prompt": "Tap each part of the drawing, or the words below, to see what it's called.",
+      "terms": {
+        "rise": [
+          "Rise",
+          "The height from one tread to the next."
+        ],
+        "going": [
+          "Going",
+          "The depth of a tread from front to back, less any overlap with the tread above."
+        ],
+        "tread": [
+          "Tread",
+          "The top surface of a step, where your foot goes."
+        ],
+        "riser": [
+          "Riser",
+          "The upright face between two treads. Some stairs leave it open."
+        ],
+        "nosing": [
+          "Nosing",
+          "The front edge of a tread."
+        ],
+        "pitchline": [
+          "Pitch line",
+          "An imaginary line joining the nosings."
+        ],
+        "pitch": [
+          "Pitch",
+          "The angle between the pitch line and the horizontal: how steep the stair is."
+        ],
+        "headroom": [
+          "Headroom",
+          "The clear height above the stair, measured up from the pitch line."
+        ],
+        "handrail": [
+          "Handrail",
+          "The rail you hold for support, running alongside the pitch line."
+        ]
+      }
+    },
+    {
+      "type": "predict",
+      "q": "Keep the same floor-to-floor height and make each step taller. What happens to the stair?",
+      "o": [
+        "It gets steeper and takes up less floor",
+        "It gets shallower and takes up more floor",
+        "Only the number of steps changes"
+      ],
+      "a": 0,
+      "why": "Taller steps mean fewer of them, so the stair climbs faster and needs less length on plan. Try it next."
+    },
+    {
+      "type": "sim",
+      "name": "stair",
+      "title": "Try it",
+      "floor": 2600,
+      "rise": 200,
+      "going": 240,
+      "text": [
+        "Change the rise and watch the angle and the length on plan. Then try a deeper going. Notice the height is always split into equal risers."
+      ]
+    },
+    {
+      "type": "explain",
+      "title": "Why every step is the same",
+      "text": [
+        "Your feet learn a stair's rhythm in the first few steps. If one step is different, your next footfall lands in the wrong place, and that's how trips happen. That's why the height is split equally over every riser.",
+        "Twice the rise plus the going is a rule of thumb for a comfortable stride: as you climb, each step moves you up and forward. Too small feels choppy; too big and you overstretch. The guidance gives a range for it."
+      ]
+    },
+    {
+      "type": "quote",
+      "title": "The real guidance",
+      "ref": "AD K, Table 1.1",
+      "before": [
+        "This is the official guidance on rise and going. Read the columns, then the notes underneath."
+      ],
+      "after": [
+        "The notes matter: some limits, like the maximum pitch for a private stair, are in the notes, not the main table."
+      ]
+    },
+    {
+      "type": "check",
+      "qs": [
+        {
+          "q": "Your experiment stair has a 220mm rise and a 220mm going. Where would you check whether that's acceptable for a stair inside a house?",
+          "o": [
+            "AD K Table 1.1, including its notes",
+            "AD K Diagram 1.4",
+            "AD B Volume 1, paragraph 2.5",
+            "Building control's website"
+          ],
+          "a": 0,
+          "why": "Table 1.1 gives limits on rise and going for each kind of stair, and its notes add more. Diagram 1.4 is about loft headroom; AD B is about fire."
+        },
+        {
+          "q": "A 220mm rise and 220mm going works out at a pitch of 45°. Both figures sit within the table's columns. What should you do?",
+          "o": [
+            "Read note 1 under Table 1.1: it sets a maximum pitch for a private stair",
+            "Nothing: both numbers are within the ranges",
+            "Add a second handrail",
+            "Ask the planning department"
+          ],
+          "a": 0,
+          "why": "Note 1 sets a maximum pitch of 42° for a private stair, so this stair needs changing even though each number on its own sits within the table. The notes change the answer."
+        }
+      ]
+    },
+    {
+      "type": "find",
+      "hunt": "k-loft-headroom",
+      "heading": "Now a real hunt"
+    },
+    {
+      "type": "end",
+      "points": [
+        "Rise, going, nosing, pitch and headroom",
+        "Taller steps make a stair steeper and shorter on plan",
+        "Equal risers, because your feet expect a rhythm",
+        "Always read a table's notes"
+      ],
+      "next": [
+        {
+          "label": "Part K lessons",
+          "unit": "K"
+        },
+        {
+          "label": "More Regulation Hunter",
+          "hunts": true
+        }
+      ]
+    }
+  ],
+  "sigs": {
+    "AD K, Table 1.1": "1lebdsw"
+  }
+}

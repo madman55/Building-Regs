@@ -57,6 +57,35 @@ for (const h of window.LAB_HUNTS || []) {
   }
 }
 console.log(`${(window.LAB_HUNTS || []).length} hunts checked.`);
+// Lessons: every quote and find must resolve; --sign stores a fingerprint of each quoted text so the app can
+// flag "Needs re-review" if a document update changes the wording.
+const sig = t => { let h = 5381; for (let i = 0; i < t.length; i++) h = (h * 33 + t.charCodeAt(i)) | 0; return (h >>> 0).toString(36); };
+const SIGN = process.argv.includes('--sign');
+const resolveRef = r => { const D = refDoc(r), w = wants(r || ''); return D && w ? find(D, w) : null; };
+const lessonDir = path.join(APP, 'lessons');
+let lessonCount = 0;
+if (fs.existsSync(path.join(lessonDir, 'index.json'))) {
+  const idx = JSON.parse(fs.readFileSync(path.join(lessonDir, 'index.json'), 'utf8'));
+  for (const item of idx.lessons) {
+    const file = path.join(lessonDir, item.id + '.json');
+    if (!fs.existsSync(file)) { bad.push(`lesson ${item.id}: file missing`); continue; }
+    const L = JSON.parse(fs.readFileSync(file, 'utf8')); lessonCount++;
+    const quoted = {};
+    L.steps.forEach((st, i) => {
+      if (st.type === 'quote') { const b = resolveRef(st.ref); if (!b) bad.push(`lesson ${L.id} step ${i + 1}: quote "${st.ref}" not found`); else quoted[st.ref] = sig(b.text); }
+      if (st.type === 'find') {
+        if (st.hunt) { if (!(window.LAB_HUNTS || []).some(h => h.id === st.hunt)) bad.push(`lesson ${L.id} step ${i + 1}: hunt "${st.hunt}" doesn't exist`); }
+        else { const D = byCode[st.doc]; if (!D) bad.push(`lesson ${L.id} step ${i + 1}: document ${st.doc} not in the app`);
+          else (st.accept || []).concat(st.near || []).forEach(r => { const w = wants(r); if (!w || !find(D, w)) bad.push(`lesson ${L.id} step ${i + 1}: find "${r}" not found in ${D.short}`); }); }
+      }
+    });
+    const changed = Object.entries(L.sigs || {}).filter(([r, s0]) => quoted[r] !== s0).map(([r]) => r);
+    if (SIGN) { L.sigs = quoted; fs.writeFileSync(file, JSON.stringify(L, null, 2) + '\n'); console.log(`signed ${L.id}: ${Object.keys(quoted).length} quotes`); }
+    else if (changed.length) console.log(`NEEDS RE-REVIEW ${L.id}: quoted wording changed for ${changed.join(', ')}`);
+    else if (!L.sigs) console.log(`note: ${L.id} isn't signed yet (run with --sign)`);
+  }
+}
+console.log(`${lessonCount} lessons checked.`);
 console.log(`${qs.length} questions with references; ${inApp} point at documents in the app.`);
 console.log(`${exact} open the exact table, diagram, paragraph or requirement; ${pageOnly} open a page; ${inApp - exact - pageOnly - bad.length} name the document only.`);
 if (bad.length) { console.log(`\n${bad.length} don't resolve:`); bad.forEach(b => console.log('  ' + b)); process.exit(1); }

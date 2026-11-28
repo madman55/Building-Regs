@@ -1,0 +1,200 @@
+{
+  "id": "regs-101",
+  "title": "Understanding the Building Regulations",
+  "level": "beginner",
+  "minutes": 6,
+  "parts": [
+    "all"
+  ],
+  "elements": [],
+  "prereqs": [],
+  "objectives": [
+    "Tell the law apart from the guidance",
+    "Say who checks building work, and who's responsible for it",
+    "Explain why the newest document isn't always the one that applies"
+  ],
+  "status": {
+    "state": "draft",
+    "note": "Needs independent review, especially the steps on who checks and who's responsible."
+  },
+  "revisions": [
+    "2026-11-28: first draft"
+  ],
+  "rewards": {
+    "xp": 20
+  },
+  "related": {
+    "lessons": [
+      "k-stairs-1"
+    ]
+  },
+  "steps": [
+    {
+      "type": "intro",
+      "text": [
+        "Every building you'll work on has to meet the Building Regulations. In the next six minutes: what they actually are, how they fit together, and why you always check the source."
+      ]
+    },
+    {
+      "type": "explain",
+      "title": "Four layers",
+      "art": "regs-stack",
+      "text": [
+        "The Building Act gives the government the power to make building rules. The Building Regulations are those rules: the requirements, and they are the law.",
+        "The requirements say what must be achieved, such as 'safe' or 'reasonable', not exactly how. The Approved Documents show one way of meeting them, and often refer to standards for the detail."
+      ]
+    },
+    {
+      "type": "quote",
+      "title": "The law says what. The guidance says how.",
+      "ref": "AD K, Requirement K1",
+      "before": [
+        "Here's a real requirement. Notice it has no numbers in it."
+      ]
+    },
+    {
+      "type": "quote",
+      "ref": "AD K, Table 1.1",
+      "before": [
+        "And here's the guidance that shows one way of meeting it, with the numbers."
+      ],
+      "after": [
+        "The requirement is the law. The table is statutory guidance: one way of showing the stair is safe."
+      ]
+    },
+    {
+      "type": "sort",
+      "title": "Law, guidance or planning?",
+      "prompt": "Where does each one belong?",
+      "buckets": [
+        "Law: a requirement",
+        "Statutory guidance",
+        "Planning"
+      ],
+      "items": [
+        {
+          "t": "Stairs must be safe for people moving between levels.",
+          "a": 0,
+          "why": "That's Requirement K1. It says what must be achieved, not how."
+        },
+        {
+          "t": "The limits on rise and going in AD K Table 1.1.",
+          "a": 1,
+          "why": "It's in an Approved Document: one way of meeting Requirement K1."
+        },
+        {
+          "t": "Whether a rear extension's design suits the street.",
+          "a": 2,
+          "why": "Appearance and the effect on the area are planning matters. The Building Regulations deal with how a building is built and how it performs."
+        },
+        {
+          "t": "There must be early warning of fire and a way to escape.",
+          "a": 0,
+          "why": "That's Requirement B1, in the regulations themselves."
+        },
+        {
+          "t": "The grade and category of smoke alarms in a new house.",
+          "a": 1,
+          "why": "They come from AD B Volume 1, paragraph 1.1: one way of meeting Requirement B1."
+        },
+        {
+          "t": "Whether a new house's height and materials fit a conservation area.",
+          "a": 2,
+          "why": "That's planning. It's still a separate approval from Building Regulations."
+        }
+      ]
+    },
+    {
+      "type": "check",
+      "qs": [
+        {
+          "q": "True or false: changing an office into flats can need both planning approval and Building Regulations approval.",
+          "o": [
+            "True",
+            "False"
+          ],
+          "a": 0,
+          "why": "True. They're separate systems, and one doesn't replace the other. A change of use like this brings in Building Regulations as well as planning."
+        },
+        {
+          "q": "True or false: if a design doesn't follow the Approved Document exactly, it's breaking the law.",
+          "o": [
+            "True",
+            "False"
+          ],
+          "a": 1,
+          "why": "False. The Approved Documents are one way of meeting the requirements; you can meet them another way, but you then have to show that it does. Under section 7 of the Building Act 1984, following the guidance can be relied on as tending to show compliance, and not following it as tending to show the opposite."
+        }
+      ]
+    },
+    {
+      "type": "explain",
+      "title": "Who checks, and who's responsible",
+      "text": [
+        "Building control checks that work meets the regulations. That's either the local authority or a registered building control approver. For certain tall residential buildings, the Building Safety Regulator does it.",
+        "Checking isn't the same as being responsible. The people who design and build the work are responsible for making it comply. That's why professionals check the source rather than trusting memory, or an app."
+      ]
+    },
+    {
+      "type": "explain",
+      "title": "The newest isn't always the one that applies",
+      "doc": "B1",
+      "action": "status",
+      "actionLabel": "Open AD B Volume 1's status page",
+      "text": [
+        "Approved Documents are amended over time, and each change has a date it takes effect. Projects already under way can sometimes keep using the earlier text: these are the transitional arrangements.",
+        "Open AD B's status page to see a real example: changes that take effect in 2029, and when the earlier text still applies."
+      ]
+    },
+    {
+      "type": "check",
+      "qs": [
+        {
+          "q": "A building notice for a new house goes in during August 2029, and work starts on site in September 2029. Which version of AD B applies?",
+          "o": [
+            "The 2029 text, because it's the newest",
+            "Always the earlier text",
+            "It depends: read the transitional arrangements"
+          ],
+          "a": 2,
+          "why": "The earlier text can still apply where the notice went in before 2 September 2029 and the work is sufficiently progressed within the time allowed. The newest document isn't automatically the one that applies."
+        }
+      ]
+    },
+    {
+      "type": "find",
+      "heading": "Now find a requirement yourself",
+      "doc": "B1",
+      "title": "Requirement B1",
+      "brief": "Find Requirement B1, the legal requirement for early warning of fire and means of escape, in AD B Volume 1.",
+      "accept": [
+        "Requirement B1"
+      ],
+      "near": [],
+      "hint": "Requirements come at the start of each Approved Document, in a box, before Section 1. Try searching for the words it uses: warning and escape."
+    },
+    {
+      "type": "end",
+      "points": [
+        "Requirements are the law; Approved Documents are one way of meeting them",
+        "Planning and Building Regulations are separate approvals",
+        "Building control checks the work; designers and builders are responsible for it",
+        "Always check which edition applies"
+      ],
+      "next": [
+        {
+          "label": "Next lesson: Understanding staircases",
+          "lesson": "k-stairs-1"
+        },
+        {
+          "label": "Tour of the Parts",
+          "parts": true
+        }
+      ]
+    }
+  ],
+  "sigs": {
+    "AD K, Requirement K1": "7nuni7",
+    "AD K, Table 1.1": "1lebdsw"
+  }
+}
