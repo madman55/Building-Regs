@@ -1,8 +1,10 @@
 """Phase 0 gate: the original app and the Lab on one web address (as on GitHub Pages) stay independent.
 Serves SITE_DIR with the original at /Building-Regs/ and the Lab at /Building-Regs/lab/."""
-import os, threading, http.server, functools
+import os, re, threading, http.server, functools
 from playwright.sync_api import sync_playwright
 SITE = os.environ.get('SITE_DIR', '/tmp/site')
+CACHE = re.search(r"CACHE = '([^']+)'", open(os.path.join(SITE, 'Building-Regs', 'lab', 'sw.js')).read()).group(1)
+ORIG = re.search(r"CACHE = '([^']+)'", open(os.path.join(SITE, 'Building-Regs', 'sw.js')).read()).group(1)
 class Q(http.server.SimpleHTTPRequestHandler):
     def log_message(self, *a): pass
 srv = http.server.ThreadingHTTPServer(('127.0.0.1', 8780), functools.partial(Q, directory=SITE))
@@ -30,9 +32,9 @@ with sync_playwright() as p:
     start(pg, L, 'new')
     pg.goto(O); pg.wait_for_timeout(1200); pg.goto(L); pg.wait_for_timeout(1200)
     k = pg.evaluate(keys); print('   caches:', k)
-    check('both offline caches exist after both apps updated', 'regs-trainer-v6' in k and 'regs-lab-v4' in k)
-    check('original keeps its 3 PDFs', pg.evaluate(f"({pdfs})('regs-trainer-v6')") == 3)
-    check('Lab keeps its own 3 PDFs', pg.evaluate(f"({pdfs})('regs-lab-v4')") == 3)
+    check('both offline caches exist after both apps updated', ORIG in k and CACHE in k)
+    check('original keeps its 3 PDFs', pg.evaluate(f"({pdfs})('{ORIG}')") == 3)
+    check('Lab keeps its own 3 PDFs', pg.evaluate(f"({pdfs})('{CACHE}')") == 3)
     ls = pg.evaluate("Object.fromEntries(Object.keys(localStorage).map(k=>[k,localStorage.getItem(k)]))")
     check('separate progress records', 'regs-trainer-v1' in ls and 'regs-lab-v1' in ls, list(ls))
     check('original kept Standard level', '"level":"std"' in ls.get('regs-trainer-v1', ''))

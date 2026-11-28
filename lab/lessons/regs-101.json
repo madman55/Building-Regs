@@ -3,9 +3,7 @@
   "title": "Understanding the Building Regulations",
   "level": "beginner",
   "minutes": 6,
-  "parts": [
-    "all"
-  ],
+  "parts": ["all"],
   "elements": [],
   "prereqs": [],
   "objectives": [
@@ -17,16 +15,12 @@
     "state": "draft",
     "note": "Needs independent review, especially the steps on who checks and who's responsible."
   },
-  "revisions": [
-    "2026-11-28: first draft"
-  ],
+  "revisions": ["2026-11-28: first draft"],
   "rewards": {
     "xp": 20
   },
   "related": {
-    "lessons": [
-      "k-stairs-1"
-    ]
+    "lessons": ["k-stairs-1"]
   },
   "steps": [
     {
@@ -48,29 +42,19 @@
       "type": "quote",
       "title": "The law says what. The guidance says how.",
       "ref": "AD K, Requirement K1",
-      "before": [
-        "Here's a real requirement. Notice it has no numbers in it."
-      ]
+      "before": ["Here's a real requirement. Notice it has no numbers in it."]
     },
     {
       "type": "quote",
       "ref": "AD K, Table 1.1",
-      "before": [
-        "And here's the guidance that shows one way of meeting it, with the numbers."
-      ],
-      "after": [
-        "The requirement is the law. The table is statutory guidance: one way of showing the stair is safe."
-      ]
+      "before": ["And here's the guidance that shows one way of meeting it, with the numbers."],
+      "after": ["The requirement is the law. The table is statutory guidance: one way of showing the stair is safe."]
     },
     {
       "type": "sort",
       "title": "Law, guidance or planning?",
       "prompt": "Where does each one belong?",
-      "buckets": [
-        "Law: a requirement",
-        "Statutory guidance",
-        "Planning"
-      ],
+      "buckets": ["Law: a requirement", "Statutory guidance", "Planning"],
       "items": [
         {
           "t": "Stairs must be safe for people moving between levels.",
@@ -109,19 +93,13 @@
       "qs": [
         {
           "q": "True or false: changing an office into flats can need both planning approval and Building Regulations approval.",
-          "o": [
-            "True",
-            "False"
-          ],
+          "o": ["True", "False"],
           "a": 0,
           "why": "True. They're separate systems, and one doesn't replace the other. A change of use like this brings in Building Regulations as well as planning."
         },
         {
           "q": "True or false: if a design doesn't follow the Approved Document exactly, it's breaking the law.",
-          "o": [
-            "True",
-            "False"
-          ],
+          "o": ["True", "False"],
           "a": 1,
           "why": "False. The Approved Documents are one way of meeting the requirements; you can meet them another way, but you then have to show that it does. Under section 7 of the Building Act 1984, following the guidance can be relied on as tending to show compliance, and not following it as tending to show the opposite."
         }
@@ -167,9 +145,7 @@
       "doc": "B1",
       "title": "Requirement B1",
       "brief": "Find Requirement B1, the legal requirement for early warning of fire and means of escape, in AD B Volume 1.",
-      "accept": [
-        "Requirement B1"
-      ],
+      "accept": ["Requirement B1"],
       "near": [],
       "hint": "Requirements come at the start of each Approved Document, in a box, before Section 1. Try searching for the words it uses: warning and escape."
     },

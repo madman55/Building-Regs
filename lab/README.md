@@ -4,12 +4,12 @@ An experimental copy of **Building Regs Trainer**, for trying new ways to learn 
 
 The original app lives in the folder above this one and is not changed by anything here.
 
-| | Original | Lab |
-| --- | --- | --- |
-| Address | `madman55.github.io/Building-Regs/` | `madman55.github.io/Building-Regs/lab/` |
-| Name on the phone | Building Regs | Regs Lab (purple icon) |
-| Saved progress | `regs-trainer-v1` | `regs-lab-v1` |
-| Offline files | `regs-trainer-…` | `regs-lab-…` |
+|                   | Original                            | Lab                                     |
+| ----------------- | ----------------------------------- | --------------------------------------- |
+| Address           | `madman55.github.io/Building-Regs/` | `madman55.github.io/Building-Regs/lab/` |
+| Name on the phone | Building Regs                       | Regs Lab (purple icon)                  |
+| Saved progress    | `regs-trainer-v1`                   | `regs-lab-v1`                           |
+| Offline files     | `regs-trainer-…`                    | `regs-lab-…`                            |
 
 Both can be installed and used on the same phone. Progress is not shared.
 
@@ -17,9 +17,16 @@ Both can be installed and used on the same phone. Progress is not shared.
 
 Every experiment has its own on/off switch in `features.js`, shown on the Profile screen under **Lab experiments**. An experiment that is switched off changes nothing.
 
+## Working on the code
+
+- `index.html` is just the page shell. Styles are in `app.css`, and the app's code is in `js/`, split by area and loaded in order (see the comment at the top of each file).
+- Format with `npx prettier --write .`, lint with `npx eslint .`, and check references with `node tools/check_refs.js`.
+- Every pull request that touches `lab/` runs all of these plus the browser tests on GitHub (Actions tab).
+
 ## Files
 
-- `index.html`, `art.js`, `data.js`: the app (same structure as the original).
+- `index.html`, `app.css`, `js/*.js`: the app shell, styles and code.
+- `art.js`, `data.js`: drawings and lesson content (questions, facts).
 - `features.js`: experiment switches, and the `reportTo` address for problem reports.
 - `lab-reference.js`: Phase 1 reference upgrades (labels, document status, saved items, report links).
 - `lab-lessons.js` and `lessons/`: the lesson player and lesson files (see `lessons/README.md`).

@@ -2,6 +2,18 @@
 
 Why things are the way they are. Newest first.
 
+## 2026-11-28 · Split into ordered script files, not ES modules (yet)
+
+The main script was one block of about 230 top-level declarations sharing variables freely. Moving to ES modules with imports would mean untangling every cross-reference: a rewrite with real risk. Instead it's split by area into ordered classic scripts that share one global scope. That's readable and low-risk, and checked mechanically: a parser confirmed no file uses, at load time, something defined in a later file. ES modules can follow area by area if it's ever worth it.
+
+## 2026-11-28 · `window.APPX` stays, as the documented interface for Lab modules
+
+After the split, Lab modules could reach the app's variables directly. Going through `APPX` instead keeps a single, visible list of what experiments depend on, so the core can change without breaking them. What started as a workaround is kept deliberately.
+
+## 2026-11-28 · Automatic checks run on GitHub, not just in a chat session
+
+Formatting, lint, the reference checker and the browser tests run on every pull request through GitHub Actions. That's free for public repositories. Older quiz-driving tests (fmt, mist, match, quiz2) aren't in the automatic set: their answering helper is unreliable, in the old version too.
+
 ## 2026-11-28 · Teaching is built into the lesson path, driven by lesson files
 
 The app already taught before testing (the lesson deck), so a separate Teach section would have meant two half-built teaching systems. Lessons are JSON files played by one player. A new lesson is mostly writing, and new code is only needed for a new drawing or experiment. For T1, lessons open from a Learn card. In T3 they move in front of the matching section quizzes.
@@ -36,7 +48,7 @@ Testers will give feedback directly, so the "Report a problem" links are switche
 
 ## 2026-11-26 · Labels describe the source, not the accuracy
 
-*Law* and *Statutory guidance* mean the text is copied word for word from the Approved Document. They don't mean the app has checked that it applies to a project. *Explanation* marks anything written for the app.
+_Law_ and _Statutory guidance_ mean the text is copied word for word from the Approved Document. They don't mean the app has checked that it applies to a project. _Explanation_ marks anything written for the app.
 
 ## 2026-11-26 · Lab lives in a `lab/` folder of the existing repo
 

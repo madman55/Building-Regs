@@ -3,15 +3,9 @@
   "title": "Understanding staircases",
   "level": "beginner",
   "minutes": 7,
-  "parts": [
-    "K"
-  ],
-  "elements": [
-    "stairs"
-  ],
-  "prereqs": [
-    "regs-101"
-  ],
+  "parts": ["K"],
+  "elements": ["stairs"],
+  "prereqs": ["regs-101"],
   "objectives": [
     "Name the parts of a stair: rise, going, nosing, pitch, headroom",
     "Explain how rise and going change a stair's steepness and length",
@@ -21,17 +15,12 @@
     "state": "draft",
     "note": "Needs independent review, especially the explanation of rhythm and stride."
   },
-  "revisions": [
-    "2026-11-28: first draft"
-  ],
+  "revisions": ["2026-11-28: first draft"],
   "rewards": {
     "xp": 25
   },
   "related": {
-    "hunts": [
-      "k-loft-headroom",
-      "k-rise-going"
-    ],
+    "hunts": ["k-loft-headroom", "k-rise-going"],
     "unit": "K"
   },
   "steps": [
@@ -48,42 +37,15 @@
       "min": 6,
       "prompt": "Tap each part of the drawing, or the words below, to see what it's called.",
       "terms": {
-        "rise": [
-          "Rise",
-          "The height from one tread to the next."
-        ],
-        "going": [
-          "Going",
-          "The depth of a tread from front to back, less any overlap with the tread above."
-        ],
-        "tread": [
-          "Tread",
-          "The top surface of a step, where your foot goes."
-        ],
-        "riser": [
-          "Riser",
-          "The upright face between two treads. Some stairs leave it open."
-        ],
-        "nosing": [
-          "Nosing",
-          "The front edge of a tread."
-        ],
-        "pitchline": [
-          "Pitch line",
-          "An imaginary line joining the nosings."
-        ],
-        "pitch": [
-          "Pitch",
-          "The angle between the pitch line and the horizontal: how steep the stair is."
-        ],
-        "headroom": [
-          "Headroom",
-          "The clear height above the stair, measured up from the pitch line."
-        ],
-        "handrail": [
-          "Handrail",
-          "The rail you hold for support, running alongside the pitch line."
-        ]
+        "rise": ["Rise", "The height from one tread to the next."],
+        "going": ["Going", "The depth of a tread from front to back, less any overlap with the tread above."],
+        "tread": ["Tread", "The top surface of a step, where your foot goes."],
+        "riser": ["Riser", "The upright face between two treads. Some stairs leave it open."],
+        "nosing": ["Nosing", "The front edge of a tread."],
+        "pitchline": ["Pitch line", "An imaginary line joining the nosings."],
+        "pitch": ["Pitch", "The angle between the pitch line and the horizontal: how steep the stair is."],
+        "headroom": ["Headroom", "The clear height above the stair, measured up from the pitch line."],
+        "handrail": ["Handrail", "The rail you hold for support, running alongside the pitch line."]
       }
     },
     {
@@ -120,9 +82,7 @@
       "type": "quote",
       "title": "The real guidance",
       "ref": "AD K, Table 1.1",
-      "before": [
-        "This is the official guidance on rise and going. Read the columns, then the notes underneath."
-      ],
+      "before": ["This is the official guidance on rise and going. Read the columns, then the notes underneath."],
       "after": [
         "The notes matter: some limits, like the maximum pitch for a private stair, are in the notes, not the main table."
       ]

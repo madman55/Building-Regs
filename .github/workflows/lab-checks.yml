@@ -1,0 +1,51 @@
+# Building Regs Lab: checks that run on every pull request that touches lab/ (and on main after a merge).
+# The original app at the repo root isn't checked or changed by this workflow.
+name: Lab checks
+
+on:
+  pull_request:
+    paths: ['lab/**', '.github/workflows/lab-checks.yml']
+  push:
+    branches: [main]
+    paths: ['lab/**', '.github/workflows/lab-checks.yml']
+
+permissions:
+  contents: read
+
+jobs:
+  code:
+    name: Format, lint and references
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: lab
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+      - run: npm install --no-save --no-package-lock prettier@3.8.1 eslint@10.1.0
+      - name: Formatting (Prettier)
+        run: npx prettier --check .
+      - name: Lint (ESLint)
+        run: npx eslint .
+      - name: Every lesson, hunt and question reference still points at real text
+        run: node tools/check_refs.js
+
+  browser:
+    name: Browser tests
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - run: pip install playwright && python -m playwright install --with-deps chromium
+      - name: Serve the original and the Lab on one address, as GitHub Pages does
+        run: mkdir -p /tmp/site && ln -s "$GITHUB_WORKSPACE" /tmp/site/Building-Regs
+      - name: Gate and smoke tests
+        working-directory: lab
+        env:
+          APP_DIR: .
+          SITE_DIR: /tmp/site
+        run: python tools/tests/run_all.py

@@ -15,6 +15,7 @@ Use this when GOV.UK publishes a new version of an Approved Document.
    - `PREFIX` is a short ID prefix such as `b1_`.
 
    For AD B Vol 1 this was `13 183 D b1_`, and for Vol 2 `13 198 O b2_`.
+
 3. Check nothing is missing: `python3 check.py raw.json OUT.pdf FIRST_PAGE LAST_PAGE`. It reports gaps in paragraph numbering, plus any diagram or table captions in the PDF that weren't extracted.
 4. Update the document's details (edition, PDF name, GOV.UK links) in `documents.json`.
 5. Build the pack the app loads: `python3 build_pack.py raw.json B1 ..`
@@ -26,15 +27,17 @@ Use this when GOV.UK publishes a new version of an Approved Document.
 
 ## Tests
 
+`tools/tests/run_all.py` runs the reliable browser tests (gates plus offline, AD K and AD B) with one retry each. It's what GitHub Actions runs on every pull request.
+
 Run them from the Lab folder with `APP_DIR=. python3 tools/tests/<name>.py`.
 
-| Test | Checks |
-| --- | --- |
-| `lessons.py` | T1 gate: both lessons played start to finish (labels, taps, sort, experiment, quotes, finds, XP), the status page, preview mode, and the switch |
-| `learn_lab.py` | Phase 2–3 gate: a hunt played properly and one missed (no heart lost), "Where would you check?" and confidence checks in a lesson, the checking path, Profile stats, and the switches turning them off |
-| `reference.py` | Phase 1 gate: labels and edition on every result, status sheet, saved items, report links, lesson references, and the switch turning it off |
-| `side_by_side.py` | Phase 0 gate: the original and the Lab on one address stay independent. Set `SITE_DIR` to a folder with the original in `Building-Regs/` and the Lab in `Building-Regs/lab/` |
-| `adk.py`, `adb.py` | Official-text search results and the page viewer |
-| `offline.py` | Documents saved in the background; search and viewer work offline |
-| `fmt.py`, `quiz2.py`, `match.py`, `mist.py` | Question formats, quiz flow, matching, the Mistakes tracker |
-| `plain.py`, `why.py` | Plain-English intros and "why it matters" lines |
+| Test                                        | Checks                                                                                                                                                                                                 |
+| ------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
+| `lessons.py`                                | T1 gate: both lessons played start to finish (labels, taps, sort, experiment, quotes, finds, XP), the status page, preview mode, and the switch                                                        |
+| `learn_lab.py`                              | Phase 2–3 gate: a hunt played properly and one missed (no heart lost), "Where would you check?" and confidence checks in a lesson, the checking path, Profile stats, and the switches turning them off |
+| `reference.py`                              | Phase 1 gate: labels and edition on every result, status sheet, saved items, report links, lesson references, and the switch turning it off                                                            |
+| `side_by_side.py`                           | Phase 0 gate: the original and the Lab on one address stay independent. Set `SITE_DIR` to a folder with the original in `Building-Regs/` and the Lab in `Building-Regs/lab/`                           |
+| `adk.py`, `adb.py`                          | Official-text search results and the page viewer                                                                                                                                                       |
+| `offline.py`                                | Documents saved in the background; search and viewer work offline                                                                                                                                      |
+| `fmt.py`, `quiz2.py`, `match.py`, `mist.py` | Question formats, quiz flow, matching, the Mistakes tracker                                                                                                                                            |
+| `plain.py`, `why.py`                        | Plain-English intros and "why it matters" lines                                                                                                                                                        |

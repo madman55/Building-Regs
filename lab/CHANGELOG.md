@@ -2,6 +2,19 @@
 
 Newest first.
 
+## Lab 0.5 · 28 November 2026 · Tidy-up: readable code, linting and automatic checks
+
+There are no visible changes. Screenshots of nine screens (welcome, Learn, Library, Quests, Profile, a lesson deck, a quiz question, search results and the page viewer) match the previous version.
+
+- **Styles** moved out of `index.html` into `app.css`.
+- **The main script moved out of `index.html`** and split by area into `js/core.js`, `screens.js`, `quiz.js`, `beginner.js`, `search.js`, `official.js`, `semantic.js`, `search-ui.js` and `boot.js`. Before splitting, a parser check confirmed nothing runs before the file that defines it is loaded.
+- **Formatting:** all code and content is formatted with Prettier (`.prettierrc.json`). Vendored pdf.js and the generated document packs are left alone.
+- **Linting:** ESLint (`eslint.config.mjs`) checks for real mistakes such as undefined names, duplicate keys and unreachable code. It found a duplicate search synonym (`staircase`), now removed (no change in behaviour).
+- **GitHub Actions** (`.github/workflows/lab-checks.yml`) runs formatting, lint, `check_refs.js` and the browser tests on every pull request that touches `lab/`.
+- **`tools/tests/run_all.py`** runs the reliable browser tests with one retry each. The offline tests now read the cache name from `sw.js`, so they don't need editing at each bump.
+- **Fixed during the move:** the page viewer now loads pdf.js relative to the page, not the script's folder.
+- The offline cache is now `regs-lab-v5`, and lists the new files.
+
 ## Lab 0.4 · 28 November 2026 · Teaching T1: lesson player and two lessons
 
 New switch: **Lessons** (on by default). Player in `lab-lessons.js`, lessons in `lessons/`.
@@ -50,7 +63,7 @@ Three new switches, all on by default (Profile → Lab experiments). Code in `la
 
 Switch: **Reference upgrades** (on by default; Profile → Lab experiments). Code in `lab-reference.js`.
 
-- **Content labels** on every result: *Statutory guidance* for Approved Document text, *Law* for requirements, *Explanation* for lesson content. A "What do these labels mean?" sheet explains them, including section 7 of the Building Act 1984.
+- **Content labels** on every result: _Statutory guidance_ for Approved Document text, _Law_ for requirements, _Explanation_ for lesson content. A "What do these labels mean?" sheet explains them, including section 7 of the Building Act 1984.
 - **Edition on every official result** ("2019 ed., amended to 2026"), and in the viewer footer.
 - **Document status sheet** (the "i" button in the viewer, or tap a document on the search screen): edition, England only, latest changes, what's not yet in force, when earlier rules still apply, when this copy was made, and whether GOV.UK has changed the page since.
 - **Saved items**: the star in the viewer saves a paragraph, table, diagram or page. They're listed on the search screen. If the wording changes in a later update, the saved item is flagged "Moved or changed".

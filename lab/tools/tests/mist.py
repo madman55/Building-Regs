@@ -18,8 +18,11 @@ with sync_playwright() as p:
         if r=='left' or pg.locator('.ls').count()==0:break
     missed=pg.locator('.rline').count()
     print('quiz done | wrong first time:',missed,'| streak banners seen:',sorted(combos))
-    for _ in range(12):
-        if pg.locator('#nx2').count():pg.click('#nx2');pg.wait_for_timeout(300)
+    for _ in range(20):
+        if pg.locator('.tab').count():break
+        if pg.locator('#nx2').count():pg.click('#nx2')
+        elif pg.locator('.ls').count() and pg.locator('#q').count():print('   (a question was still open; left the lesson)');pg.click('#q');pg.wait_for_timeout(200);pg.locator('.sheet .btn').last.click() if pg.locator('.sheet .btn').count() else None
+        pg.wait_for_timeout(300)
     pg.wait_for_selector('.tab', timeout=15000);pg.evaluate("[...document.querySelectorAll('.tab')].find(t=>/Learn/.test(t.textContent)).click()");pg.wait_for_timeout(300)
     mt=pg.locator('button',has_text='MISTAKES').first.inner_text() if pg.locator('button',has_text='MISTAKES').count() else pg.locator('button',has_text='Mistakes').first.inner_text()
     print('Mistakes button now:',mt.replace('\n',' '))
@@ -28,8 +31,11 @@ with sync_playwright() as p:
     for i in range(300):
         r=pg.evaluate(STEP);pg.wait_for_timeout(120)
         if r=='left' or pg.locator('.ls').count()==0:break
-    for _ in range(12):
-        if pg.locator('#nx2').count():pg.click('#nx2');pg.wait_for_timeout(300)
+    for _ in range(20):
+        if pg.locator('.tab').count():break
+        if pg.locator('#nx2').count():pg.click('#nx2')
+        elif pg.locator('.ls').count() and pg.locator('#q').count():print('   (a question was still open; left the lesson)');pg.click('#q');pg.wait_for_timeout(200);pg.locator('.sheet .btn').last.click() if pg.locator('.sheet .btn').count() else None
+        pg.wait_for_timeout(300)
     pg.wait_for_selector('.tab', timeout=15000);pg.evaluate("[...document.querySelectorAll('.tab')].find(t=>/Learn/.test(t.textContent)).click()");pg.wait_for_timeout(300)
     print('after practising them:',pg.locator('button',has_text='istakes').first.inner_text().replace('\n',' '))
     print('errors',errs);b.close()
