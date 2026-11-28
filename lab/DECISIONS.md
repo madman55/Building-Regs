@@ -2,6 +2,18 @@
 
 Why things are the way they are. Newest first.
 
+## 2026-11-28 · Teaching is built into the lesson path, driven by lesson files
+
+The app already taught before testing (the lesson deck), so a separate Teach section would have meant two half-built teaching systems. Lessons are JSON files played by one player. A new lesson is mostly writing, and new code is only needed for a new drawing or experiment. For T1, lessons open from a Learn card. In T3 they move in front of the matching section quizzes.
+
+## 2026-11-28 · Lessons never type official figures
+
+Explanations of principles are written in the lesson. Figures only appear through `quote` steps, which show the live text from the document packs. `check_refs.js --sign` fingerprints the quoted text, so an amendment that changes it flags the lesson for re-review instead of leaving it silently out of date.
+
+## 2026-11-28 · Experiments show measurements, not verdicts
+
+The stair experiment reports risers, length, pitch and 2R+G, but never says acceptable or not. Judging against the guidance is the next step, done by reading Table 1.1 and its notes.
+
 ## 2026-11-27 · Phases 2 and 3 built together, ahead of the plan
 
 In the Lab, the quizzes looked identical to the original's, so the Lab didn't feel different. The hunts, the question rework and the confidence check were built together so the difference shows from the first lesson.

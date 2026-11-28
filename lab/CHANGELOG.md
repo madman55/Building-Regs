@@ -2,6 +2,31 @@
 
 Newest first.
 
+## Lab 0.4 · 28 November 2026 · Teaching T1: lesson player and two lessons
+
+New switch: **Lessons** (on by default). Player in `lab-lessons.js`, lessons in `lessons/`.
+
+- **Lesson player.** Lessons are JSON files (format in `lessons/README.md`).
+  - 11 step types: intro, explain, why, tap a drawing, experiment, predict, sort, official quote, guided find, check, end. Scenario is ready for later.
+  - Every step shows its label (Explanation, Illustration, Law, Statutory guidance, Fictional). The intro shows the lesson's review status.
+  - Official text appears only as live quotes from the document packs, with edition and jurisdiction, one tap from the page.
+  - XP on first completion. Progress is saved as `regs-lab-lessons`.
+  - `?lesson=<id>&preview` opens any lesson without saving progress, for reviewing drafts.
+- **Lesson 1: Understanding the Building Regulations** (6 min).
+  - The four layers (Act, Regulations, Approved Documents, standards), with Requirement K1 next to Table 1.1.
+  - A law / guidance / planning sort, section 7 of the Building Act, and who checks and who's responsible.
+  - Editions and transitional arrangements, using AD B's 2029 changes, and a guided find of Requirement B1.
+- **Lesson 2: Understanding staircases** (7 min).
+  - A tappable stair section (9 terms), a prediction, and a stair experiment: floor height, rise and going, drawn to scale, showing risers, length on plan, pitch and 2R+G, with no verdicts.
+  - Why steps are equal, then AD K Table 1.1 quoted. A check shows its note 1 changes the answer for a 220/220 stair.
+  - Ends with the loft headroom hunt.
+- **Learn card** listing the lessons, with draft status and ticks when done.
+- **`tools/check_refs.js` checks lessons too.** Every quote and find must resolve. `--sign` stores a fingerprint of each quoted text, so a lesson shows **Needs re-review** if a document update changes the wording.
+- Regulation Hunter screens can now run without a follow-up question (used by lesson finds).
+- Sheets now open above lessons and hunts. The offline cache is now `regs-lab-v4`.
+- **Both lessons are drafts:** not yet independently reviewed.
+- **Known issue found:** some AD K key-term definitions in the search pack are cut off at the left (an extraction fault from before AD B). Not used by lessons. To fix when AD K is rebuilt.
+
 ## Lab 0.3 · 27 November 2026 · Phases 2 and 3: learning to look things up
 
 Three new switches, all on by default (Profile → Lab experiments). Code in `lab-learn.js`, hunts in `lab-hunts.js`.

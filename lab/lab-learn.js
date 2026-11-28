@@ -81,7 +81,7 @@ window.LABQ = (function () {
       h.accept.forEach(r => { const b = block(h.doc, r); if (b) { acc.add(b.id); accB.push(b); } });
       (h.near || []).forEach(r => { const b = block(h.doc, r); if (b) near.add(b.id); }); };
     H = { h, done, tries: 0, hint: false, opened: new Set(), list: [], stage: 'search' };
-    const v = overlay(`<div class="lhbar"><button class="hx" id="hx" aria-label="Close the hunt">${X.I.cross}</button><b>Regulation Hunter</b><span class="hcount">${foundCount()} of ${HUNTS.length} found</span></div>
+    const v = overlay(`<div class="lhbar"><button class="hx" id="hx" aria-label="Close the hunt">${X.I.cross}</button><b>${esc(h.bar || 'Regulation Hunter')}</b><span class="hcount">${h.bar ? '' : `${foundCount()} of ${HUNTS.length} found`}</span></div>
       <div class="hbody" id="hbody"><div class="hbrief"><div class="lhm">${X.mascot('think')}</div><div><small>${esc(h.title)}</small><p>${esc(h.brief)}</p></div></div>
       <p class="hst" id="hst">Search the documents. Open a result to read it, then tap <b>This answers it</b>.</p>
       <div class="sbox hsbox">${X.SEARCHIC}<input id="hq" type="search" placeholder="Search the documents" aria-label="Search the documents" autocomplete="off"></div>
@@ -124,6 +124,7 @@ window.LABQ = (function () {
     }
     function follow(found, b) {
       H.found = found; H.b = b; H.stage = 'follow';
+      if (!h.follow) return finish(found, null);
       const f = h.follow, opts = X.shuf(f.o.map((t, k) => ({ t, ok: k === 0 })));
       $('#hbody').innerHTML = `<div class="hbrief"><div class="lhm">${X.mascot(found ? 'happy' : 'idle')}</div><div><small>${found ? (H.tries ? 'Found it' : 'Found it first time') : 'One question'}</small><p>${found ? `That's it: <b>${esc(docBy(h.doc).short)}, ${esc(X.adkLabel(b))}</b>. Now read it properly.` : 'Answer from what you just read.'}</p></div></div>
         <button class="linkb" id="hread">Open ${esc(X.adkLabel(b))}</button>
@@ -138,14 +139,15 @@ window.LABQ = (function () {
         $('#hnext').onclick = () => finish(found, o.ok);
       });
     }
+    const tick = (ok, t) => `<li class="${ok ? 'y' : 'n'}">${ok ? X.I.check : X.I.cross}<span>${t}</span></li>`;
     function finish(found, followOk) {
       const read = accB.some(a => H.opened.has(a.id));
       const xp = (found ? (H.tries ? 6 : 10) : 2) + (read ? 3 : 0) + (followOk ? 3 : 0);
+      const followLine = followOk === null ? '' : tick(followOk, followOk ? 'Answered the follow-up' : 'Missed the follow-up');
       const prev = HS[h.id] || {};
       HS[h.id] = { found: !!(prev.found || found), tries: H.tries, at: Date.now(), best: Math.max(prev.best || 0, xp) }; store(HKEY, HS);
-      const tick = (ok, t) => `<li class="${ok ? 'y' : 'n'}">${ok ? X.I.check : X.I.cross}<span>${t}</span></li>`;
-      $('#hbody').innerHTML = `<div class="hbrief"><div class="lhm">${X.mascot(found && followOk ? 'cheer' : 'idle')}</div><div><small>Hunt complete</small><p><b>+${xp} XP.</b> ${found ? 'You found it yourself.' : 'Next time, try the hint sooner.'}</p></div></div>
-        <ul class="hdeb">${tick(found, found ? (H.tries ? `Found after ${H.tries + 1} tries` : 'Found it first time') : 'Shown the answer')}${tick(read, read ? 'Opened the page and read it' : 'Didn\'t open the page')}${tick(followOk, followOk ? 'Answered the follow-up' : 'Missed the follow-up')}</ul>
+      $('#hbody').innerHTML = `<div class="hbrief"><div class="lhm">${X.mascot(found && followOk !== false ? 'cheer' : 'idle')}</div><div><small>Hunt complete</small><p><b>+${xp} XP.</b> ${found ? 'You found it yourself.' : 'Next time, try the hint sooner.'}</p></div></div>
+        <ul class="hdeb">${tick(found, found ? (H.tries ? `Found after ${H.tries + 1} tries` : 'Found it first time') : 'Shown the answer')}${tick(read, read ? 'Opened the page and read it' : 'Didn\'t open the page')}${followLine}</ul>
         <p class="small">Always read the whole paragraph, including its conditions and anything it refers to.</p>`;
       $('#hfoot').innerHTML = `<button class="btn" id="hdone">Done</button>`;
       $('#hdone').onclick = () => { closeOverlay(); const label = `${docBy(h.doc).short}, ${X.adkLabel(H.b || accB[0])}`; const d = H.done; H = null; d && d({ found, xp, label }); };
@@ -241,5 +243,5 @@ window.LABQ = (function () {
   });
   if (X.view === 'learn' && on('hunter')) setTimeout(() => X.render(), 0);
 
-  return { prepare, huntBody, bindHunt, afterAsk, extra, learnCard, profileLine, _state: () => ({ HS, CS }), _reframe: reframe };
+  return { prepare, huntBody, bindHunt, afterAsk, extra, learnCard, profileLine, openHunt, listSheet, hunts: HUNTS, _state: () => ({ HS, CS }), _reframe: reframe };
 })();

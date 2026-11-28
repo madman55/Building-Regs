@@ -12,6 +12,14 @@ Each phase starts only when the previous gate is passed. The full reasoning is i
 | 5. Tester comparison | 6 to 10 testers, swapping between the original and the Lab after a week | Success criteria agreed in advance are met |
 | 6. Decide and extend | Move what worked into the original, or keep both. Then: house cut-away, more Approved Documents | n/a |
 
+## Teaching (from the teaching system plan)
+
+| Phase | What | Exit check |
+| --- | --- | --- |
+| T1 (**built, in testing**) | Lesson player, lesson files, preview mode, Lessons 1 (Understanding the Building Regulations) and 2 (Understanding staircases) | You and two beginners finish both and say what worked |
+| T2 | Lesson 3 (fire compartmentation) and its experiment; fixes from T1; independent review of all three | All three marked Reviewed |
+| T3 | Lessons inside the path before section quizzes, with Skip to quiz; element tags; finishing a lesson opens its hunts | Lesson, then quiz, then hunt, works end to end |
+
 ## Parked
 
 - Build a building: merge with the interactive house later.

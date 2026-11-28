@@ -11,6 +11,7 @@ window.LAB = (function () {
     { id: 'hunter', name: 'Regulation Hunter', about: 'Find the paragraph that answers a real question', phase: 2, ready: true, dflt: true },
     { id: 'reframe', name: 'Where would you check?', about: 'Most type-the-figure questions ask where the figure lives instead', phase: 3, ready: true, dflt: true },
     { id: 'confidence', name: 'Confidence check', about: 'Say how sure you are; checking never costs a heart', phase: 3, ready: true, dflt: true },
+    { id: 'lessons', name: 'Lessons', about: 'Teaching lessons with drawings, an experiment and the real document', phase: 'T1', ready: true, dflt: true },
     { id: 'cases', name: 'Case files', about: 'Short fictional projects to investigate', phase: 4, ready: false }
   ];
   let st = {};
