@@ -1,0 +1,7 @@
+# Vendored PDF viewer (pdf.js, with the polyfill header) and generated document packs: not edited by hand
+pdfjs.js
+pdfjs-worker.js
+adk.json
+adb1.json
+adb2.json
+*.pdf

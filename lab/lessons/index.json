@@ -1,6 +1,22 @@
 {
   "lessons": [
-    { "id": "regs-101", "title": "Understanding the Building Regulations", "minutes": 6, "level": "beginner", "status": "draft", "parts": ["all"], "elements": [] },
-    { "id": "k-stairs-1", "title": "Understanding staircases", "minutes": 7, "level": "beginner", "status": "draft", "parts": ["K"], "elements": ["stairs"] }
+    {
+      "id": "regs-101",
+      "title": "Understanding the Building Regulations",
+      "minutes": 6,
+      "level": "beginner",
+      "status": "draft",
+      "parts": ["all"],
+      "elements": []
+    },
+    {
+      "id": "k-stairs-1",
+      "title": "Understanding staircases",
+      "minutes": 7,
+      "level": "beginner",
+      "status": "draft",
+      "parts": ["K"],
+      "elements": ["stairs"]
+    }
   ]
 }
